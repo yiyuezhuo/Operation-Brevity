@@ -22,6 +22,8 @@ public class UITKTreeViewBuilder<IndexT, DataT>
     // {
     //     this.tree = tree;
     // }
+    public Dictionary<int, IndexT> treeViewIdxToIndex = new();
+    public Dictionary<IndexT, int> indexToTreeViewIdx = new();
 
     public List<TreeViewItemData<DataT>> CreateTreeViewRootItems(IEnumerable<IndexT> flattenTreeNodesIndexes)
     {
@@ -32,9 +34,14 @@ public class UITKTreeViewBuilder<IndexT, DataT>
         {
             var subItems = CreateTreeViewItemsForGroup(nodeIndex, ref idx);
             var d = new TreeViewItemData<DataT>(idx, tree.GetData(nodeIndex), subItems);
+            
+            treeViewIdxToIndex[idx] = nodeIndex;
+            
             idx++;
             items.Add(d);
         }
+
+        indexToTreeViewIdx = treeViewIdxToIndex.ToDictionary(kv => kv.Value, kv => kv.Key);
 
         return items;
     }
@@ -52,11 +59,17 @@ public class UITKTreeViewBuilder<IndexT, DataT>
             {
                 var childItems = CreateTreeViewItemsForGroup(childrenIndex, ref idx);
                 ret.Add(new TreeViewItemData<DataT>(idx, tree.GetData(childrenIndex), childItems));
+                
+                treeViewIdxToIndex[idx] = childrenIndex;
+                
                 idx++;
             }
             else // ShipLog or null
             {
                 ret.Add(new TreeViewItemData<DataT>(idx, tree.GetData(childrenIndex)));
+                
+                treeViewIdxToIndex[idx] = childrenIndex;
+                
                 idx++;
             }
         }

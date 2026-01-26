@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
-
+using YYZ;
 
 namespace GameModel
 {
@@ -24,9 +24,15 @@ namespace GameModel
                 if(_terrain != value)
                 {
                     _terrain = value;
-                    GameState.Instance.NotifyCellChanged(this);
+                    // GameState.Instance.NotifyCellChanged(this);
+                    EventBus.Publish(new CellChanged{cell = this});
                 }
             }
+        }
+
+        public class CellChanged : IEvent
+        {
+            public Cell cell;
         }
 
         public override string ToString()

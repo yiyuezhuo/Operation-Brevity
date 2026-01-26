@@ -97,6 +97,8 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
     {
         // if(!dragging && EventSystem.current.IsPointerOverGameObject())
         //     return;
+        if(!GameManager.Instance.IsHotKeyEnabled())
+            return;
 
         // Zoom
         var mouseScrollDelta = scrollWheelAction.ReadValue<Vector2>();

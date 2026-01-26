@@ -12,6 +12,8 @@ public class TempDialog
     public event EventHandler<VisualElement> onCancelled;
     public event EventHandler<VisualElement> onClosed;
 
+    public Action updateCallback;
+
     public Func<VisualElement, bool> confirmCheck;
 
     public enum PositionMode
@@ -36,6 +38,8 @@ public class TempDialog
         if(!closed)
         {
             closed = true;
+
+            DialogRoot.Instance.activingTempDialogs.Remove(this);
             
             onClosed?.Invoke(this, el);
             root.Remove(el);
@@ -123,6 +127,8 @@ public class TempDialog
                 title.AddManipulator(new DragManipulator(el));
             }
         }
+
+        DialogRoot.Instance.activingTempDialogs.Add(this);
     }
 
     public void SoftHide()

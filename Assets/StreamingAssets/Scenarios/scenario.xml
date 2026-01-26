@@ -1,6 +1,860 @@
 <?xml version="1.0" encoding="utf-16"?>
 <FullState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <gameState>
+  <sides>
+   <Side>
+    <name>Allied</name>
+    <oobChildrenRefs>
+     <ObjRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
+     <ObjRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
+     <ObjRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
+     <ObjRef objectId="9d779b44-ed11-434c-8dff-01920418280e" />
+    </oobChildrenRefs>
+    <objectId>f629e753-a334-4bd3-b8bd-7dc3a4ea783a</objectId>
+   </Side>
+   <Side>
+    <name>Axis</name>
+    <oobChildrenRefs />
+    <objectId>06d15115-ed12-49e1-bc9f-87efe9700b87</objectId>
+   </Side>
+  </sides>
+  <units>
+   <Unit>
+    <name>7th Armoured Brigade HQ</name>
+    <unitType>Tank</unitType>
+    <country>Britain</country>
+    <unitSize>Brigade</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="f629e753-a334-4bd3-b8bd-7dc3a4ea783a" />
+    <oobChildrenRefs>
+     <ObjRef objectId="e21f8e08-b714-46ad-975a-f2a05e8d5210" />
+     <ObjRef objectId="1d3f30e7-2d40-4e16-acb9-1ee418572814" />
+     <ObjRef objectId="2f324f3c-21f0-4b33-a9ce-ec4b162f6b94" />
+     <ObjRef objectId="baf97213-80ad-4051-8098-c5f1bd80e640" />
+     <ObjRef objectId="269bca9b-911b-4dee-9107-b160acf756df" />
+    </oobChildrenRefs>
+    <objectId>c0f1b296-a43a-4740-825f-9aee4bb9eef5</objectId>
+   </Unit>
+   <Unit>
+    <name>2nd Royal Tank Regiment HQ</name>
+    <unitType>Tank</unitType>
+    <country>Britain</country>
+    <unitSize>Regiment</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
+    <oobChildrenRefs>
+     <ObjRef objectId="14c67f14-523a-477d-bdb2-8b44961487b2" />
+     <ObjRef objectId="12158a0f-d91d-4d33-9ef0-c883862a71dc" />
+    </oobChildrenRefs>
+    <objectId>e21f8e08-b714-46ad-975a-f2a05e8d5210</objectId>
+   </Unit>
+   <Unit>
+    <name>A Squadron</name>
+    <unitType>Tank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="e21f8e08-b714-46ad-975a-f2a05e8d5210" />
+    <oobChildrenRefs />
+    <objectId>14c67f14-523a-477d-bdb2-8b44961487b2</objectId>
+   </Unit>
+   <Unit>
+    <name>C Squadron</name>
+    <unitType>Tank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="e21f8e08-b714-46ad-975a-f2a05e8d5210" />
+    <oobChildrenRefs />
+    <objectId>12158a0f-d91d-4d33-9ef0-c883862a71dc</objectId>
+   </Unit>
+   <Unit>
+    <name>6th Australian Division Cavalry</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>NotSpecified</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
+    <oobChildrenRefs>
+     <ObjRef objectId="eb5e57ee-6a84-4cd5-9301-d0b0d6ea6a9f" />
+     <ObjRef objectId="3e00c5a3-4332-4746-ba2a-0a1194c4f03c" />
+     <ObjRef objectId="f0892f11-55f1-4bcd-976f-157c5bddc365" />
+    </oobChildrenRefs>
+    <objectId>1d3f30e7-2d40-4e16-acb9-1ee418572814</objectId>
+   </Unit>
+   <Unit>
+    <name>A Squadron</name>
+    <unitType>Cavalry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="1d3f30e7-2d40-4e16-acb9-1ee418572814" />
+    <oobChildrenRefs />
+    <objectId>eb5e57ee-6a84-4cd5-9301-d0b0d6ea6a9f</objectId>
+   </Unit>
+   <Unit>
+    <name>B Squadron</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>NotSpecified</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="1d3f30e7-2d40-4e16-acb9-1ee418572814" />
+    <oobChildrenRefs />
+    <objectId>3e00c5a3-4332-4746-ba2a-0a1194c4f03c</objectId>
+   </Unit>
+   <Unit>
+    <name>C Squadron</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>NotSpecified</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="1d3f30e7-2d40-4e16-acb9-1ee418572814" />
+    <oobChildrenRefs />
+    <objectId>f0892f11-55f1-4bcd-976f-157c5bddc365</objectId>
+   </Unit>
+   <Unit>
+    <name>11th FF Cavalry Regiment PAVO HQ</name>
+    <unitType>Cavalry</unitType>
+    <country>Britain</country>
+    <unitSize>Regiment</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
+    <oobChildrenRefs>
+     <ObjRef objectId="792a26a4-ccf6-4a5d-89dc-340544a744b8" />
+     <ObjRef objectId="8b76d4ca-6573-451c-9f9b-31531c4b06d7" />
+     <ObjRef objectId="cf3a806c-6014-44c3-b804-9888a24b2405" />
+     <ObjRef objectId="9e000112-e683-4abe-98a2-235d4af5d7c1" />
+    </oobChildrenRefs>
+    <objectId>2f324f3c-21f0-4b33-a9ce-ec4b162f6b94</objectId>
+   </Unit>
+   <Unit>
+    <name>Reconnaissance Troop</name>
+    <unitType>Cavalry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2f324f3c-21f0-4b33-a9ce-ec4b162f6b94" />
+    <oobChildrenRefs />
+    <objectId>792a26a4-ccf6-4a5d-89dc-340544a744b8</objectId>
+   </Unit>
+   <Unit>
+    <name>A Squadron</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2f324f3c-21f0-4b33-a9ce-ec4b162f6b94" />
+    <oobChildrenRefs />
+    <objectId>8b76d4ca-6573-451c-9f9b-31531c4b06d7</objectId>
+   </Unit>
+   <Unit>
+    <name>B Squadron</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2f324f3c-21f0-4b33-a9ce-ec4b162f6b94" />
+    <oobChildrenRefs />
+    <objectId>cf3a806c-6014-44c3-b804-9888a24b2405</objectId>
+   </Unit>
+   <Unit>
+    <name>C Squadron</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2f324f3c-21f0-4b33-a9ce-ec4b162f6b94" />
+    <oobChildrenRefs />
+    <objectId>9e000112-e683-4abe-98a2-235d4af5d7c1</objectId>
+   </Unit>
+   <Unit>
+    <name>A Company, 2nd Royal Lancers</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
+    <oobChildrenRefs />
+    <objectId>baf97213-80ad-4051-8098-c5f1bd80e640</objectId>
+   </Unit>
+   <Unit>
+    <name>259th Battery, 65th Anti-Tank Royal Artillery Regiment</name>
+    <unitType>AntiTank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
+    <oobChildrenRefs />
+    <objectId>269bca9b-911b-4dee-9107-b160acf756df</objectId>
+   </Unit>
+   <Unit>
+    <name>7th Support Group HQ</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Brigade</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="f629e753-a334-4bd3-b8bd-7dc3a4ea783a" />
+    <oobChildrenRefs>
+     <ObjRef objectId="22a870b8-e3a4-474a-9417-0661d678914e" />
+     <ObjRef objectId="a0ef54b0-782d-4ab0-a636-5f8c8d018fc3" />
+     <ObjRef objectId="82a46950-bc5c-4e33-9326-2f0a287984ec" />
+     <ObjRef objectId="8cb285a0-e217-4eef-82bc-58079eca0ef7" />
+     <ObjRef objectId="d04c90e6-a554-42ff-b56b-51c91b3ce878" />
+     <ObjRef objectId="c80bdf90-04fe-4945-8272-823cb16bf782" />
+     <ObjRef objectId="2b557ad8-d76f-4666-ae28-0a08dd3c66f9" />
+    </oobChildrenRefs>
+    <objectId>6d3d106c-015d-4b11-92bc-6dadf80d9a9d</objectId>
+   </Unit>
+   <Unit>
+    <name>1st King's Royal Rifle Corps HQ</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Battalion</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
+    <oobChildrenRefs>
+     <ObjRef objectId="82c7e92b-3db3-485c-95ad-1d9d6d144f36" />
+     <ObjRef objectId="37034fe5-9e75-4982-b969-5cb34e49f919" />
+     <ObjRef objectId="36643565-fe8b-4acf-9e0d-7220e5ffefa5" />
+     <ObjRef objectId="19aefd81-2927-4f7f-bc05-780461a8f050" />
+    </oobChildrenRefs>
+    <objectId>22a870b8-e3a4-474a-9417-0661d678914e</objectId>
+   </Unit>
+   <Unit>
+    <name>A Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="22a870b8-e3a4-474a-9417-0661d678914e" />
+    <oobChildrenRefs />
+    <objectId>82c7e92b-3db3-485c-95ad-1d9d6d144f36</objectId>
+   </Unit>
+   <Unit>
+    <name>C Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="22a870b8-e3a4-474a-9417-0661d678914e" />
+    <oobChildrenRefs />
+    <objectId>37034fe5-9e75-4982-b969-5cb34e49f919</objectId>
+   </Unit>
+   <Unit>
+    <name>D Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="22a870b8-e3a4-474a-9417-0661d678914e" />
+    <oobChildrenRefs />
+    <objectId>36643565-fe8b-4acf-9e0d-7220e5ffefa5</objectId>
+   </Unit>
+   <Unit>
+    <name>Support</name>
+    <unitType>Artillery</unitType>
+    <country>Britain</country>
+    <unitSize>Platton</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="22a870b8-e3a4-474a-9417-0661d678914e" />
+    <oobChildrenRefs />
+    <objectId>19aefd81-2927-4f7f-bc05-780461a8f050</objectId>
+   </Unit>
+   <Unit>
+    <name>D Squadron, 3rd Hussars</name>
+    <unitType>Tank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
+    <oobChildrenRefs />
+    <objectId>a0ef54b0-782d-4ab0-a636-5f8c8d018fc3</objectId>
+   </Unit>
+   <Unit>
+    <name>A Squadron, 11th Hussars</name>
+    <unitType>Cavalry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
+    <oobChildrenRefs />
+    <objectId>82a46950-bc5c-4e33-9326-2f0a287984ec</objectId>
+   </Unit>
+   <Unit>
+    <name>12th Battery, 2/3rd Australia Anti-tank Regiment</name>
+    <unitType>AntiTank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
+    <oobChildrenRefs />
+    <objectId>8cb285a0-e217-4eef-82bc-58079eca0ef7</objectId>
+   </Unit>
+   <Unit>
+    <name>D Battery, 3rd Regiment, Royal Horse Artillery</name>
+    <unitType>AntiTank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
+    <oobChildrenRefs />
+    <objectId>d04c90e6-a554-42ff-b56b-51c91b3ce878</objectId>
+   </Unit>
+   <Unit>
+    <name>37th Battery, 1 Light Anti-Air Regiment, Royal Artillery</name>
+    <unitType>AntiAir</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
+    <oobChildrenRefs />
+    <objectId>c80bdf90-04fe-4945-8272-823cb16bf782</objectId>
+   </Unit>
+   <Unit>
+    <name>38th Battery 1 Light Anti-Air Regiment, Royal Artillery</name>
+    <unitType>AntiAir</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
+    <oobChildrenRefs />
+    <objectId>2b557ad8-d76f-4666-ae28-0a08dd3c66f9</objectId>
+   </Unit>
+   <Unit>
+    <name>22nd Guards Brigade HQ</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Brigade</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="f629e753-a334-4bd3-b8bd-7dc3a4ea783a" />
+    <oobChildrenRefs>
+     <ObjRef objectId="e79e031e-77ac-4c16-8c2e-02728daf6af2" />
+     <ObjRef objectId="092d17fa-38fa-4265-9081-761c0c5c7a56" />
+     <ObjRef objectId="57be53c1-37dd-4c19-9217-dc888ab5613f" />
+     <ObjRef objectId="0236e1b9-64d6-42e9-afaa-a81c1febe6c4" />
+     <ObjRef objectId="75492d31-c65c-4fd3-8cdf-00035e92e06f" />
+     <ObjRef objectId="2fe8c6a5-b4fd-4e90-9d6a-426f3bb40a2c" />
+     <ObjRef objectId="1c22fb98-d76d-4575-84c9-c2a3861a74ca" />
+     <ObjRef objectId="1e76a425-ec55-40cb-82f8-da6011478306" />
+    </oobChildrenRefs>
+    <objectId>2428a31a-d54b-4901-9cd4-6722326fcca1</objectId>
+   </Unit>
+   <Unit>
+    <name>4th Royal Tank Regiment</name>
+    <unitType>Tank</unitType>
+    <country>Britain</country>
+    <unitSize>Regiment</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
+    <oobChildrenRefs>
+     <ObjRef objectId="909ed706-6b6b-4c4d-a147-744a431d531d" />
+     <ObjRef objectId="35f8a89e-c1ec-4c1e-9356-45e00b4571fa" />
+    </oobChildrenRefs>
+    <objectId>e79e031e-77ac-4c16-8c2e-02728daf6af2</objectId>
+   </Unit>
+   <Unit>
+    <name>A Squadron</name>
+    <unitType>Tank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="e79e031e-77ac-4c16-8c2e-02728daf6af2" />
+    <oobChildrenRefs />
+    <objectId>909ed706-6b6b-4c4d-a147-744a431d531d</objectId>
+   </Unit>
+   <Unit>
+    <name>C Squadron</name>
+    <unitType>Tank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="e79e031e-77ac-4c16-8c2e-02728daf6af2" />
+    <oobChildrenRefs />
+    <objectId>35f8a89e-c1ec-4c1e-9356-45e00b4571fa</objectId>
+   </Unit>
+   <Unit>
+    <name>2nd Battalion, Scotland Guards</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Battalion</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
+    <oobChildrenRefs>
+     <ObjRef objectId="dc94da6a-a443-46cc-bfe8-0eb76e165d5e" />
+     <ObjRef objectId="a019fcff-53e3-4df6-ba2d-4ba40af054b1" />
+     <ObjRef objectId="125e171f-f9f5-4bac-aad8-b59286942970" />
+     <ObjRef objectId="58b3b4d5-a3c6-4148-bbac-877fc03102a7" />
+    </oobChildrenRefs>
+    <objectId>092d17fa-38fa-4265-9081-761c0c5c7a56</objectId>
+   </Unit>
+   <Unit>
+    <name>LF Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="092d17fa-38fa-4265-9081-761c0c5c7a56" />
+    <oobChildrenRefs />
+    <objectId>dc94da6a-a443-46cc-bfe8-0eb76e165d5e</objectId>
+   </Unit>
+   <Unit>
+    <name>F Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="092d17fa-38fa-4265-9081-761c0c5c7a56" />
+    <oobChildrenRefs />
+    <objectId>a019fcff-53e3-4df6-ba2d-4ba40af054b1</objectId>
+   </Unit>
+   <Unit>
+    <name>G Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="092d17fa-38fa-4265-9081-761c0c5c7a56" />
+    <oobChildrenRefs />
+    <objectId>125e171f-f9f5-4bac-aad8-b59286942970</objectId>
+   </Unit>
+   <Unit>
+    <name>RF Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="092d17fa-38fa-4265-9081-761c0c5c7a56" />
+    <oobChildrenRefs />
+    <objectId>58b3b4d5-a3c6-4148-bbac-877fc03102a7</objectId>
+   </Unit>
+   <Unit>
+    <name>1st Battalion, Durham Light Infantry</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Battalion</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
+    <oobChildrenRefs>
+     <ObjRef objectId="1611d3b6-438b-4962-a393-c970ead96c7f" />
+     <ObjRef objectId="b52de742-002c-4676-951e-1638b4d5b751" />
+     <ObjRef objectId="4f2fa651-1b6c-47a6-a590-73d9b8bb72b5" />
+     <ObjRef objectId="34abc314-b4c7-4b14-87ba-4bf12e903cc0" />
+    </oobChildrenRefs>
+    <objectId>57be53c1-37dd-4c19-9217-dc888ab5613f</objectId>
+   </Unit>
+   <Unit>
+    <name>A Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="57be53c1-37dd-4c19-9217-dc888ab5613f" />
+    <oobChildrenRefs />
+    <objectId>1611d3b6-438b-4962-a393-c970ead96c7f</objectId>
+   </Unit>
+   <Unit>
+    <name>B Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="57be53c1-37dd-4c19-9217-dc888ab5613f" />
+    <oobChildrenRefs />
+    <objectId>b52de742-002c-4676-951e-1638b4d5b751</objectId>
+   </Unit>
+   <Unit>
+    <name>C Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="57be53c1-37dd-4c19-9217-dc888ab5613f" />
+    <oobChildrenRefs />
+    <objectId>4f2fa651-1b6c-47a6-a590-73d9b8bb72b5</objectId>
+   </Unit>
+   <Unit>
+    <name>D Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="57be53c1-37dd-4c19-9217-dc888ab5613f" />
+    <oobChildrenRefs />
+    <objectId>34abc314-b4c7-4b14-87ba-4bf12e903cc0</objectId>
+   </Unit>
+   <Unit>
+    <name>3rd Battalion, Coldstream Guards</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Battalion</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
+    <oobChildrenRefs>
+     <ObjRef objectId="d9f0c587-e937-4577-85ea-8dff9aa60773" />
+     <ObjRef objectId="3bb9d156-8abc-4a6c-a39d-0f8b59fe67b1" />
+     <ObjRef objectId="8d0ad15f-bc62-4d47-b197-ff4930c199f2" />
+     <ObjRef objectId="7858d900-06b1-4aa6-bec6-3aa360e3cd41" />
+    </oobChildrenRefs>
+    <objectId>0236e1b9-64d6-42e9-afaa-a81c1febe6c4</objectId>
+   </Unit>
+   <Unit>
+    <name>1st Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="0236e1b9-64d6-42e9-afaa-a81c1febe6c4" />
+    <oobChildrenRefs />
+    <objectId>d9f0c587-e937-4577-85ea-8dff9aa60773</objectId>
+   </Unit>
+   <Unit>
+    <name>2nd Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="0236e1b9-64d6-42e9-afaa-a81c1febe6c4" />
+    <oobChildrenRefs />
+    <objectId>3bb9d156-8abc-4a6c-a39d-0f8b59fe67b1</objectId>
+   </Unit>
+   <Unit>
+    <name>3rd Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="0236e1b9-64d6-42e9-afaa-a81c1febe6c4" />
+    <oobChildrenRefs />
+    <objectId>8d0ad15f-bc62-4d47-b197-ff4930c199f2</objectId>
+   </Unit>
+   <Unit>
+    <name>4th Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="0236e1b9-64d6-42e9-afaa-a81c1febe6c4" />
+    <oobChildrenRefs />
+    <objectId>7858d900-06b1-4aa6-bec6-3aa360e3cd41</objectId>
+   </Unit>
+   <Unit>
+    <name>105th/119th Battery, 31st Field Regiment, Royal Artillery</name>
+    <unitType>Artillery</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
+    <oobChildrenRefs />
+    <objectId>75492d31-c65c-4fd3-8cdf-00035e92e06f</objectId>
+   </Unit>
+   <Unit>
+    <name>116th/118th Battery, 31st Field Regiment, Royal Artillery</name>
+    <unitType>Artillery</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
+    <oobChildrenRefs />
+    <objectId>2fe8c6a5-b4fd-4e90-9d6a-426f3bb40a2c</objectId>
+   </Unit>
+   <Unit>
+    <name>260th Battery, 65 Regiment, Royal Artillery</name>
+    <unitType>AntiTank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
+    <oobChildrenRefs />
+    <objectId>1c22fb98-d76d-4575-84c9-c2a3861a74ca</objectId>
+   </Unit>
+   <Unit>
+    <name>6th Battery, 2/2nd Australia Anti-tank regiment</name>
+    <unitType>AntiTank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
+    <oobChildrenRefs />
+    <objectId>1e76a425-ec55-40cb-82f8-da6011478306</objectId>
+   </Unit>
+   <Unit>
+    <name>Coastal Group</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Regiment</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="f629e753-a334-4bd3-b8bd-7dc3a4ea783a" />
+    <oobChildrenRefs>
+     <ObjRef objectId="ea9c680f-c146-466d-8b5a-d356cb033f3c" />
+     <ObjRef objectId="c28c9d89-9a47-4ec5-955c-629eae684ff2" />
+     <ObjRef objectId="f414d171-8202-4b29-8ed8-91580b23b3eb" />
+     <ObjRef objectId="7f333b95-e2f8-4969-8bc6-85543208ed95" />
+    </oobChildrenRefs>
+    <objectId>9d779b44-ed11-434c-8dff-01920418280e</objectId>
+   </Unit>
+   <Unit>
+    <name>2nd Rifle Brigade HQ</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Battalion</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="9d779b44-ed11-434c-8dff-01920418280e" />
+    <oobChildrenRefs>
+     <ObjRef objectId="8a2a548f-e4e4-4526-a416-7403b1bc0724" />
+     <ObjRef objectId="ecf34c91-2575-47bc-a0c9-a3c239f63b73" />
+     <ObjRef objectId="5375382b-1513-41bb-9762-4c39237c0c71" />
+     <ObjRef objectId="7c2097fd-e3ab-45e7-90e8-adcdb5349060" />
+    </oobChildrenRefs>
+    <objectId>ea9c680f-c146-466d-8b5a-d356cb033f3c</objectId>
+   </Unit>
+   <Unit>
+    <name>B Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="ea9c680f-c146-466d-8b5a-d356cb033f3c" />
+    <oobChildrenRefs />
+    <objectId>8a2a548f-e4e4-4526-a416-7403b1bc0724</objectId>
+   </Unit>
+   <Unit>
+    <name>C Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="ea9c680f-c146-466d-8b5a-d356cb033f3c" />
+    <oobChildrenRefs />
+    <objectId>ecf34c91-2575-47bc-a0c9-a3c239f63b73</objectId>
+   </Unit>
+   <Unit>
+    <name>D Company</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="ea9c680f-c146-466d-8b5a-d356cb033f3c" />
+    <oobChildrenRefs />
+    <objectId>5375382b-1513-41bb-9762-4c39237c0c71</objectId>
+   </Unit>
+   <Unit>
+    <name>Support</name>
+    <unitType>Artillery</unitType>
+    <country>Britain</country>
+    <unitSize>Platton</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="ea9c680f-c146-466d-8b5a-d356cb033f3c" />
+    <oobChildrenRefs />
+    <objectId>7c2097fd-e3ab-45e7-90e8-adcdb5349060</objectId>
+   </Unit>
+   <Unit>
+    <name>5th Bty, 2/2nd Australia Anti-Tank Regiment</name>
+    <unitType>AntiTank</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="9d779b44-ed11-434c-8dff-01920418280e" />
+    <oobChildrenRefs />
+    <objectId>c28c9d89-9a47-4ec5-955c-629eae684ff2</objectId>
+   </Unit>
+   <Unit>
+    <name>V/AA Battery, 8th Field Regiment, Royal Artillery</name>
+    <unitType>Artillery</unitType>
+    <country>Britain</country>
+    <unitSize>Company</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="9d779b44-ed11-434c-8dff-01920418280e" />
+    <oobChildrenRefs />
+    <objectId>f414d171-8202-4b29-8ed8-91580b23b3eb</objectId>
+   </Unit>
+   <Unit>
+    <name>W/X Battery, 8th Field Regiment, Royal Artillery</name>
+    <unitType>Infantry</unitType>
+    <country>Britain</country>
+    <unitSize>NotSpecified</unitSize>
+    <hardAttack>0</hardAttack>
+    <softAttack>0</softAttack>
+    <defence>0</defence>
+    <strength>0</strength>
+    <oobParentRef objectId="9d779b44-ed11-434c-8dff-01920418280e" />
+    <oobChildrenRefs />
+    <objectId>7f333b95-e2f8-4969-8bc6-85543208ed95</objectId>
+   </Unit>
+  </units>
   <serializedCells>
    <width>37</width>
    <height>40</height>
@@ -1487,192 +2341,11 @@
     <Cell x="36" y="39" terrain="Water" />
    </records>
   </serializedCells>
-  <seralizedEdgeFeatureMap>
-   <EdgeFeature x1="1" y1="39" x2="2" y2="39" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="2" y1="37" x2="3" y2="37" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="2" y1="38" x2="3" y2="38" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="3" y1="36" x2="4" y2="36" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="4" y1="35" x2="5" y2="36" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="5" y1="35" x2="6" y2="36" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="6" y1="34" x2="6" y2="35" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="7" y1="33" x2="8" y2="34" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="7" y1="34" x2="7" y2="35" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="8" y1="33" x2="9" y2="34" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="9" y1="31" x2="10" y2="32" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="9" y1="32" x2="9" y2="33" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="10" y1="29" x2="11" y2="30" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="10" y1="30" x2="10" y2="31" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="11" y1="29" x2="12" y2="30" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="12" y1="27" x2="13" y2="28" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="12" y1="28" x2="12" y2="29" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="12" y1="39" x2="13" y2="38" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="27" x2="14" y2="28" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="13" y1="31" x2="14" y2="30" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="31" x2="14" y2="32" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="33" x2="13" y2="34" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="33" x2="14" y2="32" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="34" x2="13" y2="33" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="34" x2="13" y2="35" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="35" x2="13" y2="34" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="35" x2="13" y2="36" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="36" x2="13" y2="35" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="36" x2="13" y2="37" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="37" x2="13" y2="36" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="37" x2="13" y2="38" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="38" x2="12" y2="39" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="13" y1="38" x2="13" y2="37" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="14" y1="25" x2="15" y2="26" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="14" y1="26" x2="14" y2="27" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="14" y1="29" x2="14" y2="30" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="14" y1="29" x2="15" y2="28" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="14" y1="30" x2="13" y2="31" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="14" y1="30" x2="14" y2="29" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="14" y1="32" x2="13" y2="31" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="14" y1="32" x2="13" y2="33" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="14" y1="32" x2="14" y2="32" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="15" y1="27" x2="15" y2="28" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="15" y1="27" x2="16" y2="26" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="15" y1="28" x2="14" y2="29" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="15" y1="28" x2="15" y2="27" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="16" y1="23" x2="17" y2="24" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="16" y1="24" x2="16" y2="25" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="16" y1="25" x2="16" y2="26" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="16" y1="25" x2="17" y2="25" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="16" y1="26" x2="15" y2="27" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="16" y1="26" x2="16" y2="25" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="17" y1="22" x2="17" y2="23" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="17" y1="25" x2="16" y2="25" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="17" y1="25" x2="18" y2="24" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="18" y1="21" x2="19" y2="22" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="18" y1="22" x2="18" y2="23" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="18" y1="23" x2="18" y2="24" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="18" y1="23" x2="19" y2="23" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="18" y1="24" x2="17" y2="25" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="18" y1="24" x2="18" y2="23" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="19" y1="21" x2="20" y2="22" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="19" y1="23" x2="18" y2="23" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="19" y1="23" x2="20" y2="23" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="17" x2="20" y2="18" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="17" x2="21" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="18" x2="20" y2="17" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="18" x2="20" y2="19" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="19" x2="20" y2="18" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="19" x2="20" y2="20" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="20" x2="20" y2="19" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="20" x2="20" y2="21" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="21" x2="20" y2="20" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="21" x2="20" y2="22" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="21" x2="21" y2="22" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="20" y1="22" x2="20" y2="21" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="22" x2="21" y2="22" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="23" x2="19" y2="23" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="20" y1="23" x2="21" y2="22" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="21" y1="15" x2="21" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="21" y1="15" x2="22" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="21" y1="16" x2="20" y2="17" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="21" y1="16" x2="21" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="21" y1="21" x2="22" y2="22" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="21" y1="22" x2="20" y2="22" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="21" y1="22" x2="20" y2="23" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="22" y1="15" x2="21" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="22" y1="15" x2="23" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="22" y1="21" x2="23" y2="22" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="23" y1="15" x2="22" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="23" y1="15" x2="24" y2="14" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="23" y1="15" x2="24" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="23" y1="21" x2="24" y2="22" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="24" y1="13" x2="24" y2="14" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="24" y1="13" x2="25" y2="12" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="24" y1="14" x2="23" y2="15" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="24" y1="14" x2="24" y2="13" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="24" y1="15" x2="23" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="24" y1="15" x2="25" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="24" y1="21" x2="25" y2="22" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="25" y1="11" x2="25" y2="12" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="25" y1="11" x2="26" y2="10" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="25" y1="12" x2="24" y2="13" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="25" y1="12" x2="25" y2="11" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="25" y1="15" x2="24" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="25" y1="15" x2="26" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="25" y1="21" x2="26" y2="22" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="26" y1="9" x2="26" y2="10" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="26" y1="9" x2="27" y2="8" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="26" y1="10" x2="25" y2="11" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="26" y1="10" x2="26" y2="9" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="26" y1="15" x2="25" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="26" y1="15" x2="27" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="26" y1="21" x2="27" y2="22" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="27" y1="1" x2="28" y2="0" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="1" x2="28" y2="2" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="3" x2="28" y2="2" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="3" x2="28" y2="4" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="5" x2="27" y2="6" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="5" x2="28" y2="4" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="6" x2="27" y2="5" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="6" x2="27" y2="7" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="7" x2="27" y2="6" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="7" x2="27" y2="8" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="8" x2="26" y2="9" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="8" x2="27" y2="7" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="27" y1="15" x2="26" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="27" y1="15" x2="28" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="27" y1="20" x2="27" y2="21" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="28" y1="0" x2="27" y2="1" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="28" y1="2" x2="27" y2="1" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="28" y1="2" x2="27" y2="3" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="28" y1="4" x2="27" y2="3" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="28" y1="4" x2="27" y2="5" primaryRoad="false" secondaryRoad="true" escarpment="false" />
-   <EdgeFeature x1="28" y1="15" x2="27" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="28" y1="15" x2="29" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="28" y1="20" x2="28" y2="21" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="29" y1="15" x2="28" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="29" y1="15" x2="30" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="29" y1="19" x2="30" y2="20" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="29" y1="20" x2="29" y2="21" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="30" y1="16" x2="29" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="30" y1="16" x2="31" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="30" y1="19" x2="31" y2="20" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="31" y1="16" x2="30" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="31" y1="16" x2="32" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="31" y1="18" x2="31" y2="19" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="32" y1="16" x2="31" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="32" y1="16" x2="32" y2="17" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="32" y1="17" x2="32" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="32" y1="17" x2="33" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="32" y1="17" x2="33" y2="18" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="32" y1="18" x2="32" y2="19" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="33" y1="16" x2="32" y2="17" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="33" y1="16" x2="33" y2="17" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="33" y1="16" x2="34" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="33" y1="17" x2="34" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="33" y1="17" x2="34" y2="18" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="34" y1="15" x2="34" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="34" y1="15" x2="35" y2="14" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="34" y1="16" x2="33" y2="16" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="34" y1="16" x2="33" y2="17" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="34" y1="16" x2="34" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="34" y1="16" x2="34" y2="17" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="34" y1="18" x2="33" y2="17" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="35" y1="11" x2="36" y2="10" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="35" y1="11" x2="36" y2="12" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="35" y1="13" x2="35" y2="14" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="35" y1="13" x2="36" y2="12" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="35" y1="14" x2="34" y2="15" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="35" y1="14" x2="35" y2="13" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="35" y1="15" x2="36" y2="16" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="35" y1="16" x2="35" y2="17" primaryRoad="false" secondaryRoad="false" escarpment="true" />
-   <EdgeFeature x1="36" y1="8" x2="36" y2="9" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="36" y1="9" x2="36" y2="8" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="36" y1="9" x2="36" y2="10" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="36" y1="10" x2="35" y2="11" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="36" y1="10" x2="36" y2="9" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="36" y1="12" x2="35" y2="11" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-   <EdgeFeature x1="36" y1="12" x2="35" y2="13" primaryRoad="true" secondaryRoad="false" escarpment="false" />
-  </seralizedEdgeFeatureMap>
+  <seralizedEdgeFeatureMap />
  </gameState>
  <viewState>
-  <xPosition>-3.22981954</xPosition>
-  <yPosition>5.966424</yPosition>
-  <orthographicSize>16</orthographicSize>
+  <xPosition>-14.7791862</xPosition>
+  <yPosition>1.19390893</yPosition>
+  <orthographicSize>26</orthographicSize>
  </viewState>
 </FullState>

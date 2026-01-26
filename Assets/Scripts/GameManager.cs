@@ -211,13 +211,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
 
         // Setup
-        GameState.gameStateReplaced += OnGameStateReplaced;
+        // GameState.gameStateReplaced += OnGameStateReplaced;
 
         RegisterGameState();
 
         RebuildCellLabels();
 
+        TempFix();
+
         Debug.Log("Fully Initialized");
+    }
+
+    void TempFix()
+    {
+        
     }
 
     // Update is called once per frame
@@ -331,47 +338,73 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public override void OnDestroy()
     {
-        GameState.gameStateReplaced -= OnGameStateReplaced;
+        // GameState.gameStateReplaced -= OnGameStateReplaced;
 
         UnregisterGameState();
     }
 
     bool edgeFeatureDirty = false;
 
-    public void OnEdgeFeatureChanged(object sender, EventArgs args)
+    // public void OnEdgeFeatureChanged(object sender, EventArgs args)
+    // {
+    //     edgeFeatureDirty = true;
+    // }
+
+    void OnEdgeFeatureChanged(GameState.EdgeFeatureChanged evt)
     {
         edgeFeatureDirty = true;
     }
 
-    void OnGameStateReplaced(object sender, EventArgs args)
-    {
-        UnregisterGameState();
-        RegisterGameState();
-    }
+    // void OnGameStateReplaced(object sender, EventArgs args)
+    // {
+    //     UnregisterGameState();
+    //     RegisterGameState();
+    // }
 
     void RegisterGameState()
     {
-        GameState.Instance.cellChanged += OnGameStateCellChanged;
-        GameState.Instance.cellsChanged += OnGameStateCellsChanged;
-        GameState.Instance.edgeFeatureChanged += OnEdgeFeatureChanged;
+        // GameState.Instance.cellChanged += OnGameStateCellChanged;
+        // GameState.Instance.cellsChanged += OnGameStateCellsChanged;
+        // GameState.Instance.edgeFeatureChanged += OnEdgeFeatureChanged;
+
+        EventBus.Subscribe<Cell.CellChanged>(OnGameStateCellChanged);
+        EventBus.Subscribe<GameState.CellsChanged>(OnGameStateCellsChanged);
+        EventBus.Subscribe<GameState.EdgeFeatureChanged>(OnEdgeFeatureChanged);
     }
 
     void UnregisterGameState()
     {
-        GameState.Instance.cellChanged -= OnGameStateCellChanged;
-        GameState.Instance.cellsChanged -= OnGameStateCellsChanged;
-        GameState.Instance.edgeFeatureChanged -= OnEdgeFeatureChanged;
+        // GameState.Instance.cellChanged -= OnGameStateCellChanged;
+        // GameState.Instance.cellsChanged -= OnGameStateCellsChanged;
+        // GameState.Instance.edgeFeatureChanged -= OnEdgeFeatureChanged;
+
+        EventBus.Unsubscribe<Cell.CellChanged>(OnGameStateCellChanged);
+        EventBus.Unsubscribe<GameState.CellsChanged>(OnGameStateCellsChanged);
+        EventBus.Unsubscribe<GameState.EdgeFeatureChanged>(OnEdgeFeatureChanged);
     }
 
-    void OnGameStateCellChanged(object sender, Cell cell)
+    // void OnGameStateCellChanged(object sender, Cell cell)
+    // {
+    //     RefreshCellLabel(cell);
+    // }
+
+    void OnGameStateCellChanged(Cell.CellChanged evt)
     {
-        RefreshCellLabel(cell);
+        RefreshCellLabel(evt.cell);
     }
 
-    void OnGameStateCellsChanged(object sender, EventArgs args)
+
+    // void OnGameStateCellsChanged(object sender, EventArgs args)
+    // {
+    //     RebuildCellLabels();
+    // }
+
+
+    void OnGameStateCellsChanged(GameState.CellsChanged evt)
     {
         RebuildCellLabels();
     }
+
 
     public void RefreshCellLabel(Cell cell)
     {

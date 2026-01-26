@@ -44,7 +44,7 @@ public class Overlay : SingletonDocument<Overlay> // So don't specify binding fo
         var orderOfBattleButton = root.Q<Button>("OrderOfBattleButton");
         orderOfBattleButton.clicked += () =>
         {
-            // DialogRoot.Instance.PopupOrderOfBattleDialog();
+            DialogRoot.Instance.PopupOrderOfBattleDialog();
         };
     }
 }

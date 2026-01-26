@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
+using Unity.Properties;
 
 public static class Utils
 {
@@ -53,5 +54,18 @@ public static class Utils
         {
             listView.SetBinding("itemsSource", new DataBinding());
         }
+    }
+
+    public static bool TryResolveCurrentValueForBinding<T>(VisualElement el, out T ret) where T: class
+    {
+        var ctx = el.GetHierarchicalDataSourceContext();
+        
+        if(ctx.dataSourcePath.Length == 0)
+        {
+            ret = ctx.dataSource as T;
+            return ret != null;
+        }
+
+        return PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out ret);
     }
 }

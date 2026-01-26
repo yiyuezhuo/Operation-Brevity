@@ -1,0 +1,28 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="GameModel.Unit, Assembly-CSharp" class="panel-dialog" style="flex-shrink: 0; height: auto;">
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+            <ui:Label text="Unit" class="title" style="flex-grow: 1;"/>
+            <ui:Button text="X" name="ConfirmButton" class="x-button"/>
+        </ui:VisualElement>
+        <ui:TextField label="Name">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="name" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:TextField>
+        <ui:EnumField label="Type" value="Center" type="GameModel.UnitType, Assembly-CSharp">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="unitType" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:EnumField>
+        <ui:EnumField label="Country" value="Center" type="GameModel.Country, Assembly-CSharp">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:EnumField>
+        <ui:EnumField label="Size" value="Center" type="GameModel.UnitSize, Assembly-CSharp">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="unitSize" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:EnumField>
+    </ui:VisualElement>
+</ui:UXML>

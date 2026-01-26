@@ -1,11 +1,29 @@
 using System;
 using GameModel;
 using UnityEngine.UIElements;
+using UnityEngine;
+using YYZ;
+using System.Collections.Generic;
+using System.Linq;
 
 public class DialogRoot : SingletonDocument<DialogRoot>
 {
     public VisualTreeAsset mapEditDialogDocument;
     public VisualTreeAsset orderOfBattleDialogDocument;
+    public VisualTreeAsset unitDialogDocument;
+
+    public void PopupUnitDialog(Unit unit)
+    {
+        var tempDialog = new TempDialog
+        {
+            root = root,
+            template = unitDialogDocument,
+            templateDataSource = unit,
+            // positionMode = TempDialog.PositionMode.Left
+        };
+
+        tempDialog.Popup();
+    }
 
     public void PopupOrderOfBattleDialog()
     {
@@ -14,25 +32,131 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = orderOfBattleDialogDocument,
             templateDataSource = null,
-            // positionMode = TempDialog.PositionMode.Left
+            positionMode = TempDialog.PositionMode.Left
         };
+
+        // Action refresh = null;
+        // Action<Unit.OrderOfBattleChanged> refreshCallback = evt => refresh();
+        var dirty = false;
+        Action<Unit.OrderOfBattleChanged> oobChangedCallback = evt => dirty = true;
 
         tempDialog.onCreated += (sender, el) =>
         {
             var treeView = el.Q<TreeView>();
 
-            // var tree = new FullGroupTreeNameLink();
-            // var treeViewerBuilder = new UITKTreeViewBuilder<IStrategicGroupMemberReferenceable, IStrategicGroupMemberReferenceable>()
-            // {
-            //     tree=tree
-            // };
-            // var rootItems = treeViewerBuilder.CreateTreeViewRootItems(viewableGroups);
-            // oobTreeView.SetRootItems(rootItems);
+            treeView.makeItem = () =>
+            {
+                var _el = treeView.itemTemplate.CloneTree();
 
-            // tree.BindMakeItemBindItem(oobTreeView);
+                return _el;
+            };
+            treeView.bindItem = (e, i) =>
+            {
+                var item = treeView.GetItemDataForIndex<IOrderOfBattleNode>(i);
 
-            treeView.Rebuild();
-            // oobTreeView.ExpandAll();
+                e.dataSource = item;
+                // var label = e.Q<Label>();
+                // label.dataSource = item;
+            };
+
+            var tree = new OrderOfBattleTree();
+
+            var editButton = el.Q<Button>("EditButton");
+            editButton.clicked += () =>
+            {
+                Debug.Log($"Edit: {treeView.selectedItem}");
+                
+                var unit = treeView.selectedItem as Unit;
+                if(unit != null)
+                {
+                    PopupUnitDialog(unit);
+                }
+            };
+
+            Unit focusedUnit = null;
+
+            var newSubordinateButton = el.Q<Button>("NewSubordinateButton");
+            newSubordinateButton.clicked += () =>
+            {
+                Debug.Log($"New Subordinate: {treeView.selectedItem}");
+
+                if(treeView.selectedItem is IOrderOfBattleNode newParent)
+                {
+                    var unit = new Unit();
+                    EntityManager.Instance.Register(unit, null);
+                    GameState.Instance.units.Add(unit);
+                    unit.AttachTo(newParent);
+
+                    focusedUnit = unit; // 
+                }
+            };
+
+            var deleteButton = el.Q<Button>("DeleteButton");
+            deleteButton.clicked += () =>
+            {
+                if(treeView.selectedItem is Unit unit)
+                {
+                    unit.AttachTo(null);
+                    GameState.Instance.units.Remove(unit);
+
+                    // EntityManager.Instance.Unregister(unit);
+                    GameState.Instance.ResetAndRegisterAll();
+
+                    // refresh(); // Otherwise state
+                }
+            };
+
+            Action refresh = () =>
+            {
+                var treeViewerBuilder = new UITKTreeViewBuilder<IOrderOfBattleNode, IOrderOfBattleNode>()
+                {
+                    tree=tree
+                };
+                List<IOrderOfBattleNode> topNodes = new();
+                topNodes.AddRange(GameState.Instance.sides);
+                topNodes.AddRange(GameState.Instance.units.Where(u => u.parent == null));
+
+                var rootItems = treeViewerBuilder.CreateTreeViewRootItems(topNodes);
+                treeView.SetRootItems(rootItems);
+                treeView.Rebuild();
+                // treeView.ExpandAll();
+
+                // focusedUnit
+                if(focusedUnit != null)
+                {
+                    var viewIdx = treeViewerBuilder.indexToTreeViewIdx[focusedUnit];
+                    // treeView.ScrollToItemById(viewIdx);
+                    // treeView.ScrollToItem(viewIdx);
+
+                    treeView.SetSelectionById(viewIdx);
+                    treeView.ScrollToItemById(viewIdx);
+
+                    focusedUnit = null;
+                }
+                else
+                {
+                    treeView.ExpandAll();
+                }
+                
+            };
+
+            refresh();
+
+            tempDialog.updateCallback = () =>
+            {
+                if(dirty)
+                {
+                    dirty = false;
+                    refresh();
+                }
+            };
+
+            EventBus.Subscribe(oobChangedCallback);
+        };
+
+        tempDialog.onClosed += (e, el) =>
+        {
+            EventBus.Unsubscribe(oobChangedCallback);
         };
 
         tempDialog.Popup();
@@ -60,5 +184,19 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
 
         tempDialog.Popup();
+    }
+
+    public List<TempDialog> activingTempDialogs = new();
+
+    void Update()
+    {
+        foreach(var dialog in activingTempDialogs)
+        {
+            if(dialog.updateCallback != null)
+            {
+                dialog.updateCallback();
+            }
+        }
+
     }
 }

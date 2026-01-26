@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.Hashing;
 using System.Linq;
 using System.Xml.Serialization;
+
+using YYZ;
 
 
 namespace GameModel
@@ -91,55 +94,22 @@ namespace GameModel
         }
     }
 
-    public class Side : IObjectIdLabeled
+    public interface IOrderOfBattleNode
     {
-        public string objectId{get;set;}
+        // public string name{get;}
+        public IEnumerable<IOrderOfBattleNode> children{get;}
+        public IOrderOfBattleNode parent{get;}
 
+    }
+
+    public class OrderOfBattleNodePlaceholder // : IOrderOfBattleNode // UITK Helper
+    {
         public string name;
-
-        public IEnumerable<IObjectIdLabeled> GetSubObjects()
-        {
-            yield break;
-        }
-
-        public List<ObjRef> oobChildrenRefs = new();
+        public IEnumerable<IOrderOfBattleNode> children;
+        public IOrderOfBattleNode parent;
     }
 
-    public enum Country // mainly for color schema
-    {
-        Britain,
-        Germany,
-        Italy,
-    }
 
-    public enum UnitType // mainly for unit icon
-    {
-        Infantry,
-        Tank,
-        Artillery,
-        HeadQuarters,
-    }
-
-    public class Unit : IObjectIdLabeled
-    {
-        public string objectId{get;set;}
-
-        public string name;
-        public UnitType unitType;
-        public Country country;
-        public float hardAttack;
-        public float softAttack;
-        public float defence;
-        public float strength; // men, vehicle or guns
-
-        public ObjRef oobParentRef; // reference to another Unit or Side
-        public List<ObjRef> oobChildrenRefs = new();
-
-        public IEnumerable<IObjectIdLabeled> GetSubObjects()
-        {
-            yield break;
-        }
-    }
 
     public class GameState
     {
@@ -152,8 +122,41 @@ namespace GameModel
             set
             {
                 _cells = value;
-                cellsChanged?.Invoke(this, EventArgs.Empty);
+                // cellsChanged?.Invoke(this, EventArgs.Empty);
+                EventBus.Publish(cellsChanged);
             }
+        }
+
+        // public List<Side> sides = new()
+        // {
+        //     new Side(){name="Allied"},
+        //     new Side(){name="Axis"}
+        // };
+        public List<Side> sides = new();
+
+        public List<Unit> units = new();
+
+        public void ResetAndRegisterAll()
+        {
+            // Clear previous
+            EntityManager.Instance.Reset();
+
+            // Re-register
+            foreach (var side in sides)
+            {
+                EntityManager.Instance.Register(side, null);
+            }
+
+            foreach (var unit in units)
+            {
+                EntityManager.Instance.Register(unit, null);
+            }
+
+            // ResetObjRefs
+            EntityManager.Instance.ResetObjRefs();
+
+            // events
+            EventBus.Publish(Unit.orderOfBattleChanged);
         }
 
         public int GetMapWidth() => cells.GetLength(0);
@@ -271,18 +274,23 @@ namespace GameModel
                 }
             }
 
-            edgeFeatureChanged?.Invoke(this, EventArgs.Empty);
+            // edgeFeatureChanged?.Invoke(this, EventArgs.Empty);
+            EventBus.Publish(edgeFeatureChanged);
         }
 
-        // public event EventHandler<(int, int, int, int)> edgeFeatureChanged;
-        public event EventHandler edgeFeatureChanged; // No one edge event is provided
+        public class EdgeFeatureChanged : IEvent{}
+        public static EdgeFeatureChanged edgeFeatureChanged = new(); 
 
-        public event EventHandler<Cell> cellChanged;
-        public event EventHandler cellsChanged;
-        public void NotifyCellChanged(Cell cell)
-        {
-            cellChanged?.Invoke(this, cell);
-        }
+        // public event EventHandler edgeFeatureChanged; // No one edge event is provided
+        public class CellsChanged : IEvent{}
+        public static CellsChanged cellsChanged = new();
+
+        // public event EventHandler<Cell> cellChanged;
+        // public event EventHandler cellsChanged;
+        // public void NotifyCellChanged(Cell cell)
+        // {
+        //     cellChanged?.Invoke(this, cell);
+        // }
 
         public IEnumerable<Cell> IterateCells()
         {
@@ -307,7 +315,8 @@ namespace GameModel
             }
 
             cells = _cells;
-            cellsChanged?.Invoke(this, EventArgs.Empty);
+            // cellsChanged?.Invoke(this, EventArgs.Empty);
+            EventBus.Publish(cellsChanged);
         }
 
         static GameState _instance;
@@ -328,6 +337,8 @@ namespace GameModel
         {
             _instance = gameState;
             gameStateReplaced?.Invoke(gameState, EventArgs.Empty);
+
+            gameState.ResetAndRegisterAll();
         }
     }
 }

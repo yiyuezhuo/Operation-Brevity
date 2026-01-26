@@ -188,6 +188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogRoot
   mapEditDialogDocument: {fileID: 9197481963319205126, guid: 39f5d81b7a6f7cf409943e4e94d52604, type: 3}
+  orderOfBattleDialogDocument: {fileID: 9197481963319205126, guid: d7bbed0c2b0a8534fb6023d5163eb316, type: 3}
+  unitDialogDocument: {fileID: 9197481963319205126, guid: b384dcbe4f32c50458b8043743bc5c09, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1855414953
 MonoBehaviour:
   m_ObjectHideFlags: 0
