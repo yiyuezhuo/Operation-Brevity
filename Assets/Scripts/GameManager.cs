@@ -4,9 +4,12 @@ using TMPro;
 using UnityEngine;
 using Unity.Properties;
 using UnityEngine.UIElements;
-using Unity.VisualScripting;
-using UnityEditor;
 using YYZ;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.EventSystems;
+
 
 public enum CellLabelMode
 {
@@ -18,10 +21,9 @@ public enum CellLabelMode
 public enum MapEditMode
 {
     PaintTerrain,
-    PaintPrimaryRoad,
-    PaintSecondaryRoad,
-    PaintBlockEdge
+    PaintEdgeFeature,
 }
+
 
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
@@ -29,6 +31,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Grid grid;
 
     public GameObject cellLabelPrefab;
+    public GameObject edgeFeaturePrefab;
+
+    UIDocument[] allUIDocuments;
 
     CellLabelMode _cellLabelMode;
 
@@ -47,11 +52,59 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    public bool mapEditEnabled; // will override some behaviour
-    public MapEditMode mapEditMode;
+    bool _mapEditEnabled;
+    public bool mapEditEnabled
+    {
+        get => _mapEditEnabled;
+        set
+        {
+            if(_mapEditEnabled == value)
+                return;
+
+            _mapEditEnabled = value;
+
+            RefreshEdgeFeatures();
+        }
+    }
+
+    MapEditMode _mapEditMode;
+
+    [CreateProperty]
+    public MapEditMode mapEditMode
+    {
+        get => _mapEditMode;
+        set
+        {
+            if(_mapEditMode == value)
+                return;
+
+            _mapEditMode = value;
+
+            RefreshEdgeFeatures();
+        }
+    }
+
     public TerrainType mapEditTerrain;
 
+    EdgeFeatureType _mapEditEdgeFeatureType;
+
+    [CreateProperty]
+    public EdgeFeatureType mapEditEdgeFeatureType
+    {
+        get => _mapEditEdgeFeatureType;
+        set
+        {
+            if(_mapEditEdgeFeatureType == value)
+                return;
+
+            _mapEditEdgeFeatureType = value;
+
+            RefreshEdgeFeatures();
+        }
+    }
+
     Transform cellLabelsTransform;
+    Transform edgeFeaturesTransform;
 
     // Label[,] cellLabels;
     TMP_Text[,] cellLabels;
@@ -75,7 +128,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        allUIDocuments = FindObjectsByType<UIDocument>(FindObjectsSortMode.None);
+
         cellLabelsTransform = Utils.CreateDynamicTransform(transform, "CellLabels");
+        edgeFeaturesTransform = Utils.CreateDynamicTransform(transform, "EdgeFeatures");
 
         if(startupConfig.mode == StartupConfig.Mode.ScenPath)
         {
@@ -91,6 +147,29 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             LoadFullState(startupConfig.fullState);
         }
+    }
+
+    public bool IsHotKeyEnabled()
+    {
+        if(EventSystem.current.IsPointerOverGameObject())
+            return false;
+
+
+        if(allUIDocuments != null)
+        {
+            foreach (var doc in allUIDocuments)
+            {
+                var root = doc.rootVisualElement;
+                if (root == null) continue;
+
+                var focused = root.focusController?.focusedElement;
+                if (focused == null) continue;
+
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public ViewState CaptureViewState()
@@ -144,29 +223,70 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     // Update is called once per frame
     void Update()
     {
-        var leftClicking = Input.GetMouseButtonDown(0);
-
-        if(leftClicking)
+        if(IsHotKeyEnabled())
         {
-            Vector2 mousePosition = PlaneCameraController.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
+            var leftClicking = Input.GetMouseButtonDown(0);
 
-            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
-            if(hit.collider != null)
+            if(leftClicking)
             {
-                var cellPos = WorldToCell(mousePosition);
-                Debug.Log($"hit.collider={hit.collider}, cellPos={cellPos}");
+                Vector2 mousePosition = PlaneCameraController.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
 
-                var x = cellPos.x;
-                var y = cellPos.y;
-                var gameState = GameState.Instance;
-                if(x >= 0 && x < gameState.cells.GetLength(0) && y >= 0 && y < gameState.cells.GetLength(1))
+                RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+                if(hit.collider != null)
                 {
-                    var cell = gameState.cells[x, y];
-                    HandleCellClicked(cell);
+                    var cellPos = WorldToCell(mousePosition);
+                    Debug.Log($"hit.collider={hit.collider}, cellPos={cellPos}");
+
+                    var x = cellPos.x;
+                    var y = cellPos.y;
+                    var gameState = GameState.Instance;
+                    if(x >= 0 && x < gameState.cells.GetLength(0) && y >= 0 && y < gameState.cells.GetLength(1))
+                    {
+                        var cell = gameState.cells[x, y];
+                        HandleCellClicked(cell);
+                    }
                 }
             }
         }
+
+        if(edgeFeatureDirty)
+        {
+            edgeFeatureDirty = false;
+            RefreshEdgeFeatures();
+        }
     }
+
+    void RefreshEdgeFeatures()
+    {
+        // if(!mapEditEnabled)
+        // {
+            
+        // }
+        List<EdgeFeature> edges;
+
+        if(mapEditEnabled && mapEditMode == MapEditMode.PaintEdgeFeature)
+        {
+            edges = GameState.Instance.edgeFeatureMap.Values.Where(e => e.Get(mapEditEdgeFeatureType)).ToList();
+        }
+        else
+        {
+            edges = new();
+        }
+
+        Utils.SyncTransformViewerLength(edgeFeaturesTransform, edges.Count, edgeFeaturePrefab);
+        var lineRenderers = edgeFeaturesTransform.GetComponentsInChildren<LineRenderer>().ToList();
+        for(int i = 0; i < edges.Count; i++)
+        {
+            var edge = edges[i];
+            var lineRenderer = lineRenderers[i];
+
+            lineRenderer.positionCount = 2;
+            lineRenderer.SetPosition(0, GetCellCenterWorld(edge.x1, edge.y1));
+            lineRenderer.SetPosition(1, GetCellCenterWorld(edge.x2, edge.y2));
+        }
+    }
+
+    Cell cellStart;
 
     void HandleCellClicked(Cell cell)
     {
@@ -174,7 +294,24 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         if(mapEditEnabled)
         {
-            cell.terrain = mapEditTerrain;
+            if(mapEditMode == MapEditMode.PaintTerrain)
+            {
+                cell.terrain = mapEditTerrain;
+            }
+            else if(mapEditMode == MapEditMode.PaintEdgeFeature)
+            {
+                if(cellStart != null)
+                {
+                    Debug.Log($"Toggle: {cellStart}, {cell}, {mapEditEdgeFeatureType}");
+                    GameState.Instance.ToggleEdgeFeature(cellStart, cell, mapEditEdgeFeatureType);
+
+                    cellStart = null;
+                }
+                else
+                {
+                    cellStart = cell;
+                }
+            }
         }
     }
 
@@ -199,6 +336,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         UnregisterGameState();
     }
 
+    bool edgeFeatureDirty = false;
+
+    public void OnEdgeFeatureChanged(object sender, EventArgs args)
+    {
+        edgeFeatureDirty = true;
+    }
+
     void OnGameStateReplaced(object sender, EventArgs args)
     {
         UnregisterGameState();
@@ -209,12 +353,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         GameState.Instance.cellChanged += OnGameStateCellChanged;
         GameState.Instance.cellsChanged += OnGameStateCellsChanged;
+        GameState.Instance.edgeFeatureChanged += OnEdgeFeatureChanged;
     }
 
     void UnregisterGameState()
     {
         GameState.Instance.cellChanged -= OnGameStateCellChanged;
         GameState.Instance.cellsChanged -= OnGameStateCellsChanged;
+        GameState.Instance.edgeFeatureChanged -= OnEdgeFeatureChanged;
     }
 
     void OnGameStateCellChanged(object sender, Cell cell)

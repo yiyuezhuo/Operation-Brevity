@@ -28,7 +28,8 @@ public static class Utils
             childList.Add(containerTransform.GetChild(i).gameObject);
         }
 
-        var diff = length - childList.Count;
+        var childListCount = childList.Count;
+        var diff = length - childListCount;
         if (diff > 0)
         {
             for (int i = 0; i < diff; i++)
@@ -40,7 +41,8 @@ public static class Utils
         {
             for (int i = 0; i < -diff; i++)
             {
-                GameObject.Destroy(childList[i]);
+                // GameObject.Destroy(childList[i]);
+                GameObject.Destroy(childList[childListCount - 1 - i]);
             }
         }
     }

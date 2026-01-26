@@ -14,6 +14,11 @@
                 <ui:DataBinding property="value" data-source-path="mapEditTerrain" binding-mode="TwoWay"/>
             </Bindings>
         </ui:EnumField>
+        <ui:EnumField label="Edge Feature Type" value="Center" type="GameModel.EdgeFeatureType, Assembly-CSharp">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="mapEditEdgeFeatureType" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:EnumField>
         <ui:IntegerField label="Current Width" enabled="false">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="currentWidth" binding-mode="ToTarget"/>

@@ -9,5 +9,6 @@
                 <ui:DataBinding property="value" data-source-path="cellLabelMode" binding-mode="TwoWay"/>
             </Bindings>
         </ui:EnumField>
+        <ui:Button text="Order of Battle" name="OrderOfBattleButton"/>
     </ui:VisualElement>
 </ui:UXML>

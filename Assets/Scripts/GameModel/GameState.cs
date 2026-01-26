@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Hashing;
+using System.Linq;
 using System.Xml.Serialization;
 
 
@@ -21,35 +23,11 @@ namespace GameModel
         public bool isFort; //  Fort is unidirectional
     }
 
-
-    public class Cell
+    public enum EdgeFeatureType
     {
-        [XmlAttribute]
-        public int x;
-
-        [XmlAttribute]
-        public int y;
-
-        TerrainType _terrain;
-
-        [XmlAttribute]
-        public TerrainType terrain
-        {
-            get => _terrain;
-            set
-            {
-                if(_terrain != value)
-                {
-                    _terrain = value;
-                    GameState.Instance.NotifyCellChanged(this);
-                }
-            }
-        }
-
-        public override string ToString()
-        {
-            return $"Cell({x}, {y}, {terrain})";
-        }
+        PrimaryRoad,
+        SecondaryRoad,
+        Escarpment,
     }
 
     public class SerializedCells
@@ -57,6 +35,110 @@ namespace GameModel
         public int width;
         public int height;
         public List<Cell> records;
+    }
+
+    public class EdgeFeature // extra feature like primary road, secondary road, terrain block
+    {
+        [XmlAttribute]
+        public int x1; // source
+
+        [XmlAttribute]
+        public int y1;
+
+        [XmlAttribute]
+        public int x2; // destination
+
+        [XmlAttribute]
+        public int y2;
+
+        [XmlAttribute]
+        public bool primaryRoad; // symmetric
+
+        [XmlAttribute]
+        public bool secondaryRoad; // symmetric
+
+        [XmlAttribute]
+        public bool escarpment; // not-symmetric
+
+        public static int CompareTo(EdgeFeature e1, EdgeFeature e2)
+        {
+            var r1 = e1.x1.CompareTo(e2.x1);
+            if (r1 != 0) return r1;
+            var r2 = e1.y1.CompareTo(e2.y1);
+            if (r2 != 0) return r2;
+            var r3 = e1.x2.CompareTo(e2.x2);
+            if (r3 != 0) return r3;
+            return e1.y2.CompareTo(e2.y2);
+        }
+
+        public bool IsDefault() => !primaryRoad && !secondaryRoad && !escarpment;
+
+        public bool Get(EdgeFeatureType featureType)
+        {
+            if(featureType == EdgeFeatureType.PrimaryRoad)
+            {
+                return primaryRoad;
+            }
+            else if(featureType == EdgeFeatureType.SecondaryRoad)
+            {
+                return secondaryRoad;
+            }
+            else if(featureType == EdgeFeatureType.Escarpment)
+            {
+                return escarpment;
+            }
+            return false;
+        }
+    }
+
+    public class Side : IObjectIdLabeled
+    {
+        public string objectId{get;set;}
+
+        public string name;
+
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
+
+        public List<ObjRef> oobChildrenRefs = new();
+    }
+
+    public enum Country // mainly for color schema
+    {
+        Britain,
+        Germany,
+        Italy,
+    }
+
+    public enum UnitType // mainly for unit icon
+    {
+        Infantry,
+        Tank,
+        Artillery,
+        HeadQuarters,
+    }
+
+    public class Unit : IObjectIdLabeled
+    {
+        public string objectId{get;set;}
+
+        public string name;
+        public UnitType unitType;
+        public Country country;
+        public float hardAttack;
+        public float softAttack;
+        public float defence;
+        public float strength; // men, vehicle or guns
+
+        public ObjRef oobParentRef; // reference to another Unit or Side
+        public List<ObjRef> oobChildrenRefs = new();
+
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
     }
 
     public class GameState
@@ -106,6 +188,94 @@ namespace GameModel
                 }
             }
         }
+
+        // public List<EdgeFeature> edgeFeatures = new();
+        [XmlIgnore]
+        public Dictionary<(int, int, int, int), EdgeFeature> edgeFeatureMap = new();
+
+        public List<EdgeFeature> seralizedEdgeFeatureMap
+        {
+            get
+            {
+                var features = edgeFeatureMap.Values.ToList();
+                features.Sort(EdgeFeature.CompareTo);
+                return features;
+            }
+            set
+            {
+                edgeFeatureMap = value.ToDictionary(
+                    x => (x.x1, x.y1, x.x2, x.y2),
+                    x => x
+                );
+            }
+        }
+
+        public void ToggleEdgeFeature(Cell cellSrc, Cell cellDst, EdgeFeatureType featureType)
+        {
+            SetEdgeFeature(cellSrc, cellDst, featureType, !GetEdgeFeature(cellSrc, cellDst, featureType));
+        }
+
+        public bool GetEdgeFeature(Cell cellSrc, Cell cellDst, EdgeFeatureType featureType)
+        {
+            var sdKey = (cellSrc.x, cellSrc.y, cellDst.x, cellDst.y);
+            if(edgeFeatureMap.TryGetValue(sdKey, out var edgeFeature))
+            {
+                return edgeFeature.Get(featureType);
+            }
+            return false;
+        }
+
+        public void SetEdgeFeature(Cell cellSrc, Cell cellDst, EdgeFeatureType featureType, bool value)
+        {
+            var sdKey = (cellSrc.x, cellSrc.y, cellDst.x, cellDst.y);
+            if(!edgeFeatureMap.TryGetValue(sdKey, out var edgeFeature))
+                edgeFeature = edgeFeatureMap[sdKey] = new EdgeFeature(){ x1 = cellSrc.x, y1 = cellSrc.y, x2 = cellDst.x, y2 = cellDst.y};
+            
+            if(featureType == EdgeFeatureType.PrimaryRoad)
+            {
+                edgeFeature.primaryRoad = value;
+            }
+            else if(featureType == EdgeFeatureType.SecondaryRoad)
+            {
+                edgeFeature.secondaryRoad = value;
+            }
+            else if(featureType == EdgeFeatureType.Escarpment)
+            {
+                edgeFeature.escarpment = value;
+            }
+
+            if(edgeFeature.IsDefault())
+            {
+                edgeFeatureMap.Remove(sdKey);
+            }
+
+            // Enforce symmetry
+            if(featureType == EdgeFeatureType.PrimaryRoad || featureType == EdgeFeatureType.SecondaryRoad)
+            {
+                var dsKey = (cellDst.x, cellDst.y, cellSrc.x, cellSrc.y);
+                if(!edgeFeatureMap.TryGetValue(dsKey, out var edgeFeatureDst))
+                    edgeFeatureDst = edgeFeatureMap[dsKey] = new EdgeFeature(){ x1 = cellDst.x, y1 = cellDst.y, x2 = cellSrc.x, y2 = cellSrc.y};
+                
+                if(featureType == EdgeFeatureType.PrimaryRoad)
+                {
+                    edgeFeatureDst.primaryRoad = value;
+                }
+                else if(featureType == EdgeFeatureType.SecondaryRoad)
+                {
+                    edgeFeatureDst.secondaryRoad = value;
+                }
+
+                if(edgeFeatureDst.IsDefault())
+                {
+                    edgeFeatureMap.Remove(dsKey);
+                }
+            }
+
+            edgeFeatureChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        // public event EventHandler<(int, int, int, int)> edgeFeatureChanged;
+        public event EventHandler edgeFeatureChanged; // No one edge event is provided
 
         public event EventHandler<Cell> cellChanged;
         public event EventHandler cellsChanged;
