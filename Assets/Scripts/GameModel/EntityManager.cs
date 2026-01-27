@@ -80,19 +80,19 @@ namespace GameModel
             entityToParent.Clear();
         }
 
-        public void ResetObjRefs()
-        {
-            foreach(var e in idToEntity.Values)
-            {
-                if(e is IHasObjRef hasObjRef)
-                {
-                    foreach(var objRef in hasObjRef.IterateObjRefs())
-                    {
-                        objRef.SetDirty();
-                    }
-                }
-            }
-        }
+        // public void ResetObjRefs()
+        // {
+        //     foreach(var e in idToEntity.Values)
+        //     {
+        //         if(e is IHasObjRef hasObjRef)
+        //         {
+        //             foreach(var objRef in hasObjRef.IterateObjRefs())
+        //             {
+        //                 objRef.SetDirty();
+        //             }
+        //         }
+        //     }
+        // }
 
         public string GetDistinctGuid()
         {

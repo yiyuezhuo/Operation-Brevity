@@ -10,5 +10,7 @@
             </Bindings>
         </ui:EnumField>
         <ui:Button text="Order of Battle" name="OrderOfBattleButton"/>
+        <ui:Button text="Restart" name="RestartButton"/>
+        <ui:Button text="Exit" name="ExitButton"/>
     </ui:VisualElement>
 </ui:UXML>

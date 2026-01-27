@@ -2,6 +2,7 @@ using GameModel;
 using UnityEngine;
 using UnityEngine.UIElements;
 using YYZ;
+using UnityEngine.SceneManagement;
 
 public class Overlay : SingletonDocument<Overlay> // So don't specify binding for the TopTabs or other "subordinate" elements
 {
@@ -45,6 +46,18 @@ public class Overlay : SingletonDocument<Overlay> // So don't specify binding fo
         orderOfBattleButton.clicked += () =>
         {
             DialogRoot.Instance.PopupOrderOfBattleDialog();
+        };
+
+        var exitButton = root.Q<Button>("ExitButton");
+        exitButton.clicked += () =>
+        {
+            Application.Quit();
+        };
+
+        var restartButton = root.Q<Button>("RestartButton");
+        restartButton.clicked += () =>
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         };
     }
 }

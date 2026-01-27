@@ -24,5 +24,18 @@
                 <ui:DataBinding property="value" data-source-path="unitSize" binding-mode="TwoWay"/>
             </Bindings>
         </ui:EnumField>
+        <ui:EnumField label="Deploy State" value="Center" type="GameModel.DeployState, Assembly-CSharp">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="deployState" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:EnumField>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:Label text="Location Desc" style="flex-grow: 1;">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="locationDesc" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Button text="Deploy" name="DeployButton"/>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

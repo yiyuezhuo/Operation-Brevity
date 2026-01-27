@@ -32,6 +32,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public GameObject cellLabelPrefab;
     public GameObject edgeFeaturePrefab;
+    public GameObject counterPrefab;
 
     UIDocument[] allUIDocuments;
 
@@ -105,9 +106,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     Transform cellLabelsTransform;
     Transform edgeFeaturesTransform;
+    Transform countersTransform;
 
     // Label[,] cellLabels;
     TMP_Text[,] cellLabels;
+
+    Action<Cell> oneshotCellClickedCallback;
 
     public class StartupConfig
     {
@@ -132,6 +136,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         cellLabelsTransform = Utils.CreateDynamicTransform(transform, "CellLabels");
         edgeFeaturesTransform = Utils.CreateDynamicTransform(transform, "EdgeFeatures");
+        countersTransform = Utils.CreateDynamicTransform(transform, "Counters");
 
         if(startupConfig.mode == StartupConfig.Mode.ScenPath)
         {
@@ -219,6 +224,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         TempFix();
 
+        SetAllDirty();
+
         Debug.Log("Fully Initialized");
     }
 
@@ -261,7 +268,75 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             edgeFeatureDirty = false;
             RefreshEdgeFeatures();
         }
+
+        if(mapUnitsDirty)
+        {
+            mapUnitsDirty = false;
+            RefreshMapUnits();
+        }
+
+        if(stacksDirty)
+        {
+            stacksDirty = false;
+            RefreshStacks();
+        }
     }
+
+    void RefreshMapUnits()
+    {
+        var unitsOnMap = GameState.Instance.units.Where(u => u.deployState == DeployState.Deployed).ToList();
+
+        Utils.SyncTransformViewerLength(countersTransform, unitsOnMap.Count, counterPrefab);
+        var controllers = countersTransform.GetComponentsInChildren<CounterController>();
+        for(int i=0; i<unitsOnMap.Count; i++)
+        {
+            var unit = unitsOnMap[i];
+            var controller = controllers[i];
+            // binding
+            controller.unit = unit;
+            unit.view = controller;
+        }
+
+        // RefreshStacks();
+        stacksDirty = true;
+    }
+
+    void RefreshStacks()
+    {
+        var unitsOnMap = GameState.Instance.units.Where(u => u.deployState == DeployState.Deployed).ToList();
+        var groupings = unitsOnMap.GroupBy(u => u.GetCell()).ToList();
+        foreach(var grouping in groupings)
+        {
+            var cell = grouping.Key;
+            var units = grouping.ToList();
+            units.Sort((u1, u2) => u1.stackPriority.CompareTo(u2.stackPriority));
+
+            LayoutStackTransform(
+                units.Select(u => u.view.transform).ToList(),
+                GetCellCenterWorld(cell),
+                0.05f
+            );
+        }
+    }
+
+    public static void LayoutStackTransform(List<Transform> transforms, Vector3 basePos, float stackSpace)
+    {
+        var count = transforms.Count;
+        if (count == 1)
+        {
+            transforms[0].position = basePos;
+            return;
+        }
+        var step = stackSpace / (count - 1);
+        for (int i = 0; i < count; i++)
+        {
+            var delta = -stackSpace / 2 + i * step;
+            // transforms[i].position = basePos + new Vector3(delta, delta, 0);
+            // var z = -(i * step); // negative z is closer to camera
+            transforms[i].position = basePos + new Vector3(delta, delta, 0);
+        }
+    }
+
 
     void RefreshEdgeFeatures()
     {
@@ -320,21 +395,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 }
             }
         }
+        else if(oneshotCellClickedCallback != null)
+        {
+            oneshotCellClickedCallback(cell);
+            oneshotCellClickedCallback = null;
+        }
     }
 
-    // void OnEnable()
-    // {
-    //     GameState.gameStateReplaced += OnGameStateReplaced;
-
-    //     RegisterGameState();
-    // }
-
-    // void OnDisable()
-    // {
-    //     GameState.gameStateReplaced -= OnGameStateReplaced;
-
-    //     UnregisterGameState();
-    // }
+    public void ScheduleOneshotCellClickedCallback(Action<Cell> callback)
+    {
+        oneshotCellClickedCallback = callback;
+    }
 
     public override void OnDestroy()
     {
@@ -344,6 +415,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
 
     bool edgeFeatureDirty = false;
+    bool mapUnitsDirty = false;
+    bool stacksDirty = false;
+
+    public void SetAllDirty() // Invoke a full refresh
+    {
+        edgeFeatureDirty = true;
+        mapUnitsDirty = true;
+        stacksDirty = true;
+    }
 
     // public void OnEdgeFeatureChanged(object sender, EventArgs args)
     // {
@@ -355,11 +435,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         edgeFeatureDirty = true;
     }
 
-    // void OnGameStateReplaced(object sender, EventArgs args)
-    // {
-    //     UnregisterGameState();
-    //     RegisterGameState();
-    // }
+    void OnMapUnitsChanged(Unit.MapUnitsChanged evt)
+    {
+        mapUnitsDirty = true;
+    }
+
+    void OnStacksChanged(Unit.StacksChanged evt)
+    {
+        stacksDirty = true;
+    }
+
 
     void RegisterGameState()
     {
@@ -370,6 +455,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         EventBus.Subscribe<Cell.CellChanged>(OnGameStateCellChanged);
         EventBus.Subscribe<GameState.CellsChanged>(OnGameStateCellsChanged);
         EventBus.Subscribe<GameState.EdgeFeatureChanged>(OnEdgeFeatureChanged);
+        EventBus.Subscribe<Unit.MapUnitsChanged>(OnMapUnitsChanged);
+        EventBus.Subscribe<Unit.StacksChanged>(OnStacksChanged);
     }
 
     void UnregisterGameState()
@@ -381,6 +468,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         EventBus.Unsubscribe<Cell.CellChanged>(OnGameStateCellChanged);
         EventBus.Unsubscribe<GameState.CellsChanged>(OnGameStateCellsChanged);
         EventBus.Unsubscribe<GameState.EdgeFeatureChanged>(OnEdgeFeatureChanged);
+        EventBus.Unsubscribe<Unit.MapUnitsChanged>(OnMapUnitsChanged);
+        EventBus.Unsubscribe<Unit.StacksChanged>(OnStacksChanged);
     }
 
     // void OnGameStateCellChanged(object sender, Cell cell)
@@ -505,12 +594,19 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         return grid.GetCellCenterWorld(new Vector3Int(x, y, 0));
     }
 
+    public Vector3 GetCellCenterWorld(Cell cell)
+    {
+        return GetCellCenterWorld(cell.x, cell.y);
+    }
+
     [CreateProperty]
     public string bottomDescription
     {
         get
         {
-            return $"Map Edit={mapEditEnabled} ";
+            var mapEditEnabledStr = mapEditEnabled ? "Map Edit Enabled" : "";
+            var oneshotCellClickedCallbackStr = oneshotCellClickedCallback != null ? "Oneshot Callback Assigned" : "";
+            return $"{mapEditEnabledStr} {oneshotCellClickedCallbackStr}";
         }
     }
 

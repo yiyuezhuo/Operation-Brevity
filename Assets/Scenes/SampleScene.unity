@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000009feb7231
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -916,6 +916,7 @@ MonoBehaviour:
   grid: {fileID: 1605425221}
   cellLabelPrefab: {fileID: 7983101777406342040, guid: 6eb7c3f7e73398945b3e181236e3ee7e, type: 3}
   edgeFeaturePrefab: {fileID: 4739189777160813915, guid: c8171e861ae9b3542ba71af4459b3344, type: 3}
+  counterPrefab: {fileID: 7345324715560585863, guid: d5b0e2fde34fdb045a3351e8c5468862, type: 3}
   mapEditTerrain: 0
   targetWidth: 37
   targetHeight: 40

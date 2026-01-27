@@ -22,6 +22,19 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             // positionMode = TempDialog.PositionMode.Left
         };
 
+        tempDialog.onCreated += (s, e) =>
+        {
+            var deployButton = e.Q<Button>("DeployButton");
+            deployButton.clicked += () =>
+            {
+                GameManager.Instance.ScheduleOneshotCellClickedCallback(cell =>
+                {
+                    Debug.Log($"Deploying {unit.name} to {cell.x} {cell.y}");
+                    unit.MoveTo(cell);
+                });
+            };
+        };
+
         tempDialog.Popup();
     }
 

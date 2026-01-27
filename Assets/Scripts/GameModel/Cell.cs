@@ -5,7 +5,7 @@ using YYZ;
 
 namespace GameModel
 {
-    public class Cell
+    public class Cell : IHasObjRef
     {
         [XmlAttribute]
         public int x;
@@ -78,6 +78,15 @@ namespace GameModel
                 neighborCellsCached = GetNeighborsCached().ToList();
             }
             return neighborCellsCached;
+        }
+
+        public List<ObjRef> UnitRefs = new();
+
+        public bool ShouldSerializeUnitRefs() => UnitRefs.Count > 0;
+
+        public IEnumerable<ObjRef> IterateObjRefs()
+        {
+            return UnitRefs;
         }
     }
 }

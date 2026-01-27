@@ -34,6 +34,13 @@ namespace GameModel
         Division
     }
 
+    public enum DeployState
+    {
+        NotDeployed,
+        Deployed,
+        Destroyed
+    }
+
 
     public partial class Unit : IObjectIdLabeled, IOrderOfBattleNode, IHasObjRef
     {
@@ -44,6 +51,9 @@ namespace GameModel
         public UnitType unitType;
         public Country country;
         public UnitSize unitSize;
+        public DeployState deployState;
+        public int x;
+        public int y;
 
         public float hardAttack;
         public float softAttack;
@@ -100,6 +110,45 @@ namespace GameModel
             oobParentRef.Set(newParent as IObjectIdLabeled);
 
             EventBus.Publish(orderOfBattleChanged);
+        }
+
+        public Cell GetCell() => deployState == DeployState.Deployed ? GameState.Instance.cells[x, y] : null;
+
+        public class MapUnitsChanged : IEvent{}
+        public static MapUnitsChanged mapUnitsChanged = new();
+
+        public class StacksChanged : IEvent{}
+        public static StacksChanged stacksChanged = new();
+
+
+        public void MoveTo(Cell cell, bool destroyed = false)
+        {
+            var currentCell = GetCell();
+            if(currentCell != null)
+            {
+                currentCell.UnitRefs.RemoveAll(r => r.objectId == objectId);
+            }
+            else
+            {
+                // Add to map event
+                EventBus.Publish(mapUnitsChanged);
+            }
+
+            if(cell != null)
+            {
+                deployState = DeployState.Deployed;
+                x = cell.x;
+                y = cell.y;
+                cell.UnitRefs.Add(new ObjRef { objectId = objectId });
+            }
+            else
+            {
+                deployState = destroyed ? DeployState.Destroyed : DeployState.NotDeployed;
+                // remove from map event
+                EventBus.Publish(mapUnitsChanged);
+            }
+
+            EventBus.Publish(stacksChanged);
         }
 
         public override string ToString()

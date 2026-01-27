@@ -153,7 +153,17 @@ namespace GameModel
             }
 
             // ResetObjRefs
-            EntityManager.Instance.ResetObjRefs();
+            // EntityManager.Instance.ResetObjRefs();
+            // var objRefs = new List<ObjRef>();
+            // objRefs.Concat(sides.SelectMany(s => s.IterateObjRefs()));
+            var objRefs = sides.SelectMany(s => s.IterateObjRefs());
+            objRefs.Concat(units.SelectMany(s => s.IterateObjRefs()));
+            objRefs.Concat(units.Select(u => u.GetCell()).ToHashSet().SelectMany(c => c.IterateObjRefs()));
+            // objRefs.AddRange(units.SelectMany(s => s.IterateObjRefs()));
+            foreach(var objRef in objRefs)
+            {
+                objRef.SetDirty();
+            }
 
             // events
             EventBus.Publish(Unit.orderOfBattleChanged);
