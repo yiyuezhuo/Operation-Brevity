@@ -9,7 +9,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
-
+using YYZ.Unity;
 
 public enum CellLabelMode
 {
@@ -141,7 +141,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if(startupConfig.mode == StartupConfig.Mode.ScenPath)
         {
             StartCoroutine(
-                StreamingTextAssetManager.Instance.FetchText(Application.streamingAssetsPath + "/" + startupConfig.scenSubPath, xml =>
+                StreamingAssetManager.Instance.FetchText(Application.streamingAssetsPath + "/" + startupConfig.scenSubPath, xml =>
                 {
                     var fullState = XmlUtils.FromXML<FullState>(xml);
                     LoadFullState(fullState);
@@ -314,7 +314,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             LayoutStackTransform(
                 units.Select(u => u.view.transform).ToList(),
                 GetCellCenterWorld(cell),
-                0.05f
+                // 0.05f
+                0.25f
             );
         }
     }

@@ -29,7 +29,7 @@
   <units>
    <Unit>
     <name>7th Armoured Brigade HQ</name>
-    <unitType>Tank</unitType>
+    <unitType>HeadQuarters</unitType>
     <country>Britain</country>
     <unitSize>Brigade</unitSize>
     <deployState>Deployed</deployState>
@@ -181,9 +181,9 @@
     <unitType>Cavalry</unitType>
     <country>Britain</country>
     <unitSize>Regiment</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>3</x>
+    <y>24</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -203,9 +203,9 @@
     <unitType>Cavalry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>3</x>
+    <y>24</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -220,9 +220,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>3</x>
+    <y>24</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -237,9 +237,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>3</x>
+    <y>24</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -254,9 +254,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>3</x>
+    <y>24</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -271,9 +271,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>1</x>
+    <y>21</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -288,9 +288,9 @@
     <unitType>AntiTank</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>1</x>
+    <y>22</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -302,12 +302,12 @@
    </Unit>
    <Unit>
     <name>7th Support Group HQ</name>
-    <unitType>Infantry</unitType>
+    <unitType>HeadQuarters</unitType>
     <country>Britain</country>
     <unitSize>Brigade</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>3</x>
+    <y>29</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -330,9 +330,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>4</x>
+    <y>29</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -352,9 +352,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>5</x>
+    <y>28</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -369,9 +369,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>5</x>
+    <y>28</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -386,9 +386,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>5</x>
+    <y>29</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -403,9 +403,9 @@
     <unitType>Artillery</unitType>
     <country>Britain</country>
     <unitSize>Platton</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>4</x>
+    <y>29</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -420,9 +420,9 @@
     <unitType>Tank</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>4</x>
+    <y>27</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -437,9 +437,9 @@
     <unitType>Cavalry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>7</x>
+    <y>26</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -454,9 +454,9 @@
     <unitType>AntiTank</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>3</x>
+    <y>27</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -471,9 +471,9 @@
     <unitType>AntiTank</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>4</x>
+    <y>28</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -488,9 +488,9 @@
     <unitType>AntiAir</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>3</x>
+    <y>28</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -505,9 +505,9 @@
     <unitType>AntiAir</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>3</x>
+    <y>28</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -519,12 +519,12 @@
    </Unit>
    <Unit>
     <name>22nd Guards Brigade HQ</name>
-    <unitType>Infantry</unitType>
+    <unitType>HeadQuarters</unitType>
     <country>Britain</country>
     <unitSize>Brigade</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>5</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -548,9 +548,9 @@
     <unitType>Tank</unitType>
     <country>Britain</country>
     <unitSize>Regiment</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>7</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -568,9 +568,9 @@
     <unitType>Tank</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>7</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -585,9 +585,9 @@
     <unitType>Tank</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>7</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -602,9 +602,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>6</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -624,9 +624,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>6</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -641,9 +641,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>6</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -658,9 +658,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>6</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -675,9 +675,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>6</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -692,9 +692,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>6</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -714,9 +714,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>6</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -731,9 +731,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>6</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -748,9 +748,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>6</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -765,9 +765,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>6</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -782,9 +782,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>5</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -804,9 +804,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>5</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -821,9 +821,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>5</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -838,9 +838,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>5</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -855,9 +855,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>5</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -872,9 +872,9 @@
     <unitType>Artillery</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>4</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -889,9 +889,9 @@
     <unitType>Artillery</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>4</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -906,9 +906,9 @@
     <unitType>AntiTank</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>4</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -923,9 +923,9 @@
     <unitType>AntiTank</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>4</x>
+    <y>31</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -937,12 +937,12 @@
    </Unit>
    <Unit>
     <name>Coastal Group</name>
-    <unitType>Infantry</unitType>
+    <unitType>HeadQuarters</unitType>
     <country>Britain</country>
     <unitSize>Regiment</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>13</x>
+    <y>33</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -962,9 +962,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>14</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -984,9 +984,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>14</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1001,9 +1001,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>14</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1018,9 +1018,9 @@
     <unitType>Infantry</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>14</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1035,9 +1035,9 @@
     <unitType>Artillery</unitType>
     <country>Britain</country>
     <unitSize>Platton</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>14</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1052,9 +1052,9 @@
     <unitType>AntiTank</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>13</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1069,9 +1069,9 @@
     <unitType>Artillery</unitType>
     <country>Britain</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>13</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1083,12 +1083,12 @@
    </Unit>
    <Unit>
     <name>W/X Battery, 8th Field Regiment, Royal Artillery</name>
-    <unitType>Infantry</unitType>
+    <unitType>Artillery</unitType>
     <country>Britain</country>
-    <unitSize>NotSpecified</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <unitSize>Company</unitSize>
+    <deployState>Deployed</deployState>
+    <x>13</x>
+    <y>32</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1125,9 +1125,9 @@
     <unitType>Tank</unitType>
     <country>Germany</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>34</x>
+    <y>16</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1189,9 +1189,9 @@
     <unitType>Artillery</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>35</x>
+    <y>16</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1206,9 +1206,9 @@
     <unitType>Tank</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>34</x>
+    <y>16</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1223,9 +1223,9 @@
     <unitType>Tank</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>34</x>
+    <y>16</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1240,9 +1240,9 @@
     <unitType>Tank</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>34</x>
+    <y>16</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1308,9 +1308,9 @@
     <unitType>AntiAir</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>33</x>
+    <y>17</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1342,9 +1342,9 @@
     <unitType>AntiAir</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>33</x>
+    <y>17</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1375,10 +1375,10 @@
     <name>Motorized Battalion 15</name>
     <unitType>Infantry</unitType>
     <country>Germany</country>
-    <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <unitSize>Battalion</unitSize>
+    <deployState>Deployed</deployState>
+    <x>23</x>
+    <y>15</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1399,9 +1399,9 @@
     <unitType>Infantry</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>15</x>
+    <y>15</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1416,9 +1416,9 @@
     <unitType>Infantry</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>15</x>
+    <y>25</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1433,9 +1433,9 @@
     <unitType>Infantry</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>21</x>
+    <y>8</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1446,13 +1446,13 @@
     <objectId>b3ba573a-670c-451b-a044-05af541e870a</objectId>
    </Unit>
    <Unit>
-    <name>Mortar</name>
+    <name>Infantry Artillery</name>
     <unitType>Artillery</unitType>
     <country>Germany</country>
     <unitSize>Platton</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>23</x>
+    <y>15</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1467,9 +1467,9 @@
     <unitType>AntiTank</unitType>
     <country>Germany</country>
     <unitSize>Platton</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>15</x>
+    <y>25</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1484,9 +1484,9 @@
     <unitType>Artillery</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>23</x>
+    <y>15</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1501,9 +1501,9 @@
     <unitType>Cavalry</unitType>
     <country>Germany</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>32</x>
+    <y>17</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1522,9 +1522,9 @@
     <unitType>Cavalry</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>32</x>
+    <y>17</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1539,9 +1539,9 @@
     <unitType>Cavalry</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>32</x>
+    <y>17</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1556,9 +1556,9 @@
     <unitType>Infantry</unitType>
     <country>Germany</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>32</x>
+    <y>17</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1643,11 +1643,11 @@
    <Unit>
     <name>Gruppo Montemurro</name>
     <unitType>HeadQuarters</unitType>
-    <country>Germany</country>
+    <country>Italy</country>
     <unitSize>Regiment</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>19</x>
+    <y>19</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1669,9 +1669,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>16</x>
+    <y>25</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1690,9 +1690,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>19</x>
+    <y>19</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1711,9 +1711,9 @@
     <unitType>Artillery</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>15</x>
+    <y>25</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1728,9 +1728,9 @@
     <unitType>Artillery</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>20</x>
+    <y>20</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1745,9 +1745,9 @@
     <unitType>AntiTank</unitType>
     <country>Italy</country>
     <unitSize>Platton</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>15</x>
+    <y>25</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1762,9 +1762,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>19</x>
+    <y>23</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1779,9 +1779,9 @@
     <unitType>HeadQuarters</unitType>
     <country>Italy</country>
     <unitSize>Regiment</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>32</x>
+    <y>16</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1792,7 +1792,7 @@
      <ObjRef objectId="11a910bb-447a-4916-bf18-39245a8c3e85" />
      <ObjRef objectId="eb02c6cf-6914-4a8b-ac13-9825029720ae" />
      <ObjRef objectId="b2616df1-1d01-406c-aa94-45d9d73ec516" />
-     <ObjRef objectId="17ea8e8b-064e-458f-81cf-126ff810f02e" />
+     <ObjRef objectId="8ab5d8e0-5e8d-4a17-85d3-268d528445f4" />
     </oobChildrenRefs>
     <stackPriority>0</stackPriority>
     <objectId>6437fbe6-88ca-4f4e-8e31-d512298d2c2f</objectId>
@@ -1802,9 +1802,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>31</x>
+    <y>15</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1825,9 +1825,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Battalion</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>33</x>
+    <y>14</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1848,9 +1848,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>16</x>
+    <y>26</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1865,9 +1865,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>19</x>
+    <y>23</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1899,9 +1899,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>19</x>
+    <y>19</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1916,9 +1916,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>20</x>
+    <y>21</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1933,9 +1933,9 @@
     <unitType>AntiTank</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>19</x>
+    <y>19</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1950,9 +1950,9 @@
     <unitType>AntiAir</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>34</x>
+    <y>18</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1967,9 +1967,9 @@
     <unitType>AntiTank</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>21</x>
+    <y>15</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -1984,9 +1984,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>31</x>
+    <y>15</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2001,9 +2001,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>31</x>
+    <y>16</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2018,9 +2018,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>21</x>
+    <y>15</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2035,9 +2035,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>31</x>
+    <y>16</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2050,11 +2050,11 @@
    <Unit>
     <name>Mortar</name>
     <unitType>Artillery</unitType>
-    <country>Britain</country>
+    <country>Italy</country>
     <unitSize>Platton</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>31</x>
+    <y>16</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2069,9 +2069,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>32</x>
+    <y>13</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2086,9 +2086,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>32</x>
+    <y>14</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2103,9 +2103,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>33</x>
+    <y>13</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2120,9 +2120,9 @@
     <unitType>Infantry</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>34</x>
+    <y>13</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2137,9 +2137,9 @@
     <unitType>Artillery</unitType>
     <country>Italy</country>
     <unitSize>Platton</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>33</x>
+    <y>14</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2154,9 +2154,9 @@
     <unitType>Artillery</unitType>
     <country>Italy</country>
     <unitSize>Company</unitSize>
-    <deployState>NotDeployed</deployState>
-    <x>0</x>
-    <y>0</y>
+    <deployState>Deployed</deployState>
+    <x>31</x>
+    <y>17</y>
     <hardAttack>0</hardAttack>
     <softAttack>0</softAttack>
     <defence>0</defence>
@@ -2164,7 +2164,7 @@
     <oobParentRef objectId="6437fbe6-88ca-4f4e-8e31-d512298d2c2f" />
     <oobChildrenRefs />
     <stackPriority>0</stackPriority>
-    <objectId>17ea8e8b-064e-458f-81cf-126ff810f02e</objectId>
+    <objectId>8ab5d8e0-5e8d-4a17-85d3-268d528445f4</objectId>
    </Unit>
   </units>
   <serializedCells>
@@ -2232,8 +2232,16 @@
     <Cell x="1" y="18" terrain="Desert" />
     <Cell x="1" y="19" terrain="Desert" />
     <Cell x="1" y="20" terrain="Desert" />
-    <Cell x="1" y="21" terrain="Desert" />
-    <Cell x="1" y="22" terrain="Desert" />
+    <Cell x="1" y="21" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="baf97213-80ad-4051-8098-c5f1bd80e640" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="1" y="22" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="269bca9b-911b-4dee-9107-b160acf756df" />
+     </UnitRefs>
+    </Cell>
     <Cell x="1" y="23" terrain="Desert">
      <UnitRefs>
       <ObjRef objectId="e21f8e08-b714-46ad-975a-f2a05e8d5210" />
@@ -2343,12 +2351,33 @@
      </UnitRefs>
     </Cell>
     <Cell x="3" y="23" terrain="Desert" />
-    <Cell x="3" y="24" terrain="Desert" />
+    <Cell x="3" y="24" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="2f324f3c-21f0-4b33-a9ce-ec4b162f6b94" />
+      <ObjRef objectId="792a26a4-ccf6-4a5d-89dc-340544a744b8" />
+      <ObjRef objectId="8b76d4ca-6573-451c-9f9b-31531c4b06d7" />
+      <ObjRef objectId="cf3a806c-6014-44c3-b804-9888a24b2405" />
+      <ObjRef objectId="9e000112-e683-4abe-98a2-235d4af5d7c1" />
+     </UnitRefs>
+    </Cell>
     <Cell x="3" y="25" terrain="Desert" />
     <Cell x="3" y="26" terrain="Desert" />
-    <Cell x="3" y="27" terrain="Desert" />
-    <Cell x="3" y="28" terrain="Desert" />
-    <Cell x="3" y="29" terrain="Desert" />
+    <Cell x="3" y="27" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="8cb285a0-e217-4eef-82bc-58079eca0ef7" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="3" y="28" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="c80bdf90-04fe-4945-8272-823cb16bf782" />
+      <ObjRef objectId="2b557ad8-d76f-4666-ae28-0a08dd3c66f9" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="3" y="29" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
+     </UnitRefs>
+    </Cell>
     <Cell x="3" y="30" terrain="Desert" />
     <Cell x="3" y="31" terrain="Desert" />
     <Cell x="3" y="32" terrain="Desert" />
@@ -2390,11 +2419,31 @@
     <Cell x="4" y="24" terrain="Desert" />
     <Cell x="4" y="25" terrain="Desert" />
     <Cell x="4" y="26" terrain="Desert" />
-    <Cell x="4" y="27" terrain="Desert" />
-    <Cell x="4" y="28" terrain="Desert" />
-    <Cell x="4" y="29" terrain="Desert" />
+    <Cell x="4" y="27" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="a0ef54b0-782d-4ab0-a636-5f8c8d018fc3" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="4" y="28" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="d04c90e6-a554-42ff-b56b-51c91b3ce878" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="4" y="29" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="22a870b8-e3a4-474a-9417-0661d678914e" />
+      <ObjRef objectId="19aefd81-2927-4f7f-bc05-780461a8f050" />
+     </UnitRefs>
+    </Cell>
     <Cell x="4" y="30" terrain="Desert" />
-    <Cell x="4" y="31" terrain="Desert" />
+    <Cell x="4" y="31" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="75492d31-c65c-4fd3-8cdf-00035e92e06f" />
+      <ObjRef objectId="2fe8c6a5-b4fd-4e90-9d6a-426f3bb40a2c" />
+      <ObjRef objectId="1c22fb98-d76d-4575-84c9-c2a3861a74ca" />
+      <ObjRef objectId="1e76a425-ec55-40cb-82f8-da6011478306" />
+     </UnitRefs>
+    </Cell>
     <Cell x="4" y="32" terrain="Desert" />
     <Cell x="4" y="33" terrain="Desert" />
     <Cell x="4" y="34" terrain="Desert" />
@@ -2431,11 +2480,32 @@
     <Cell x="5" y="25" terrain="Desert" />
     <Cell x="5" y="26" terrain="Desert" />
     <Cell x="5" y="27" terrain="Desert" />
-    <Cell x="5" y="28" terrain="Desert" />
-    <Cell x="5" y="29" terrain="Desert" />
+    <Cell x="5" y="28" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="82c7e92b-3db3-485c-95ad-1d9d6d144f36" />
+      <ObjRef objectId="37034fe5-9e75-4982-b969-5cb34e49f919" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="5" y="29" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="36643565-fe8b-4acf-9e0d-7220e5ffefa5" />
+     </UnitRefs>
+    </Cell>
     <Cell x="5" y="30" terrain="Desert" />
-    <Cell x="5" y="31" terrain="Desert" />
-    <Cell x="5" y="32" terrain="Desert" />
+    <Cell x="5" y="31" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="0236e1b9-64d6-42e9-afaa-a81c1febe6c4" />
+      <ObjRef objectId="d9f0c587-e937-4577-85ea-8dff9aa60773" />
+      <ObjRef objectId="3bb9d156-8abc-4a6c-a39d-0f8b59fe67b1" />
+      <ObjRef objectId="8d0ad15f-bc62-4d47-b197-ff4930c199f2" />
+      <ObjRef objectId="7858d900-06b1-4aa6-bec6-3aa360e3cd41" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="5" y="32" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
+     </UnitRefs>
+    </Cell>
     <Cell x="5" y="33" terrain="Desert" />
     <Cell x="5" y="34" terrain="Desert" />
     <Cell x="5" y="35" terrain="Desert" />
@@ -2474,8 +2544,24 @@
     <Cell x="6" y="28" terrain="Desert" />
     <Cell x="6" y="29" terrain="Desert" />
     <Cell x="6" y="30" terrain="Desert" />
-    <Cell x="6" y="31" terrain="Desert" />
-    <Cell x="6" y="32" terrain="Desert" />
+    <Cell x="6" y="31" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="57be53c1-37dd-4c19-9217-dc888ab5613f" />
+      <ObjRef objectId="1611d3b6-438b-4962-a393-c970ead96c7f" />
+      <ObjRef objectId="b52de742-002c-4676-951e-1638b4d5b751" />
+      <ObjRef objectId="4f2fa651-1b6c-47a6-a590-73d9b8bb72b5" />
+      <ObjRef objectId="34abc314-b4c7-4b14-87ba-4bf12e903cc0" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="6" y="32" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="092d17fa-38fa-4265-9081-761c0c5c7a56" />
+      <ObjRef objectId="dc94da6a-a443-46cc-bfe8-0eb76e165d5e" />
+      <ObjRef objectId="a019fcff-53e3-4df6-ba2d-4ba40af054b1" />
+      <ObjRef objectId="125e171f-f9f5-4bac-aad8-b59286942970" />
+      <ObjRef objectId="58b3b4d5-a3c6-4148-bbac-877fc03102a7" />
+     </UnitRefs>
+    </Cell>
     <Cell x="6" y="33" terrain="Desert" />
     <Cell x="6" y="34" terrain="Desert" />
     <Cell x="6" y="35" terrain="Desert" />
@@ -2509,13 +2595,23 @@
     <Cell x="7" y="23" terrain="Desert" />
     <Cell x="7" y="24" terrain="Desert" />
     <Cell x="7" y="25" terrain="Desert" />
-    <Cell x="7" y="26" terrain="Desert" />
+    <Cell x="7" y="26" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="82a46950-bc5c-4e33-9326-2f0a287984ec" />
+     </UnitRefs>
+    </Cell>
     <Cell x="7" y="27" terrain="Desert" />
     <Cell x="7" y="28" terrain="Desert" />
     <Cell x="7" y="29" terrain="Desert" />
     <Cell x="7" y="30" terrain="Desert" />
     <Cell x="7" y="31" terrain="Desert" />
-    <Cell x="7" y="32" terrain="Desert" />
+    <Cell x="7" y="32" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="e79e031e-77ac-4c16-8c2e-02728daf6af2" />
+      <ObjRef objectId="909ed706-6b6b-4c4d-a147-744a431d531d" />
+      <ObjRef objectId="35f8a89e-c1ec-4c1e-9356-45e00b4571fa" />
+     </UnitRefs>
+    </Cell>
     <Cell x="7" y="33" terrain="Desert" />
     <Cell x="7" y="34" terrain="Desert" />
     <Cell x="7" y="35" terrain="Desert" />
@@ -2755,8 +2851,18 @@
     <Cell x="13" y="29" terrain="Desert" />
     <Cell x="13" y="30" terrain="Desert" />
     <Cell x="13" y="31" terrain="Desert" />
-    <Cell x="13" y="32" terrain="Desert" />
-    <Cell x="13" y="33" terrain="Desert" />
+    <Cell x="13" y="32" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="c28c9d89-9a47-4ec5-955c-629eae684ff2" />
+      <ObjRef objectId="f414d171-8202-4b29-8ed8-91580b23b3eb" />
+      <ObjRef objectId="7f333b95-e2f8-4969-8bc6-85543208ed95" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="13" y="33" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="9d779b44-ed11-434c-8dff-01920418280e" />
+     </UnitRefs>
+    </Cell>
     <Cell x="13" y="34" terrain="Desert" />
     <Cell x="13" y="35" terrain="Desert" />
     <Cell x="13" y="36" terrain="Desert" />
@@ -2795,7 +2901,15 @@
     <Cell x="14" y="29" terrain="Desert" />
     <Cell x="14" y="30" terrain="Desert" />
     <Cell x="14" y="31" terrain="Desert" />
-    <Cell x="14" y="32" terrain="Desert" />
+    <Cell x="14" y="32" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="ea9c680f-c146-466d-8b5a-d356cb033f3c" />
+      <ObjRef objectId="8a2a548f-e4e4-4526-a416-7403b1bc0724" />
+      <ObjRef objectId="ecf34c91-2575-47bc-a0c9-a3c239f63b73" />
+      <ObjRef objectId="5375382b-1513-41bb-9762-4c39237c0c71" />
+      <ObjRef objectId="7c2097fd-e3ab-45e7-90e8-adcdb5349060" />
+     </UnitRefs>
+    </Cell>
     <Cell x="14" y="33" terrain="Desert" />
     <Cell x="14" y="34" terrain="Desert" />
     <Cell x="14" y="35" terrain="Desert" />
@@ -2818,7 +2932,11 @@
     <Cell x="15" y="12" terrain="Desert" />
     <Cell x="15" y="13" terrain="Desert" />
     <Cell x="15" y="14" terrain="Desert" />
-    <Cell x="15" y="15" terrain="Desert" />
+    <Cell x="15" y="15" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="e1de8ca3-87fd-44ed-bc6a-f4366da3c049" />
+     </UnitRefs>
+    </Cell>
     <Cell x="15" y="16" terrain="Desert" />
     <Cell x="15" y="17" terrain="Desert" />
     <Cell x="15" y="18" terrain="Desert" />
@@ -2828,7 +2946,14 @@
     <Cell x="15" y="22" terrain="Desert" />
     <Cell x="15" y="23" terrain="Desert" />
     <Cell x="15" y="24" terrain="Desert" />
-    <Cell x="15" y="25" terrain="Desert" />
+    <Cell x="15" y="25" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="a6ed6cc7-09fd-4d17-8fee-9d60929576d9" />
+      <ObjRef objectId="7a5db341-d657-4111-8aa3-e5e05a2281b2" />
+      <ObjRef objectId="f99c67cf-db07-4b1e-9e98-f0d9869db6bb" />
+      <ObjRef objectId="411947c2-2646-455b-a96b-393761800514" />
+     </UnitRefs>
+    </Cell>
     <Cell x="15" y="26" terrain="Desert" />
     <Cell x="15" y="27" terrain="Desert" />
     <Cell x="15" y="28" terrain="Desert" />
@@ -2868,8 +2993,16 @@
     <Cell x="16" y="22" terrain="Desert" />
     <Cell x="16" y="23" terrain="Desert" />
     <Cell x="16" y="24" terrain="Desert" />
-    <Cell x="16" y="25" terrain="Desert" />
-    <Cell x="16" y="26" terrain="Desert" />
+    <Cell x="16" y="25" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="e374d329-fb81-4692-a3b2-3e6b09da4caf" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="16" y="26" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="133a451a-34a5-4ea8-9895-08c5cd1f1149" />
+     </UnitRefs>
+    </Cell>
     <Cell x="16" y="27" terrain="Desert" />
     <Cell x="16" y="28" terrain="Desert" />
     <Cell x="16" y="29" terrain="Desert" />
@@ -2982,11 +3115,23 @@
     <Cell x="19" y="16" terrain="Desert" />
     <Cell x="19" y="17" terrain="Desert" />
     <Cell x="19" y="18" terrain="Desert" />
-    <Cell x="19" y="19" terrain="Desert" />
+    <Cell x="19" y="19" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="94eec584-6f3d-49a8-a2a8-8eb385013074" />
+      <ObjRef objectId="70ecc830-9710-4c7d-b637-bf8b5873a737" />
+      <ObjRef objectId="bea34105-d3fc-4735-b44b-d19dc20695ab" />
+      <ObjRef objectId="b9db9914-9edb-4f01-b813-ea9b618a68a0" />
+     </UnitRefs>
+    </Cell>
     <Cell x="19" y="20" terrain="Desert" />
     <Cell x="19" y="21" terrain="Desert" />
     <Cell x="19" y="22" terrain="Desert" />
-    <Cell x="19" y="23" terrain="Desert" />
+    <Cell x="19" y="23" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="60a20d86-5b2c-4c14-a5d4-2953aa7af656" />
+      <ObjRef objectId="905ac1df-1b2f-42c2-bdbd-4dba3f20abb8" />
+     </UnitRefs>
+    </Cell>
     <Cell x="19" y="24" terrain="Desert" />
     <Cell x="19" y="25" terrain="Water" />
     <Cell x="19" y="26" terrain="Water" />
@@ -3023,8 +3168,16 @@
     <Cell x="20" y="17" terrain="Desert" />
     <Cell x="20" y="18" terrain="Desert" />
     <Cell x="20" y="19" terrain="Desert" />
-    <Cell x="20" y="20" terrain="Desert" />
-    <Cell x="20" y="21" terrain="Desert" />
+    <Cell x="20" y="20" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="5b59c48b-a689-46dd-97e9-a02c35dfd9cc" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="20" y="21" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="7798b0b2-b799-4452-b9be-5173aac71b79" />
+     </UnitRefs>
+    </Cell>
     <Cell x="20" y="22" terrain="Desert" />
     <Cell x="20" y="23" terrain="Desert" />
     <Cell x="20" y="24" terrain="Desert" />
@@ -3051,14 +3204,23 @@
     <Cell x="21" y="5" terrain="Desert" />
     <Cell x="21" y="6" terrain="Desert" />
     <Cell x="21" y="7" terrain="Desert" />
-    <Cell x="21" y="8" terrain="Desert" />
+    <Cell x="21" y="8" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="b3ba573a-670c-451b-a044-05af541e870a" />
+     </UnitRefs>
+    </Cell>
     <Cell x="21" y="9" terrain="Desert" />
     <Cell x="21" y="10" terrain="Desert" />
     <Cell x="21" y="11" terrain="Desert" />
     <Cell x="21" y="12" terrain="Desert" />
     <Cell x="21" y="13" terrain="Desert" />
     <Cell x="21" y="14" terrain="Desert" />
-    <Cell x="21" y="15" terrain="Desert" />
+    <Cell x="21" y="15" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="5ea98037-7141-4aad-82f2-020f17c20fdd" />
+      <ObjRef objectId="b2616df1-1d01-406c-aa94-45d9d73ec516" />
+     </UnitRefs>
+    </Cell>
     <Cell x="21" y="16" terrain="Desert" />
     <Cell x="21" y="17" terrain="Desert" />
     <Cell x="21" y="18" terrain="Desert" />
@@ -3138,7 +3300,13 @@
     <Cell x="23" y="12" terrain="Desert" />
     <Cell x="23" y="13" terrain="Desert" />
     <Cell x="23" y="14" terrain="Desert" />
-    <Cell x="23" y="15" terrain="Desert" />
+    <Cell x="23" y="15" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="e3d3344a-40e6-43ab-86a6-9b8971e5b4b9" />
+      <ObjRef objectId="3e3cefc9-9054-40f4-be4b-194832ac8b17" />
+      <ObjRef objectId="19dd77b9-c713-4a8e-9d3a-4f4091c49f6e" />
+     </UnitRefs>
+    </Cell>
     <Cell x="23" y="16" terrain="Desert" />
     <Cell x="23" y="17" terrain="Desert" />
     <Cell x="23" y="18" terrain="Desert" />
@@ -3458,9 +3626,24 @@
     <Cell x="31" y="12" terrain="Water" />
     <Cell x="31" y="13" terrain="Desert" />
     <Cell x="31" y="14" terrain="Desert" />
-    <Cell x="31" y="15" terrain="Desert" />
-    <Cell x="31" y="16" terrain="Desert" />
-    <Cell x="31" y="17" terrain="Desert" />
+    <Cell x="31" y="15" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="706f01d6-1ea3-4d08-897b-a2f7bdd5a526" />
+      <ObjRef objectId="e6273d83-a5fa-461a-ad68-7875f12d78d7" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="31" y="16" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="56cf4888-c557-4abe-843a-8ca7d834fe24" />
+      <ObjRef objectId="514cae0f-839a-4157-8687-c1bad5e25bf9" />
+      <ObjRef objectId="bc3e8e33-b8d4-4c58-89db-b65517f02a88" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="31" y="17" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="8ab5d8e0-5e8d-4a17-85d3-268d528445f4" />
+     </UnitRefs>
+    </Cell>
     <Cell x="31" y="18" terrain="Desert" />
     <Cell x="31" y="19" terrain="Desert" />
     <Cell x="31" y="20" terrain="Desert" />
@@ -3496,11 +3679,30 @@
     <Cell x="32" y="10" terrain="Desert" />
     <Cell x="32" y="11" terrain="Desert" />
     <Cell x="32" y="12" terrain="Desert" />
-    <Cell x="32" y="13" terrain="Desert" />
-    <Cell x="32" y="14" terrain="Desert" />
+    <Cell x="32" y="13" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="67ae6539-bebd-42f0-a5fc-524d5071bf47" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="32" y="14" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="c7398bc8-e93f-4cb4-a38b-21c1fdb4a25e" />
+     </UnitRefs>
+    </Cell>
     <Cell x="32" y="15" terrain="Desert" />
-    <Cell x="32" y="16" terrain="Desert" />
-    <Cell x="32" y="17" terrain="Desert" />
+    <Cell x="32" y="16" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="6437fbe6-88ca-4f4e-8e31-d512298d2c2f" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="32" y="17" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="7a25bd1a-52c1-4ae1-8ff6-cb15d790e536" />
+      <ObjRef objectId="ef2e5c2e-40cb-47bc-be52-03ee397e9870" />
+      <ObjRef objectId="ab3d569e-fcf7-4b1e-91c3-4ca35d5b7b21" />
+      <ObjRef objectId="eeee038c-a998-4501-be2e-dd174bebd78f" />
+     </UnitRefs>
+    </Cell>
     <Cell x="32" y="18" terrain="Desert" />
     <Cell x="32" y="19" terrain="Desert" />
     <Cell x="32" y="20" terrain="Desert" />
@@ -3536,11 +3738,25 @@
     <Cell x="33" y="10" terrain="Desert" />
     <Cell x="33" y="11" terrain="Desert" />
     <Cell x="33" y="12" terrain="Desert" />
-    <Cell x="33" y="13" terrain="Desert" />
-    <Cell x="33" y="14" terrain="Desert" />
+    <Cell x="33" y="13" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="b782a85e-a615-476d-9139-746a301bd157" />
+     </UnitRefs>
+    </Cell>
+    <Cell x="33" y="14" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="11a910bb-447a-4916-bf18-39245a8c3e85" />
+      <ObjRef objectId="d3fdf1e9-dcb6-42bb-a450-e7ba66e3c2a8" />
+     </UnitRefs>
+    </Cell>
     <Cell x="33" y="15" terrain="Desert" />
     <Cell x="33" y="16" terrain="Desert" />
-    <Cell x="33" y="17" terrain="Desert" />
+    <Cell x="33" y="17" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="254abbef-15e4-4456-aa4e-3e80f843fba6" />
+      <ObjRef objectId="43d162a8-252f-4bd2-8859-6b9d245929ac" />
+     </UnitRefs>
+    </Cell>
     <Cell x="33" y="18" terrain="Desert" />
     <Cell x="33" y="19" terrain="Desert" />
     <Cell x="33" y="20" terrain="Desert" />
@@ -3576,16 +3792,31 @@
     <Cell x="34" y="10" terrain="Desert" />
     <Cell x="34" y="11" terrain="Desert" />
     <Cell x="34" y="12" terrain="Desert" />
-    <Cell x="34" y="13" terrain="Desert" />
+    <Cell x="34" y="13" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="6c3f17be-9e35-4ddb-8b5f-624416bfba2b" />
+     </UnitRefs>
+    </Cell>
     <Cell x="34" y="14" terrain="Desert" />
     <Cell x="34" y="15" terrain="Desert" />
-    <Cell x="34" y="16" terrain="Desert" />
+    <Cell x="34" y="16" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="2c185134-45f1-477f-af64-4ae7c2113f76" />
+      <ObjRef objectId="3c1777bd-b005-4f4c-a3d2-9307d5880c10" />
+      <ObjRef objectId="36b9ffb4-b485-4db3-8936-1b1f98dc3d1c" />
+      <ObjRef objectId="e9fd4d75-9614-4196-ac7b-5bd2176c32cd" />
+     </UnitRefs>
+    </Cell>
     <Cell x="34" y="17" terrain="Desert">
      <UnitRefs>
       <ObjRef objectId="4257b958-716d-4827-9e31-057c921be8f3" />
      </UnitRefs>
     </Cell>
-    <Cell x="34" y="18" terrain="Desert" />
+    <Cell x="34" y="18" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="eb02c6cf-6914-4a8b-ac13-9825029720ae" />
+     </UnitRefs>
+    </Cell>
     <Cell x="34" y="19" terrain="Water" />
     <Cell x="34" y="20" terrain="Water" />
     <Cell x="34" y="21" terrain="Water" />
@@ -3623,7 +3854,11 @@
     <Cell x="35" y="13" terrain="Desert" />
     <Cell x="35" y="14" terrain="Desert" />
     <Cell x="35" y="15" terrain="Desert" />
-    <Cell x="35" y="16" terrain="Desert" />
+    <Cell x="35" y="16" terrain="Desert">
+     <UnitRefs>
+      <ObjRef objectId="0449cebc-12f7-4cc8-a138-7efc2594ebab" />
+     </UnitRefs>
+    </Cell>
     <Cell x="35" y="17" terrain="Desert" />
     <Cell x="35" y="18" terrain="Desert" />
     <Cell x="35" y="19" terrain="Water" />
@@ -3692,8 +3927,8 @@
   <seralizedEdgeFeatureMap />
  </gameState>
  <viewState>
-  <xPosition>-1.59320116</xPosition>
-  <yPosition>0.53263855</yPosition>
-  <orthographicSize>23</orthographicSize>
+  <xPosition>-8.458094</xPosition>
+  <yPosition>3.62047052</yPosition>
+  <orthographicSize>18</orthographicSize>
  </viewState>
 </FullState>

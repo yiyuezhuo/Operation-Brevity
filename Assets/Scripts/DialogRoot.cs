@@ -6,6 +6,11 @@ using YYZ;
 using System.Collections.Generic;
 using System.Linq;
 
+public class OrderOfBattleNodePlaceholder // : IOrderOfBattleNode // UITK Helper
+{
+    public string oobDesc;
+}
+
 public class DialogRoot : SingletonDocument<DialogRoot>
 {
     public VisualTreeAsset mapEditDialogDocument;

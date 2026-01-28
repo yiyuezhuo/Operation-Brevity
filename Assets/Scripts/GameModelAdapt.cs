@@ -25,10 +25,31 @@ namespace GameModel
 
         [XmlIgnore]
         public CounterController view;
+
+        [CreateProperty]
+        public string oobDesc
+        {
+            get
+            {
+                var deployStr = deployState switch
+                {
+                    DeployState.NotDeployed => "(Not Deployed)",
+                    DeployState.Deployed => "",
+                    DeployState.Destroyed => "(Destroyed)",
+                    _ => ""
+                };
+                return $"{name} {deployStr}";
+            }
+        }
      }
 
     public partial class Side
     {
+        [CreateProperty]
+        public string oobDesc
+        {
+            get => name;
+        }
     }
 }
 

@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using GameModel;
 using System.Collections.Generic;
+using YYZ.Unity;
 
 public class CounterController : MonoBehaviour
 {
@@ -61,13 +62,15 @@ public class CounterController : MonoBehaviour
         [Country.Italy] = new()
         {
             // outerRect = new(255, 255, 255),
-            outerRect = Color.white,
+            // outerRect = Color.white,
+            outerRect = new Color32(126, 126, 126, 255),
             // innerRect = new(129, 7, 0),
             innerRect = new Color32(129, 7, 0, 255),
             // text = new(0, 0, 0),
             // icon = new(0, 0, 0)
             text = Color.black,
-            icon = Color.black
+            // icon = Color.black
+            icon = Color.white
         }
     };
 
@@ -96,6 +99,8 @@ public class CounterController : MonoBehaviour
             
             innerColorRect.color = colorSchema.innerRect;
             unitIcon.color = colorSchema.icon;
+
+            unitIcon.sprite = StreamingAssetManagerEnumHelper<UnitType>.Instance.GetSprite(unit.unitType);
         }
     }
 }

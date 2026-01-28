@@ -102,12 +102,6 @@ namespace GameModel
 
     }
 
-    public class OrderOfBattleNodePlaceholder // : IOrderOfBattleNode // UITK Helper
-    {
-        public string name;
-        public IEnumerable<IOrderOfBattleNode> children;
-        public IOrderOfBattleNode parent;
-    }
 
 
 
