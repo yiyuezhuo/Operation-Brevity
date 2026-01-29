@@ -34,6 +34,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public GameObject edgeFeaturePrefab;
     public GameObject counterPrefab;
 
+    LayerMask unitLayerMask;
+    LayerMask mapLayerMask;
+    // LayerMask counterLayerMask;
+
     UIDocument[] allUIDocuments;
 
     CellLabelMode _cellLabelMode;
@@ -138,15 +142,39 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         edgeFeaturesTransform = Utils.CreateDynamicTransform(transform, "EdgeFeatures");
         countersTransform = Utils.CreateDynamicTransform(transform, "Counters");
 
+        // if(startupConfig.mode == StartupConfig.Mode.ScenPath)
+        // {
+        //     StartCoroutine(
+        //         StreamingAssetManager.Instance.FetchText(Application.streamingAssetsPath + "/" + startupConfig.scenSubPath, xml =>
+        //         {
+        //             var fullState = XmlUtils.FromXML<FullState>(xml);
+        //             LoadFullState(fullState);
+        //         })
+        //     );
+        // }
+        // else if(startupConfig.mode == StartupConfig.Mode.FullState)
+        // {
+        //     LoadFullState(startupConfig.fullState);
+        // }
+
+        unitLayerMask = LayerMask.GetMask("Unit");
+        mapLayerMask = LayerMask.GetMask("Map");
+        // counterLayerMask = LayerMask.GetMask("Counter");
+
+        SetupAsync();
+    }
+
+    public async void SetupAsync()
+    {
+        var unitParameterCsvText = await StreamingAssetManager.Instance.FetchTextAsync(Application.streamingAssetsPath + "/Data/UnitParameter.csv");
+        var unitParameterRecords = UnitParameter.ParseUnits(unitParameterCsvText);
+        Unit.unitParameterMap = unitParameterRecords.ToDictionary(p => (p.Country, p.UnitType), p => p);
+
         if(startupConfig.mode == StartupConfig.Mode.ScenPath)
         {
-            StartCoroutine(
-                StreamingAssetManager.Instance.FetchText(Application.streamingAssetsPath + "/" + startupConfig.scenSubPath, xml =>
-                {
-                    var fullState = XmlUtils.FromXML<FullState>(xml);
-                    LoadFullState(fullState);
-                })
-            );
+            var scenarioXml = await StreamingAssetManager.Instance.FetchTextAsync(Application.streamingAssetsPath + "/" + startupConfig.scenSubPath);
+            var fullState = XmlUtils.FromXML<FullState>(scenarioXml);
+            LoadFullState(fullState);
         }
         else if(startupConfig.mode == StartupConfig.Mode.FullState)
         {
@@ -234,6 +262,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         
     }
 
+    // List<Unit> stackSelecting = new();
+
     // Update is called once per frame
     void Update()
     {
@@ -245,9 +275,32 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             {
                 Vector2 mousePosition = PlaneCameraController.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
 
-                RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+                RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, unitLayerMask);
+                // RaycastHit2D hit2 = Physics2D.Raycast(mousePosition, Vector2.zero, 0, mapLayerMask);
+                // var hits = Physics2D.RaycastAll(mousePosition, Vector2.zero);
+
                 if(hit.collider != null)
                 {
+                    if(hit.collider.CompareTag("Unit"))
+                    {
+                        var counterController = hit.collider.GetComponent<CounterController>();
+                        var unit = counterController?.unit;
+
+                        // Debug.Log($"Unit clicked: {counterController}, {unit}");
+
+                        var cell = unit.GetCell();
+                        var stack = cell.UnitRefs.Select(r => r.Get() as Unit).ToList();
+                        stack = cell.UnitRefs.Select(r => r.Get() as Unit).ToList();
+                        stack.Sort(Unit.StackPriorityCompareTo);
+                        var oldTopOne = stack[^1];
+
+                        HandleUnitClicked(oldTopOne, stack);
+                    }
+                }
+                else // grid cell raycast
+                {
+                    hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
                     var cellPos = WorldToCell(mousePosition);
                     Debug.Log($"hit.collider={hit.collider}, cellPos={cellPos}");
 
@@ -309,10 +362,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             var cell = grouping.Key;
             var units = grouping.ToList();
-            units.Sort((u1, u2) => u1.stackPriority.CompareTo(u2.stackPriority));
+            // units.Sort((u1, u2) => u1.stackPriority.CompareTo(u2.stackPriority));
+            units.Sort(Unit.StackPriorityCompareTo);
 
-            LayoutStackTransform(
-                units.Select(u => u.view.transform).ToList(),
+            // LayoutStackTransform(
+            //     units.Select(u => u.view.transform).ToList(),
+            //     GetCellCenterWorld(cell),
+            //     // 0.05f
+            //     0.25f
+            // );
+
+            LayoutStackTransform2(
+                units.Select(u => u.view).ToList(),
                 GetCellCenterWorld(cell),
                 // 0.05f
                 0.25f
@@ -320,21 +381,36 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    public static void LayoutStackTransform(List<Transform> transforms, Vector3 basePos, float stackSpace)
+    // public static void LayoutStackTransform(List<Transform> transforms, Vector3 basePos, float stackSpace)
+    // {
+    //     var count = transforms.Count;
+    //     if (count == 1)
+    //     {
+    //         transforms[0].position = basePos;
+    //         return;
+    //     }
+    //     var step = stackSpace / (count - 1);
+    //     for (int i = 0; i < count; i++)
+    //     {
+    //         var delta = -stackSpace / 2 + i * step;
+    //         transforms[i].position = basePos + new Vector3(delta, delta, 0);
+    //     }
+    // }
+
+    public static void LayoutStackTransform2(List<CounterController> controllers, Vector3 basePos, float stackSpace)
     {
-        var count = transforms.Count;
+        var count = controllers.Count;
         if (count == 1)
         {
-            transforms[0].position = basePos;
+            controllers[0].transform.position = basePos;
             return;
         }
         var step = stackSpace / (count - 1);
         for (int i = 0; i < count; i++)
         {
             var delta = -stackSpace / 2 + i * step;
-            // transforms[i].position = basePos + new Vector3(delta, delta, 0);
-            // var z = -(i * step); // negative z is closer to camera
-            transforms[i].position = basePos + new Vector3(delta, delta, 0);
+            controllers[i].transform.position = basePos + new Vector3(delta, delta, 0);
+            controllers[i].sortingGroup.sortingOrder = i;
         }
     }
 
@@ -369,7 +445,41 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    Cell cellStart;
+    public Unit selectingUnit;
+
+    void HandleUnitClicked(Unit unit, List<Unit> stack)
+    {
+        if(unit != null)
+        {
+            Debug.Log($"HandleUnitClicked: {unit}");
+
+            if(selectingUnit != unit)
+            {
+                selectingUnit = unit; // re-select
+            }
+            else if(stack.Count > 1) // toggle stack
+            {
+                stack.RemoveAt(stack.Count - 1);
+                stack.Insert(0, unit);
+                for(int i = 0; i < stack.Count; i++)
+                {
+                    stack[i].stackPriority = ((float)i) / stack.Count;
+                }
+
+                EventBus.Publish(Unit.stacksChanged);
+
+                selectingUnit = stack[^1];
+            }
+
+            // stackSelecting = stack;
+            // TODO: Refresh Stack Selecting
+            Overlay.Instance.RefreshStackContainer(stack);
+
+            // TODO: Select Cell here
+        }
+    }
+
+    public Cell cellSelecting;
 
     void HandleCellClicked(Cell cell)
     {
@@ -383,16 +493,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if(mapEditMode == MapEditMode.PaintEdgeFeature)
             {
-                if(cellStart != null)
+                if(cellSelecting != null)
                 {
-                    Debug.Log($"Toggle: {cellStart}, {cell}, {mapEditEdgeFeatureType}");
-                    GameState.Instance.ToggleEdgeFeature(cellStart, cell, mapEditEdgeFeatureType);
+                    Debug.Log($"Toggle: {cellSelecting}, {cell}, {mapEditEdgeFeatureType}");
+                    GameState.Instance.ToggleEdgeFeature(cellSelecting, cell, mapEditEdgeFeatureType);
 
-                    cellStart = null;
+                    cellSelecting = null;
                 }
                 else
                 {
-                    cellStart = cell;
+                    cellSelecting = cell;
                 }
             }
         }
@@ -418,12 +528,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     bool edgeFeatureDirty = false;
     bool mapUnitsDirty = false;
     bool stacksDirty = false;
+    // bool stackSelectingDirty = false;
 
     public void SetAllDirty() // Invoke a full refresh
     {
         edgeFeatureDirty = true;
         mapUnitsDirty = true;
         stacksDirty = true;
+        // stackSelectingDirty = true;
     }
 
     // public void OnEdgeFeatureChanged(object sender, EventArgs args)

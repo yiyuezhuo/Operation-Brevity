@@ -3,6 +3,7 @@ using TMPro;
 using GameModel;
 using System.Collections.Generic;
 using YYZ.Unity;
+using UnityEngine.Rendering;
 
 public class CounterController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class CounterController : MonoBehaviour
     public SpriteRenderer outerColorRect;
     public SpriteRenderer innerColorRect;
     public SpriteRenderer unitIcon;
+    public SortingGroup sortingGroup;
 
     public Unit unit; // model
 
@@ -26,7 +28,7 @@ public class CounterController : MonoBehaviour
         Sync();
     }
 
-    class ColorSchema // TOAW-like Color Schema
+    public class ColorSchema // TOAW-like Color Schema
     {
         public Color outerRect;
         public Color innerRect;
@@ -34,7 +36,7 @@ public class CounterController : MonoBehaviour
         public Color icon;
     }
 
-    static Dictionary<Country, ColorSchema> colorSchemaMap = new()
+    public static Dictionary<Country, ColorSchema> colorSchemaMap = new()
     {
         [Country.Britain] = new()
         {

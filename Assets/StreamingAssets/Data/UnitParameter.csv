@@ -1,0 +1,20 @@
+UnitType,Country,Hard,Soft,Assault,Defense,Speed,Strength,Quality,Remark
+Infantry,Britain,4,9,14,16,15,124,C,
+Infantry,Germany,3,10,16,16,15,197,B,
+Infantry,Italy,2,7,13,16,15,167,C,
+Tank,Britain,7,5,9,4,12,13,C,Cruiser A10
+Tank,Germany,7,10,13,8,12,11,B,Pz-IV
+AntiTank,Britain,9,5,3,2,18,9,C,2-pdr AT Gun Portee
+AntiTank,Germany,6,10,7,7,12,9,B,37mm AT Gun
+AntiTank,Italy,6,10,7,7,12,8,C,47-32 AT Gub
+AntiAir,Britain,2,5,7,7,12,12,C,40mm LAA Gun
+AntiAir,Germany,52,13,7,6,12,12,C,88mm HAA Gub
+AntiAir,Italy,4,11,7,8,12,12,C,20-35 LAA Gun
+Cavalry,Britain,4,2,6,2,24,15,B,Marmon-Herrington
+Cavalry,Germany,4,9,6,5,24,24,B,Sdkfz231
+HeadQuarters,Britain,0,0,0,12,15,90,C,
+HeadQuarters,Germany,0,0,0,12,15,90,B,
+HeadQuarters,Italy,0,0,0,12,15,90,C,
+Artillery,Britain,4,10,7,7,12,12,C,25-pdr Gun-How
+Artillery,Germany,4,10,4,7,12,6,C,81mm Mortar
+Artillery,Italy,4,10,7,7,12,4,C,75-27 Field Gun

@@ -5,7 +5,7 @@ using YYZ;
 
 namespace GameModel
 {
-    public class Cell : IHasObjRef
+    public partial class Cell : IHasObjRef
     {
         [XmlAttribute]
         public int x;

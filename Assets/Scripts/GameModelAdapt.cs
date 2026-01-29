@@ -1,6 +1,8 @@
-using System.Security.Cryptography;
 using System.Xml.Serialization;
 using Unity.Properties;
+using UnityEngine;
+using YYZ;
+using YYZ.Unity;
 
 namespace GameModel
 {
@@ -23,6 +25,11 @@ namespace GameModel
 
         public float stackPriority;
 
+        public static int StackPriorityCompareTo(Unit u1, Unit u2)
+        {
+            return u1.stackPriority.CompareTo(u2.stackPriority);
+        }
+
         [XmlIgnore]
         public CounterController view;
 
@@ -41,6 +48,27 @@ namespace GameModel
                 return $"{name} {deployStr}";
             }
         }
+
+        [CreateProperty]
+        public string topText => CounterController.sizeStrMap[unitSize];
+
+        [CreateProperty]
+        public string bottomText => "10";
+
+        [CreateProperty]
+        public Color outerColorRectColor => CounterController.colorSchemaMap[country].outerRect;
+
+        [CreateProperty]
+        public Color innerColorRectColor => CounterController.colorSchemaMap[country].innerRect;
+
+        [CreateProperty]
+        public Color textColor => CounterController.colorSchemaMap[country].text;
+
+        [CreateProperty]
+        public Color iconColor => CounterController.colorSchemaMap[country].icon;
+
+        [CreateProperty]
+        public Texture2D iconTexture => StreamingAssetManagerEnumHelper<UnitType>.Instance.GetTexture2D(unitType);
      }
 
     public partial class Side
@@ -50,6 +78,12 @@ namespace GameModel
         {
             get => name;
         }
+    }
+
+    public partial class Cell
+    {
+        [CreateProperty]
+        public string desc => $"({x}, {y}) {terrain}";
     }
 }
 

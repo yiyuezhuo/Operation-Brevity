@@ -1,0 +1,26 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="GameModel.Unit, Assembly-CSharp" style="width: 50px; height: 50px; background-color: rgb(130, 110, 41); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;">
+        <ui:Image style="background-image: url(&quot;project://database/Assets/Textures/Infantry.png?fileID=2800000&amp;guid=98a647a9ec44cf940b7e935c4292bef6&amp;type=3#Infantry&quot;); -unity-background-scale-mode: stretch-to-fill; position: absolute; width: 26px; height: 19px; top: 14px; left: 11.5px; background-color: rgb(255, 255, 255); -unity-background-image-tint-color: rgb(132, 8, 8);">
+            <Bindings>
+                <ui:DataBinding property="style.backgroundColor" data-source-path="innerColorRectColor" binding-mode="ToTarget"/>
+                <ui:DataBinding property="style.unityBackgroundImageTintColor" data-source-path="iconColor" binding-mode="ToTarget"/>
+                <ui:DataBinding property="style.backgroundImage" data-source-path="iconTexture" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Image>
+        <ui:Label text="II" name="TopLabel" style="font-size: 12px; position: absolute; -unity-text-align: upper-center; color: rgb(255, 255, 255); width: 100%; margin-left: 0; padding-left: 0; padding-right: 0; margin-right: 0; margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="topText" binding-mode="ToTarget"/>
+                <ui:DataBinding property="style.color" data-source-path="textColor" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="114514" name="BottomLabel" style="font-size: 12px; width: 100%; bottom: 0; position: absolute; -unity-text-align: upper-center; color: rgb(255, 255, 255); margin-left: 0; padding-left: 0; padding-right: 0; margin-right: 0; margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="bottomText" binding-mode="ToTarget"/>
+                <ui:DataBinding property="style.color" data-source-path="textColor" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Label>
+        <Bindings>
+            <ui:DataBinding property="style.backgroundColor" data-source-path="outerColorRectColor" binding-mode="ToTarget"/>
+        </Bindings>
+    </ui:VisualElement>
+</ui:UXML>

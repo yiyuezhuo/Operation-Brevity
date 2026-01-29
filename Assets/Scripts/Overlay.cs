@@ -3,9 +3,14 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using YYZ;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class Overlay : SingletonDocument<Overlay> // So don't specify binding for the TopTabs or other "subordinate" elements
 {
+    VisualElement stackContainer;
+
+    public VisualTreeAsset unitIconAsset;
+
     protected override void Awake()
     {
         base.Awake();
@@ -59,5 +64,25 @@ public class Overlay : SingletonDocument<Overlay> // So don't specify binding fo
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         };
+
+        stackContainer = root.Q<VisualElement>("StackContainer");
     }
+
+    public void RefreshStackContainer(List<Unit> stack)
+    {
+        stackContainer.Clear();
+
+        foreach(var unit in stack)
+        {
+            var el = unitIconAsset.CloneTree();
+            el.dataSource = unit;
+            stackContainer.Add(el);
+
+            el.RegisterCallback<ClickEvent>(evt =>
+            {
+                Debug.Log($"Stack unit {unit} clicked");
+            });
+        }
+    }
+
 }

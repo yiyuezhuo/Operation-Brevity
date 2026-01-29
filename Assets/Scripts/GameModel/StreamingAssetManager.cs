@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace YYZ.Unity
 {
@@ -53,8 +54,10 @@ namespace YYZ.Unity
             busyUnityWebRequests.Remove(request);
         }
 
-        public async void FetchTextAsync(string path, Action<string> callback)
+        public async Task<string> FetchTextAsync(string path)
         {
+            string ret = null;
+
             var request = UnityWebRequest.Get(path);
 
             busyUnityWebRequests.Add(request);
@@ -63,7 +66,7 @@ namespace YYZ.Unity
             if (request.result == UnityWebRequest.Result.Success)
             {
                 Debug.Log($"Success: {path}");
-                callback(request.downloadHandler.text);
+                ret = request.downloadHandler.text;
             }
             else
             {
@@ -71,6 +74,8 @@ namespace YYZ.Unity
             }
 
             busyUnityWebRequests.Remove(request);
+
+            return ret;
         }
 
         public class ImageCache

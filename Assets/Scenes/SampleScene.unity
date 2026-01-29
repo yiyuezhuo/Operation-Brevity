@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 554081006}
   - component: {fileID: 554081005}
   - component: {fileID: 554081007}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,6 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81590c16dbfc85044a2828947a4f9063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Overlay
+  unitIconAsset: {fileID: 9197481963319205126, guid: cfbf459c7ba913e4cb0c0522fb013e77, type: 3}
 --- !u!1 &914825006
 GameObject:
   m_ObjectHideFlags: 0

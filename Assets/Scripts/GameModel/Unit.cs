@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 using YYZ;
+using System.Xml.Serialization;
+
 
 namespace GameModel
 {
@@ -41,6 +42,16 @@ namespace GameModel
         Destroyed
     }
 
+    public enum UnitQuality
+    {
+        A,
+        B,
+        C,
+        D,
+        E,
+        F
+    }
+
 
     public partial class Unit : IObjectIdLabeled, IOrderOfBattleNode, IHasObjRef
     {
@@ -49,8 +60,40 @@ namespace GameModel
         // public string name{get; set;}
         public string name = "Unnamed";
         public UnitType unitType;
-        public Country country;
-        public UnitSize unitSize;
+
+        Country _country;
+        public Country country
+        {
+            get => _country;
+            set
+            {
+                if(value != _country)
+                {
+                    _country = value;
+                    parameterCached = null;
+                }
+            }
+        }
+
+        // [InvalidateCache(nameof(parameterCached))]
+        // Country country{get;set;}
+
+        // public UnitSize unitSize;
+
+        UnitSize _unitSize;
+        public UnitSize unitSize
+        {
+            get => _unitSize;
+            set
+            {
+                if(value != _unitSize)
+                {
+                    _unitSize = value;
+                    parameterCached = null;
+                }
+            }
+        }
+
         public DeployState deployState;
         public int x;
         public int y;
@@ -80,6 +123,31 @@ namespace GameModel
 
         public class OrderOfBattleChanged : IEvent{}
         public static OrderOfBattleChanged orderOfBattleChanged = new OrderOfBattleChanged();
+
+        public static Dictionary<(Country, UnitType), UnitParameter> unitParameterMap = new();
+        static UnitParameter defaultUnitParameter = new UnitParameter();
+
+        UnitParameter parameterCached;
+
+        public UnitParameter parameter
+        {
+            get
+            {
+                if(parameterCached == null)
+                {
+                    if(unitParameterMap.TryGetValue((country, unitType), out var _parameter))
+                    {
+                        parameterCached = _parameter;
+                    }
+                    else
+                    {
+                        YDebug.LogWarning($"Parameter for {country}, {unitType} is not specified, placeholder fallback is used.");
+                        parameterCached = defaultUnitParameter;
+                    }
+                }
+                return parameterCached;
+            }
+        } 
 
         public void AttachTo(IOrderOfBattleNode newParent)
         {
