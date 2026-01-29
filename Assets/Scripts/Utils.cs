@@ -68,4 +68,10 @@ public static class Utils
 
         return PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out ret);
     }
+
+    public static void SetLineRendererPoints(LineRenderer lineRenderer, Vector3[] points)
+    {
+        lineRenderer.positionCount = points.Length;
+        lineRenderer.SetPositions(points);
+    }
 }

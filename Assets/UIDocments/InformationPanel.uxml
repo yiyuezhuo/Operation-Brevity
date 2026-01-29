@@ -1,19 +1,49 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-grow: 1; width: 200px; background-color: rgb(240, 240, 240);">
-        <ui:VisualElement data-source-path="cellSelecting">
-            <ui:Label text="Cell desc">
+        <ui:VisualElement>
+            <ui:Label text="Time Label">
                 <Bindings>
-                    <ui:DataBinding property="text" data-source-path="desc" binding-mode="ToTarget"/>
+                    <ui:DataBinding property="text" data-source-path="currentGameState.time" binding-mode="ToTarget"/>
                 </Bindings>
             </ui:Label>
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:Label text="Play (Spacebar)"/>
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="playing" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+            </ui:VisualElement>
+            <ui:EnumField value="Center" type="GameManager+TimeRatioLevel, Assembly-CSharp" style="flex-grow: 0;">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="timeRatioLevel" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:EnumField>
+        </ui:VisualElement>
+        <ui:VisualElement>
+            <ui:VisualElement data-source-path="cellSelecting">
+                <ui:Label text="Cell desc">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="desc" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="selectingCellValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+            </Bindings>
         </ui:VisualElement>
         <ui:VisualElement name="StackContainer" style="flex-direction: row; flex-wrap: wrap;"/>
-        <ui:VisualElement data-source-path="selectingUnit" style="flex-grow: 1;">
-            <ui:Label text="Unit&apos;s Name" style="white-space: normal;">
-                <Bindings>
-                    <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
-                </Bindings>
-            </ui:Label>
+        <ui:VisualElement>
+            <ui:VisualElement data-source-path="selectingUnit" style="flex-grow: 1;">
+                <ui:Label text="Unit&apos;s Name" style="white-space: normal;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="selectingUnitValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+            </Bindings>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

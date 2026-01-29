@@ -3,13 +3,13 @@ using System.Xml.Serialization;
 
 namespace GameModel
 {
-    public class EdgeState
-    {
-        public bool hasPrimaryRoad;
-        public bool hasSecondaryRoad;
-        public bool moveBlocked; // Escarpment
-        public bool isFort; //  Fort is unidirectional
-    }
+    // public class EdgeState
+    // {
+    //     public bool hasPrimaryRoad;
+    //     public bool hasSecondaryRoad;
+    //     public bool moveBlocked; // Escarpment
+    //     public bool isFort; //  Fort is unidirectional
+    // }
 
     public enum EdgeFeatureType
     {

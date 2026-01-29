@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using YYZ.Unity;
+using YYZ.PathFinding;
 
 public enum CellLabelMode
 {
@@ -33,6 +34,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public GameObject cellLabelPrefab;
     public GameObject edgeFeaturePrefab;
     public GameObject counterPrefab;
+
+    public PathLineController pathLineController;
 
     LayerMask unitLayerMask;
     LayerMask mapLayerMask;
@@ -259,13 +262,71 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     void TempFix()
     {
-        
+        // Enforce escarpment symmetric
+
+        // var gameState = GameState.Instance;
+        // foreach(var kv in gameState.edgeFeatureMap.ToList())
+        // {
+        //     var (x1, y1, x2, y2) = kv.Key;
+        //     var edgeFeature = kv.Value;
+
+        //     if(edgeFeature.escarpment)
+        //     {
+        //         var cellSrc = gameState.cells[x1, y1];
+        //         var cellDst = gameState.cells[x2, y2];
+        //         gameState.SetEdgeFeature(cellSrc, cellDst, EdgeFeatureType.Escarpment, true);
+        //     }
+        // }
     }
 
     // List<Unit> stackSelecting = new();
 
     // Update is called once per frame
     void Update()
+    {
+        HandleInput();
+        RefreshDirty();
+        RunSimulation();
+        UpdateView();
+    }
+
+    static Vector3[] emptyVector3Arr = new Vector3[0];
+
+    void UpdateView()
+    {
+        if(selectingUnit != null)
+        {
+            var positions = selectingUnit.waypoints.Select(xy => GetCellCenterWorld(xy.x, xy.y)).ToArray();
+            var p = selectingUnit.movementProgressionKm / ModelUtils.hexDistanceKm;
+            pathLineController.Sync(positions, p);
+        }
+        else
+        {
+            pathLineController.Sync(emptyVector3Arr, 0);
+        }
+    }
+
+    float unresolvedSeconds = 0;
+    float pulseLengthSeconds = 60; // 60s
+
+    void RunSimulation()
+    {
+        if(playing)
+        {
+            unresolvedSeconds += Time.deltaTime * GetTimeRatio();
+            while(unresolvedSeconds > pulseLengthSeconds)
+            {
+                unresolvedSeconds -= pulseLengthSeconds;
+                GameState.Instance.AdvanceTime(pulseLengthSeconds);
+            }
+        }
+    }
+
+    // Vector2 rightClickingPosition; // if up/down click is very close, a path direct command is issued (CMO-style)
+    Vector3 rightClickingPosition;
+    static float rightClickDistThreshold = 1;
+
+    void HandleInput()
     {
         if(IsHotKeyEnabled())
         {
@@ -295,27 +356,99 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                         var oldTopOne = stack[^1];
 
                         HandleUnitClicked(oldTopOne, stack);
+                        HandleCellClicked(cell); // Or use a trimmed version?
                     }
                 }
                 else // grid cell raycast
                 {
                     hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-                    var cellPos = WorldToCell(mousePosition);
-                    Debug.Log($"hit.collider={hit.collider}, cellPos={cellPos}");
+                    var cellPos = WorldToVector3Int(mousePosition);
+                    // Debug.Log($"hit.collider={hit.collider}, cellPos={cellPos}");
 
-                    var x = cellPos.x;
-                    var y = cellPos.y;
-                    var gameState = GameState.Instance;
-                    if(x >= 0 && x < gameState.cells.GetLength(0) && y >= 0 && y < gameState.cells.GetLength(1))
+                    // var x = cellPos.x;
+                    // var y = cellPos.y;
+                    // var gameState = GameState.Instance;
+                    // if(x >= 0 && x < gameState.cells.GetLength(0) && y >= 0 && y < gameState.cells.GetLength(1))
+                    // {
+                    //     var cell = gameState.cells[x, y];
+                    //     HandleCellClicked(cell);
+                    // }
+
+                    var cell = Vector3IntToCell(cellPos);
+                    HandleCellClicked(cell);
+                }
+            }
+
+            // Right clicking path plan
+            var isRightMouseButtonDown = Input.GetMouseButtonDown(1);
+            if(isRightMouseButtonDown)
+            {
+                // Vector2 mousePosition = PlaneCameraController.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
+                // var hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+                // if(hit.collider != null) // map
+                // {
+                //     // rightClickingPosition = hit.point;
+                //     rightClickingPosition = Input.mousePosition;
+                // }
+
+                rightClickingPosition = Input.mousePosition;
+            }
+
+            var isRightMouseButtonUp = Input.GetMouseButtonUp(1);
+            if(isRightMouseButtonUp)
+            {
+                var dist = Vector3.Distance(rightClickingPosition, Input.mousePosition);
+                if(dist <= rightClickDistThreshold)
+                {
+                    Vector2 mousePosition = PlaneCameraController.Instance.cam.ScreenToWorldPoint(Input.mousePosition);
+                    
+                    var hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+                    if(hit.collider != null) // map
                     {
-                        var cell = gameState.cells[x, y];
-                        HandleCellClicked(cell);
+                        var cellPos = WorldToVector3Int(mousePosition);
+                        var cell = Vector3IntToCell(cellPos);
+                        HandleCellRightClickedWithoutDragging(cell);
                     }
                 }
             }
-        }
 
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                selectingUnit = null;
+                selectingCell = null;
+                oneshotCellClickedCallback = null;
+
+                SetAllDirty();
+
+                Overlay.Instance.RefreshStackContainer(new());
+            }
+        }
+    }
+
+    public void HandleCellRightClickedWithoutDragging(Cell cell)
+    {
+        if(selectingUnit != null)
+        {
+            Debug.Log($"Plan path: {selectingUnit} to {cell}");
+
+            var graph = new DynamicCellGraphArmy();
+            var srcCell = selectingUnit.GetCell();
+            if(srcCell != null)
+            {
+                var cost = PathFinding<Cell>.AStar(graph, srcCell, cell, out var path);
+                // var path = PathFinding<Cell>.AStar3(graph, srcCell, cell);
+                // if(path.Path.Count >= 2)
+                // {
+                //     selectingUnit.SetWaypoints(path.Path);
+                // }
+                selectingUnit.SetWaypoints(path);
+            }
+        }
+    }
+
+    void RefreshDirty()
+    {
         if(edgeFeatureDirty)
         {
             edgeFeatureDirty = false;
@@ -447,6 +580,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public Unit selectingUnit;
 
+    [CreateProperty]
+    public bool selectingUnitValid => selectingUnit != null;
+
     void HandleUnitClicked(Unit unit, List<Unit> stack)
     {
         if(unit != null)
@@ -479,11 +615,23 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    public Cell cellSelecting;
+    public Cell selectingCell;
+
+    [CreateProperty]
+    public bool selectingCellValid => selectingCell != null;
 
     void HandleCellClicked(Cell cell)
     {
         Debug.Log(cell);
+
+        if(cell == null)
+        {
+            return;
+        }
+
+        // Test Neighbor and MoveCost
+        var neiStr = string.Join(",", cell.GetNeighbors().Select(c => $"[{c}, {cell.GetMovementCoef(c)}]"));
+        Debug.Log($"{cell} => nei={neiStr}");
 
         if(mapEditEnabled)
         {
@@ -493,16 +641,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if(mapEditMode == MapEditMode.PaintEdgeFeature)
             {
-                if(cellSelecting != null)
+                if(selectingCell != null)
                 {
-                    Debug.Log($"Toggle: {cellSelecting}, {cell}, {mapEditEdgeFeatureType}");
-                    GameState.Instance.ToggleEdgeFeature(cellSelecting, cell, mapEditEdgeFeatureType);
+                    Debug.Log($"Toggle: {selectingCell}, {cell}, {mapEditEdgeFeatureType}");
+                    GameState.Instance.ToggleEdgeFeature(selectingCell, cell, mapEditEdgeFeatureType);
 
-                    cellSelecting = null;
+                    selectingCell = null;
                 }
                 else
                 {
-                    cellSelecting = cell;
+                    selectingCell = cell;
                 }
             }
         }
@@ -692,7 +840,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         RefreshCellLabels();
     }
 
-    public Vector3Int WorldToCell(Vector3 worldPosition)
+    public Cell Vector3IntToCell(Vector3Int cellPos)
+    {
+        var x = cellPos.x;
+        var y = cellPos.y;
+        var gameState = GameState.Instance;
+        if(x >= 0 && x < gameState.cells.GetLength(0) && y >= 0 && y < gameState.cells.GetLength(1))
+        {
+            var cell = gameState.cells[x, y];
+            return cell;
+        }
+        return null;
+    }
+
+    public Vector3Int WorldToVector3Int(Vector3 worldPosition)
     {
         return grid.WorldToCell(worldPosition);
     }
@@ -734,4 +895,30 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     [HideInInspector]
     public int targetHeight = 40;
+
+    [CreateProperty]
+    public GameState currentGameState => GameState.Instance;
+
+    [HideInInspector]
+    public bool playing;
+    public enum TimeRatioLevel
+    {
+        x60, // 1s real time=> 1min game time
+        x300, // 1s real time => 5min game time.
+        x1500
+    }
+
+    [HideInInspector]
+    public TimeRatioLevel timeRatioLevel = TimeRatioLevel.x300;
+
+    public float GetTimeRatio()
+    {
+        return timeRatioLevel switch
+        {
+            TimeRatioLevel.x60 => 60f,
+            TimeRatioLevel.x300 => 300f,
+            TimeRatioLevel.x1500 => 1500f,
+            _ => 0
+        };
+    }
 }

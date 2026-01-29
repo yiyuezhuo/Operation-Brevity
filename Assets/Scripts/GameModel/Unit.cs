@@ -52,6 +52,17 @@ namespace GameModel
         F
     }
 
+    public class XY
+    {
+        [XmlAttribute]
+        public int x;
+
+        [XmlAttribute]
+        public int y;
+
+        public Cell Get() => GameState.Instance.cells[x, y];
+    }
+
 
     public partial class Unit : IObjectIdLabeled, IOrderOfBattleNode, IHasObjRef
     {
@@ -101,7 +112,10 @@ namespace GameModel
         public float hardAttack;
         public float softAttack;
         public float defence;
-        public float strength; // men, vehicle or guns
+        public float strength; // men, vehicle or guns, following PZC representation style (so vehicle/guns's "men" is ignored)
+
+        public List<XY> waypoints = new();
+        public float movementProgressionKm = 0;
 
         public ObjRef oobParentRef = new(); // reference to another Unit or Side
         public List<ObjRef> oobChildrenRefs = new();
@@ -217,6 +231,13 @@ namespace GameModel
             }
 
             EventBus.Publish(stacksChanged);
+        }
+
+        public void SetWaypoints(List<Cell> cells)
+        {
+            // TODO: If first cell is identical to previous path, move progression is not reset.
+            // TODO: Reset movement progression
+            waypoints = cells.Select(c => c.ToXY()).ToList();
         }
 
         public override string ToString()

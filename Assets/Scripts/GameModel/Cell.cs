@@ -88,5 +88,31 @@ namespace GameModel
         {
             return UnitRefs;
         }
+
+        public bool IsArmyPassable() => terrain != TerrainType.Water;
+
+        public float GetMovementCoef(Cell dst)
+        {
+            var edgeFeature = GameState.Instance.GetEdgeFeature(this, dst);
+            var edgeFeatureCoef = 1f;
+            if(edgeFeature != null)
+            {
+                if(edgeFeature.primaryRoad)
+                {
+                    edgeFeatureCoef = 0.5f;
+                }
+                else if(edgeFeature.secondaryRoad)
+                {
+                    edgeFeatureCoef = 0.75f;
+                }
+                else if(edgeFeature.escarpment)
+                {
+                    edgeFeatureCoef = 100f;
+                }
+            }
+            return edgeFeatureCoef; // Assume that all land terrain is identical.
+        }
+
+        public XY ToXY() => new XY{x = x, y = y};
     }
 }

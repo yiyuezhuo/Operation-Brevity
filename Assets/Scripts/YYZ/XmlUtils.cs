@@ -52,4 +52,9 @@ namespace YYZ
             }
         }
     }
+
+    public class ListWrapper<T> // Used as List Proxy to support serialization of Dictionary and other not serializable objects 
+    {
+        public List<T> list = new();
+    }
 }

@@ -35,6 +35,8 @@ namespace GameModel
 
     public class GameState
     {
+        public DateTimeOffset time = new DateTimeOffset(1941, 5, 15, 6, 0, 0, TimeSpan.FromHours(1));
+
         Cell[,] _cells = new Cell[0, 0];
         
         [XmlIgnore]
@@ -128,19 +130,37 @@ namespace GameModel
 
         // public List<EdgeFeature> edgeFeatures = new();
         [XmlIgnore]
-        public Dictionary<(int, int, int, int), EdgeFeature> edgeFeatureMap = new();
+        public Dictionary<(int, int, int, int), EdgeFeature> edgeFeatureMap;
+        // public Dictionary<(int, int, int, int), EdgeFeature> edgeFeatureMap = new();
 
-        public List<EdgeFeature> seralizedEdgeFeatureMap
+        // public List<EdgeFeature> seralizedEdgeFeatureMap
+        // {
+        //     get
+        //     {
+        //         var features = edgeFeatureMap.Values.ToList();
+        //         features.Sort(EdgeFeature.CompareTo);
+        //         return features;
+        //     }
+        //     set
+        //     {
+        //         edgeFeatureMap = value.ToDictionary(
+        //             x => (x.x1, x.y1, x.x2, x.y2),
+        //             x => x
+        //         );
+        //     }
+        // }
+
+        public ListWrapper<EdgeFeature> seralizedEdgeFeatureMap
         {
             get
             {
                 var features = edgeFeatureMap.Values.ToList();
                 features.Sort(EdgeFeature.CompareTo);
-                return features;
+                return new(){list=features};
             }
             set
             {
-                edgeFeatureMap = value.ToDictionary(
+                edgeFeatureMap = value.list.ToDictionary(
                     x => (x.x1, x.y1, x.x2, x.y2),
                     x => x
                 );
@@ -160,6 +180,12 @@ namespace GameModel
                 return edgeFeature.Get(featureType);
             }
             return false;
+        }
+
+        public EdgeFeature GetEdgeFeature(Cell cellSrc, Cell cellDst)
+        {
+            var sdKey = (cellSrc.x, cellSrc.y, cellDst.x, cellDst.y);
+            return edgeFeatureMap.GetValueOrDefault(sdKey);
         }
 
         public void SetEdgeFeature(Cell cellSrc, Cell cellDst, EdgeFeatureType featureType, bool value)
@@ -187,26 +213,49 @@ namespace GameModel
             }
 
             // Enforce symmetry
-            if(featureType == EdgeFeatureType.PrimaryRoad || featureType == EdgeFeatureType.SecondaryRoad)
-            {
-                var dsKey = (cellDst.x, cellDst.y, cellSrc.x, cellSrc.y);
-                if(!edgeFeatureMap.TryGetValue(dsKey, out var edgeFeatureDst))
-                    edgeFeatureDst = edgeFeatureMap[dsKey] = new EdgeFeature(){ x1 = cellDst.x, y1 = cellDst.y, x2 = cellSrc.x, y2 = cellSrc.y};
+            // if(featureType == EdgeFeatureType.PrimaryRoad || featureType == EdgeFeatureType.SecondaryRoad)
+            // {
+            //     var dsKey = (cellDst.x, cellDst.y, cellSrc.x, cellSrc.y);
+            //     if(!edgeFeatureMap.TryGetValue(dsKey, out var edgeFeatureDst))
+            //         edgeFeatureDst = edgeFeatureMap[dsKey] = new EdgeFeature(){ x1 = cellDst.x, y1 = cellDst.y, x2 = cellSrc.x, y2 = cellSrc.y};
                 
-                if(featureType == EdgeFeatureType.PrimaryRoad)
-                {
-                    edgeFeatureDst.primaryRoad = value;
-                }
-                else if(featureType == EdgeFeatureType.SecondaryRoad)
-                {
-                    edgeFeatureDst.secondaryRoad = value;
-                }
+            //     if(featureType == EdgeFeatureType.PrimaryRoad)
+            //     {
+            //         edgeFeatureDst.primaryRoad = value;
+            //     }
+            //     else if(featureType == EdgeFeatureType.SecondaryRoad)
+            //     {
+            //         edgeFeatureDst.secondaryRoad = value;
+            //     }
 
-                if(edgeFeatureDst.IsDefault())
-                {
-                    edgeFeatureMap.Remove(dsKey);
-                }
+            //     if(edgeFeatureDst.IsDefault())
+            //     {
+            //         edgeFeatureMap.Remove(dsKey);
+            //     }
+            // }
+
+            var dsKey = (cellDst.x, cellDst.y, cellSrc.x, cellSrc.y);
+            if(!edgeFeatureMap.TryGetValue(dsKey, out var edgeFeatureDst))
+                edgeFeatureDst = edgeFeatureMap[dsKey] = new EdgeFeature(){ x1 = cellDst.x, y1 = cellDst.y, x2 = cellSrc.x, y2 = cellSrc.y};
+            
+            if(featureType == EdgeFeatureType.PrimaryRoad)
+            {
+                edgeFeatureDst.primaryRoad = value;
             }
+            else if(featureType == EdgeFeatureType.SecondaryRoad)
+            {
+                edgeFeatureDst.secondaryRoad = value;
+            }
+            else if(featureType == EdgeFeatureType.Escarpment)
+            {
+                edgeFeatureDst.escarpment = value;
+            }
+
+            if(edgeFeatureDst.IsDefault())
+            {
+                edgeFeatureMap.Remove(dsKey);
+            }
+
 
             // edgeFeatureChanged?.Invoke(this, EventArgs.Empty);
             EventBus.Publish(edgeFeatureChanged);
@@ -251,6 +300,11 @@ namespace GameModel
             cells = _cells;
             // cellsChanged?.Invoke(this, EventArgs.Empty);
             EventBus.Publish(cellsChanged);
+        }
+
+        public void AdvanceTime(float seconds)
+        {
+            time = time.AddSeconds(seconds);
         }
 
         static GameState _instance;
