@@ -1,6 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-direction: row; flex-shrink: 0; background-color: rgb(240, 240, 240);">
         <ui:Button text="Save" name="SaveButton"/>
+        <ui:Button text="Save (Edit)" name="SaveEditButton"/>
         <ui:Button text="Load" name="LoadButton"/>
         <ui:Button text="Map Edit" name="MapEditButton"/>
         <ui:Label text="Cell Label"/>

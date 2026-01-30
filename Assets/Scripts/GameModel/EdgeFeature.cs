@@ -71,5 +71,7 @@ namespace GameModel
             }
             return false;
         }
+
+        // public bool IsPassable() => !escarpment;
     }
 }

@@ -89,6 +89,8 @@ namespace GameModel
             return UnitRefs;
         }
 
+        public IEnumerable<Unit> IterateUnits() => UnitRefs.Select(x => x.Get() as Unit).Where(x => x != null);
+
         public bool IsArmyPassable() => terrain != TerrainType.Water;
 
         public float GetMovementCoef(Cell dst)
@@ -110,9 +112,14 @@ namespace GameModel
                     edgeFeatureCoef = 100f;
                 }
             }
-            return edgeFeatureCoef; // Assume that all land terrain is identical.
+            return edgeFeatureCoef * globalCoef; // Assume that all land terrain is identical.
         }
 
+        public static float globalCoef = 2; 
+
         public XY ToXY() => new XY{x = x, y = y};
+
+        public bool HasResistTo(Side side) => GetUnitsResistTo(side).FirstOrDefault() != null;
+        public IEnumerable<Unit> GetUnitsResistTo(Side side) => IterateUnits().Where(u => u.side != side && u.IsOperational());
     }
 }

@@ -8,12 +8,19 @@ namespace GameModel
 {
     public class DynamicCellGraphArmy : IGraphEnumerable<Cell>
     {
+        static DynamicCellGraphArmy instance = new();
+        public static DynamicCellGraphArmy Instance => instance;
+
         public IEnumerable<Cell> Neighbors(Cell pos)
         {
             foreach (var nei in pos.GetNeighbors())
             {
-                if (nei.IsArmyPassable())
+                // if (nei.IsArmyPassable())
+                //     yield return nei;
+                if (nei.IsArmyPassable() && !GameState.Instance.GetEdgeFeature(pos, nei, EdgeFeatureType.Escarpment))
+                {
                     yield return nei;
+                }
             }
         }
 

@@ -92,7 +92,8 @@ public class CounterController : MonoBehaviour
         if(unit != null)
         {
             topText.text = sizeStrMap[unit.unitSize];
-            botttomText.text = "10";
+            // botttomText.text = "10";
+            botttomText.text = $"{unit.GetPower():0}";
 
             var colorSchema = colorSchemaMap[unit.country];
             topText.color = botttomText.color = colorSchema.text;

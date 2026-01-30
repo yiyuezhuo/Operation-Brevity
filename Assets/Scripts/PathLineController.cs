@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UIElements;
 
 public class PathLineController : MonoBehaviour
 {
     public LineRenderer firstSegmentLineRenderer;
     public LineRenderer otherSegmentLineRenderer;
+    public LineRenderer boundingSegmentLineRenderer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,9 +26,13 @@ public class PathLineController : MonoBehaviour
         var show = positions.Length >= 2;
         firstSegmentLineRenderer.gameObject.SetActive(show);
         otherSegmentLineRenderer.gameObject.SetActive(show);
+        boundingSegmentLineRenderer.gameObject.SetActive(show);
 
         if (show)
         {
+            boundingSegmentLineRenderer.positionCount = positions.Length;
+            boundingSegmentLineRenderer.SetPositions(positions);
+
             var p = firstSegmentProgress;
             var progressBreak = (1 - p) * positions[0] + p * positions[1];
 

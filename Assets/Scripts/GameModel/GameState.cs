@@ -35,7 +35,17 @@ namespace GameModel
 
     public class GameState
     {
+        [XmlIgnore]
         public DateTimeOffset time = new DateTimeOffset(1941, 5, 15, 6, 0, 0, TimeSpan.FromHours(1));
+
+        public DateTime serializedTime
+        {
+            get => time.UtcDateTime;
+            // set => time = new DateTimeOffset(value, TimeSpan.FromHours(1));
+            set => time = new DateTimeOffset(value).ToOffset(TimeSpan.FromHours(1));
+        }
+
+        public bool firstLoaded = false;
 
         Cell[,] _cells = new Cell[0, 0];
         
@@ -305,6 +315,161 @@ namespace GameModel
         public void AdvanceTime(float seconds)
         {
             time = time.AddSeconds(seconds);
+
+            var deployedUnits = units.Where(unit => unit.deployState == DeployState.Deployed).ToList();
+
+            foreach(var unit in deployedUnits)
+            {
+                unit.AdvanceTimeMovement(seconds);
+            }
+
+            foreach(var unit in deployedUnits)
+            {
+                unit.AdvanceTimeRestore(seconds);
+            }
+
+            AdvanceTimeCombat(seconds);
+        }
+
+        // void AdvanceTimeRestore()
+        // {
+            
+        // }
+
+        public enum CombatType
+        {
+            Attack,
+            Defend
+        }
+
+        public class EngagementRecord
+        {
+            public CombatUnitBundle target;
+            public CombatType type;
+            // TODO: Add edge / cell derived modifier
+            // public float inflictedAssaultValue = 0;
+        }
+
+        public class CombatUnitBundle
+        {
+            public Unit unit;
+            public List<EngagementRecord> engagements = new();
+            // Precalculated attributes
+            public float hitWeight = 0;
+            public float assaultValue = 0;
+            public float inflictMenStrength = 0;
+        }
+
+        public void AdvanceTimeCombat(float seconds)
+        {
+            Dictionary<Unit, CombatUnitBundle> bundleMap = new();
+
+            // Stage 1 - Build Bundles
+            foreach(var unit in units.Where(u => u.IsOperational()))
+            {
+                bundleMap[unit] = new CombatUnitBundle()
+                {
+                    unit = unit,
+                    hitWeight = unit.GetHitWeight(),
+                    assaultValue = unit.GetAssaultValue()
+                };
+            }
+
+            // Stage 2 - Collect Attacking / Defending relationships
+            foreach(var bundle in bundleMap.Values)
+            {
+                if(bundle.unit.waypoints.Count >= 2)
+                {
+                    var nextCell = bundle.unit.waypoints[1].Get();
+                    foreach(var attackToUnit in nextCell.GetUnitsResistTo(bundle.unit.side))
+                    {
+                        var attackToUnitBundle = bundleMap[attackToUnit];
+                        bundle.engagements.Add(new()
+                        {
+                            target=attackToUnitBundle,
+                            type=CombatType.Attack
+                        });
+
+                        attackToUnitBundle.engagements.Add(new()
+                        {
+                            target=bundle,
+                            type=CombatType.Defend 
+                        });
+                    }
+                }
+            }
+
+            // Stage 3 - Distribute Assault Value
+            foreach(var bundle in bundleMap.Values)
+            {
+                if(bundle.engagements.Count >= 1)
+                {
+                    var weightSum = Math.Max(1, bundle.engagements.Sum(e => e.target.hitWeight));
+                    foreach(var engagement in bundle.engagements)
+                    {
+                        var p = engagement.target.hitWeight / weightSum;
+                        var commitAssaultValue = bundle.assaultValue * p;
+                        var combatValue = commitAssaultValue / engagement.target.unit.parameter.Defense;
+                        
+                        float lowValue, highValue;
+                        if(engagement.type == CombatType.Attack)
+                        {
+                            lowValue = defenderLowValue;
+                            highValue = defenderHighValue;
+                        }
+                        else
+                        {
+                            lowValue = attackerLowValue;
+                            highValue = attackerHighValue;
+                        }
+
+                        var assaultStrengthLoss = combatValue / 1000 * (RandomUtils.NextFloat() * (highValue - lowValue) + lowValue); // One PZC Assault loss
+                        var timeCoef = seconds / 7200 * 2; // 2 assault 1 turn => x2, 2 hours turn => /2
+                        var strengthLoss = assaultStrengthLoss * timeCoef;
+
+                        engagement.target.inflictMenStrength += strengthLoss;
+                    }
+                }
+            }
+
+            // Stage 4 - Resolve Loss
+            foreach(var bundle in bundleMap.Values)
+            {
+                var strengthLossF = bundle.inflictMenStrength / bundle.unit.parameter.category.strengthCoef;
+                var strengthLoss = RandomUtils.RandomRoundToInt(strengthLossF);
+                var readinessLoss = strengthLossF / bundle.unit.strength * 10;
+
+                bundle.unit.readiness = Math.Max(0, bundle.unit.readiness - readinessLoss);
+                bundle.unit.strength = Math.Max(0, bundle.unit.strength - strengthLoss);
+
+                if(bundle.unit.strength == 0)
+                {
+                    bundle.unit.MoveTo(null, true);
+                }
+                else if(bundle.unit.readiness < 0.25)
+                {
+                    bundle.unit.ForceRetreat();
+                }
+            }
+        }
+
+        static float attackerLowValue = 40;
+        static float attackerHighValue = 200;
+        static float defenderLowValue = 20;
+        static float defenderHighValue = 100;
+
+        // Combat Losses (per 1000 combat value):
+        //     Fire Low Value: 10	    Fire High Value: 50
+        //     Attacker Low Value: 40	    Attacker High Value: 200
+        //     Defender Low Value: 20	    Defender High Value: 100
+
+        public void ResetStrength()
+        {
+            foreach(var unit in units)
+            {
+                unit.strength = (int)Math.Round(unit.initialStrengthPercent * unit.parameter.Strength);
+                unit.readiness = unit.initialReadiness;
+            }
         }
 
         static GameState _instance;

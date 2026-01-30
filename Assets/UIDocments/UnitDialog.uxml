@@ -37,5 +37,30 @@
             </ui:Label>
             <ui:Button text="Deploy" name="DeployButton"/>
         </ui:VisualElement>
+        <ui:IntegerField label="Strength">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="strength" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:IntegerField>
+        <ui:Slider label="Readiness" high-value="1" show-input-field="true">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="readiness" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:Slider>
+        <ui:Slider label="Initial Strength Percent" high-value="1" show-input-field="true">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="initialStrengthPercent" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:Slider>
+        <ui:Slider label="Initial Readiness" high-value="1" show-input-field="true">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="initialReadiness" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:Slider>
+        <ui:Toggle label="Retreating">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="retreating" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:Toggle>
     </ui:VisualElement>
 </ui:UXML>

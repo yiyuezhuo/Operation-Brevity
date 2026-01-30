@@ -17,6 +17,8 @@ public class Overlay : SingletonDocument<Overlay> // So don't specify binding fo
 
         root.dataSource = GameManager.Instance;
 
+        Utils.BindItemsSourceRecursive(root);
+
         var mapEditButton = root.Q<Button>("MapEditButton");
         mapEditButton.clicked += () =>
         {
@@ -30,9 +32,16 @@ public class Overlay : SingletonDocument<Overlay> // So don't specify binding fo
         var saveButton = root.Q<Button>("SaveButton");
         saveButton.clicked += () =>
         {
-            var fullState = GameManager.Instance.CaptureFullState();
-            var xml = XmlUtils.ToXML(fullState);
-            IOManager.Instance.SaveTextFile(xml, "scenario", "xml");
+            // var fullState = GameManager.Instance.CaptureFullState();
+            // var xml = XmlUtils.ToXML(fullState);
+            // IOManager.Instance.SaveTextFile(xml, "scenario", "xml");
+            DoSave(false);
+        };
+
+        var saveEditButton = root.Q<Button>("SaveEditButton");
+        saveEditButton.clicked += () =>
+        {
+            DoSave(true);
         };
 
         var loadButton = root.Q<Button>("LoadButton");
@@ -66,6 +75,26 @@ public class Overlay : SingletonDocument<Overlay> // So don't specify binding fo
         };
 
         stackContainer = root.Q<VisualElement>("StackContainer");
+
+        var detailButton = root.Q<Button>("DetailButton");
+        detailButton.clicked += () =>
+        {
+            if(Utils.TryResolveCurrentValueForBinding<Unit>(detailButton, out var unit))
+            {
+                DialogRoot.Instance.PopupUnitDialog(unit);
+            }
+        };
+    }
+
+    void DoSave(bool editSave)
+    {
+        var fullState = GameManager.Instance.CaptureFullState();
+        if(editSave)
+        {
+            fullState.gameState.firstLoaded = false;
+        }
+        var xml = XmlUtils.ToXML(fullState);
+        IOManager.Instance.SaveTextFile(xml, "scenario", "xml");
     }
 
     public void RefreshStackContainer(List<Unit> stack)

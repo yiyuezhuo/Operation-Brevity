@@ -15,11 +15,11 @@ namespace GameModel
         public UnitType UnitType { get; set; }
         public Country Country { get; set; }
 
-        public int Hard { get; set; }
-        public int Soft { get; set; }
-        public int Assault { get; set; }
-        public int Defense { get; set; }
-        public int Speed { get; set; }
+        public float Hard { get; set; }
+        public float Soft { get; set; }
+        public float Assault { get; set; }
+        public float Defense { get; set; }
+        public float Speed { get; set; }
         public int Strength { get; set; }
 
         public UnitQuality Quality { get; set; }
@@ -48,6 +48,82 @@ namespace GameModel
             using var csv = new CsvReader(reader, config);
 
             return csv.GetRecords<UnitParameter>().ToList();
+        }
+
+        public class UnitTypeCategory
+        {
+            public string name;
+            public float strengthCoef; // 1 / 10 / 10
+            public string strengthWordSingular; // man, gun, vehicle
+            public string strengthWordPlural; // men / guns / vehicles
+
+            public override string ToString()
+            {
+                return $"UnitTypeCategory({name}/{strengthCoef}/{strengthWordSingular}/{strengthWordPlural})";
+            }
+        }
+
+        public static UnitTypeCategory personelCategory = new UnitTypeCategory()
+        {
+            name = "Personel",
+            strengthCoef = 1.0f,
+            strengthWordSingular = "man",
+            strengthWordPlural = "men"
+        };
+
+        public static UnitTypeCategory gunCategory = new UnitTypeCategory()
+        {
+            name = "Gun",
+            strengthCoef = 10.0f,
+            strengthWordSingular = "gun",
+            strengthWordPlural = "guns"
+        };
+
+        public static UnitTypeCategory vehicleCategory = new UnitTypeCategory()
+        {
+            name = "Vehicle",
+            strengthCoef = 10.0f,
+            strengthWordSingular = "vehicle",
+            strengthWordPlural = "vehicles"
+        };
+
+        public static Dictionary<UnitType, UnitTypeCategory> unitTypeCategoryMap = new Dictionary<UnitType, UnitTypeCategory>()
+        {
+            { UnitType.Infantry, personelCategory },
+            { UnitType.Tank, gunCategory },
+            { UnitType.Artillery, gunCategory },
+            { UnitType.AntiTank, gunCategory },
+            { UnitType.AntiAir, gunCategory },
+            { UnitType.Cavalry, personelCategory },
+            { UnitType.HeadQuarters, personelCategory },
+        };
+
+        public float GetPower()
+        {
+            // var typeCoef = UnitType switch
+            // {
+            //     UnitType.Infantry => 1.0f,
+            //     UnitType.HeadQuarters => 1.0f,
+            //     _ => 10f
+            // };
+            var typeCoef = category.strengthCoef;
+            return Strength * typeCoef * Assault;
+        }
+
+        public string GetStrengthWord(int strength) => strength >= 2 ? unitTypeCategoryMap[UnitType].strengthWordPlural : unitTypeCategoryMap[UnitType].strengthWordSingular;
+
+        UnitTypeCategory categoryCached;
+
+        public UnitTypeCategory category
+        {
+            get
+            {
+                if (categoryCached == null)
+                {
+                    categoryCached = unitTypeCategoryMap[UnitType];
+                }
+                return categoryCached;
+            }
         }
     }
 

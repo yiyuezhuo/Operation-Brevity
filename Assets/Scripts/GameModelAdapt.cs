@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unity.Properties;
 using UnityEngine;
@@ -53,7 +54,8 @@ namespace GameModel
         public string topText => CounterController.sizeStrMap[unitSize];
 
         [CreateProperty]
-        public string bottomText => "10";
+         public string bottomText => $"{GetPower():0}";
+       //  public string bottomText => "10";
 
         [CreateProperty]
         public Color outerColorRectColor => CounterController.colorSchemaMap[country].outerRect;
@@ -69,6 +71,19 @@ namespace GameModel
 
         [CreateProperty]
         public Texture2D iconTexture => StreamingAssetManagerEnumHelper<UnitType>.Instance.GetTexture2D(unitType);
+
+        [CreateProperty]
+        public float strengthProgress => (float)strength / parameter.Strength;
+
+        [CreateProperty]
+        public string strengthProgressDesc => $"{strength}/{parameter.Strength} {GetStrengthWord()}";
+
+        [CreateProperty]
+        public string readinessProgressDesc => $"{readiness:P}";
+
+        [XmlIgnore]
+        [CreateProperty]
+        public List<IOrderOfBattleNode> parentsAndMeProp => parentsAndMe;
      }
 
     public partial class Side

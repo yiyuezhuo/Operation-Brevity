@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-grow: 1; width: 200px; background-color: rgb(240, 240, 240);">
-        <ui:VisualElement>
+        <ui:VisualElement style="border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0);">
             <ui:Label text="Time Label">
                 <Bindings>
                     <ui:DataBinding property="text" data-source-path="currentGameState.time" binding-mode="ToTarget"/>
@@ -32,14 +32,25 @@
                 <ui:DataBinding property="style.display" data-source-path="selectingCellValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
             </Bindings>
         </ui:VisualElement>
-        <ui:VisualElement name="StackContainer" style="flex-direction: row; flex-wrap: wrap;"/>
+        <ui:VisualElement name="StackContainer" style="flex-direction: row; flex-wrap: wrap; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0);"/>
         <ui:VisualElement>
             <ui:VisualElement data-source-path="selectingUnit" style="flex-grow: 1;">
-                <ui:Label text="Unit&apos;s Name" style="white-space: normal;">
+                <ui:ListView binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocments/OOBLabel.uxml?fileID=9197481963319205126&amp;guid=22ea2c6148b5aca4d99aa10fe192a567&amp;type=3#OOBLabel" data-source-path="parentsAndMeProp" virtualization-method="DynamicHeight"/>
+                <ui:Label text="Strength:"/>
+                <ui:ProgressBar value="0.5" title="Strength" high-value="1">
                     <Bindings>
-                        <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
+                        <ui:DataBinding property="value" data-source-path="strengthProgress" binding-mode="ToTarget"/>
+                        <ui:DataBinding property="title" data-source-path="strengthProgressDesc" binding-mode="ToTarget"/>
                     </Bindings>
-                </ui:Label>
+                </ui:ProgressBar>
+                <ui:Label text="Readiness:"/>
+                <ui:ProgressBar value="0.5" title="Readiness" high-value="1">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="readiness" binding-mode="ToTarget"/>
+                        <ui:DataBinding property="title" data-source-path="readinessProgressDesc" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:ProgressBar>
+                <ui:Button text="Detail" name="DetailButton"/>
             </ui:VisualElement>
             <Bindings>
                 <ui:DataBinding property="style.display" data-source-path="selectingUnitValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>

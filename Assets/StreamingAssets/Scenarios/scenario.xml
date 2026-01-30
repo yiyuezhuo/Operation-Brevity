@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-16"?>
 <FullState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <gameState>
-  <time />
+  <firstLoaded>false</firstLoaded>
   <sides>
    <Side>
     <name>Allied</name>
@@ -34,10 +34,10 @@
     <deployState>Deployed</deployState>
     <x>1</x>
     <y>24</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>90</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="f629e753-a334-4bd3-b8bd-7dc3a4ea783a" />
@@ -48,6 +48,7 @@
      <ObjRef objectId="baf97213-80ad-4051-8098-c5f1bd80e640" />
      <ObjRef objectId="269bca9b-911b-4dee-9107-b160acf756df" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>c0f1b296-a43a-4740-825f-9aee4bb9eef5</objectId>
     <country>Britain</country>
@@ -59,10 +60,10 @@
     <deployState>Deployed</deployState>
     <x>1</x>
     <y>23</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>13</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
@@ -70,6 +71,7 @@
      <ObjRef objectId="14c67f14-523a-477d-bdb2-8b44961487b2" />
      <ObjRef objectId="12158a0f-d91d-4d33-9ef0-c883862a71dc" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>e21f8e08-b714-46ad-975a-f2a05e8d5210</objectId>
     <country>Britain</country>
@@ -81,14 +83,15 @@
     <deployState>Deployed</deployState>
     <x>2</x>
     <y>22</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>13</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e21f8e08-b714-46ad-975a-f2a05e8d5210" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>14c67f14-523a-477d-bdb2-8b44961487b2</objectId>
     <country>Britain</country>
@@ -100,14 +103,15 @@
     <deployState>Deployed</deployState>
     <x>2</x>
     <y>23</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>13</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e21f8e08-b714-46ad-975a-f2a05e8d5210" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>12158a0f-d91d-4d33-9ef0-c883862a71dc</objectId>
     <country>Britain</country>
@@ -119,10 +123,10 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>22</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>15</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
@@ -131,6 +135,7 @@
      <ObjRef objectId="3e00c5a3-4332-4746-ba2a-0a1194c4f03c" />
      <ObjRef objectId="f0892f11-55f1-4bcd-976f-157c5bddc365" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>1d3f30e7-2d40-4e16-acb9-1ee418572814</objectId>
     <country>Britain</country>
@@ -142,14 +147,15 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>20</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>15</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="1d3f30e7-2d40-4e16-acb9-1ee418572814" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>eb5e57ee-6a84-4cd5-9301-d0b0d6ea6a9f</objectId>
     <country>Britain</country>
@@ -161,14 +167,15 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>21</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="1d3f30e7-2d40-4e16-acb9-1ee418572814" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>3e00c5a3-4332-4746-ba2a-0a1194c4f03c</objectId>
     <country>Britain</country>
@@ -180,14 +187,15 @@
     <deployState>Deployed</deployState>
     <x>4</x>
     <y>22</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="1d3f30e7-2d40-4e16-acb9-1ee418572814" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>f0892f11-55f1-4bcd-976f-157c5bddc365</objectId>
     <country>Britain</country>
@@ -199,10 +207,10 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>24</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>15</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
@@ -212,6 +220,7 @@
      <ObjRef objectId="cf3a806c-6014-44c3-b804-9888a24b2405" />
      <ObjRef objectId="9e000112-e683-4abe-98a2-235d4af5d7c1" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>2f324f3c-21f0-4b33-a9ce-ec4b162f6b94</objectId>
     <country>Britain</country>
@@ -223,14 +232,15 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>24</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>15</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2f324f3c-21f0-4b33-a9ce-ec4b162f6b94" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>792a26a4-ccf6-4a5d-89dc-340544a744b8</objectId>
     <country>Britain</country>
@@ -242,14 +252,15 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>24</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2f324f3c-21f0-4b33-a9ce-ec4b162f6b94" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>8b76d4ca-6573-451c-9f9b-31531c4b06d7</objectId>
     <country>Britain</country>
@@ -261,14 +272,15 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>24</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2f324f3c-21f0-4b33-a9ce-ec4b162f6b94" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>cf3a806c-6014-44c3-b804-9888a24b2405</objectId>
     <country>Britain</country>
@@ -280,14 +292,15 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>24</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2f324f3c-21f0-4b33-a9ce-ec4b162f6b94" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>9e000112-e683-4abe-98a2-235d4af5d7c1</objectId>
     <country>Britain</country>
@@ -299,14 +312,15 @@
     <deployState>Deployed</deployState>
     <x>1</x>
     <y>21</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>baf97213-80ad-4051-8098-c5f1bd80e640</objectId>
     <country>Britain</country>
@@ -318,14 +332,15 @@
     <deployState>Deployed</deployState>
     <x>1</x>
     <y>22</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>9</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="c0f1b296-a43a-4740-825f-9aee4bb9eef5" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>269bca9b-911b-4dee-9107-b160acf756df</objectId>
     <country>Britain</country>
@@ -337,10 +352,10 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>29</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>90</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="f629e753-a334-4bd3-b8bd-7dc3a4ea783a" />
@@ -353,6 +368,7 @@
      <ObjRef objectId="c80bdf90-04fe-4945-8272-823cb16bf782" />
      <ObjRef objectId="2b557ad8-d76f-4666-ae28-0a08dd3c66f9" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>6d3d106c-015d-4b11-92bc-6dadf80d9a9d</objectId>
     <country>Britain</country>
@@ -364,10 +380,10 @@
     <deployState>Deployed</deployState>
     <x>4</x>
     <y>29</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
@@ -377,6 +393,7 @@
      <ObjRef objectId="36643565-fe8b-4acf-9e0d-7220e5ffefa5" />
      <ObjRef objectId="19aefd81-2927-4f7f-bc05-780461a8f050" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>22a870b8-e3a4-474a-9417-0661d678914e</objectId>
     <country>Britain</country>
@@ -388,14 +405,15 @@
     <deployState>Deployed</deployState>
     <x>5</x>
     <y>28</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="22a870b8-e3a4-474a-9417-0661d678914e" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>82c7e92b-3db3-485c-95ad-1d9d6d144f36</objectId>
     <country>Britain</country>
@@ -407,14 +425,15 @@
     <deployState>Deployed</deployState>
     <x>5</x>
     <y>28</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="22a870b8-e3a4-474a-9417-0661d678914e" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>37034fe5-9e75-4982-b969-5cb34e49f919</objectId>
     <country>Britain</country>
@@ -426,14 +445,15 @@
     <deployState>Deployed</deployState>
     <x>5</x>
     <y>29</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="22a870b8-e3a4-474a-9417-0661d678914e" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>36643565-fe8b-4acf-9e0d-7220e5ffefa5</objectId>
     <country>Britain</country>
@@ -445,14 +465,15 @@
     <deployState>Deployed</deployState>
     <x>4</x>
     <y>29</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="22a870b8-e3a4-474a-9417-0661d678914e" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>19aefd81-2927-4f7f-bc05-780461a8f050</objectId>
     <country>Britain</country>
@@ -464,14 +485,15 @@
     <deployState>Deployed</deployState>
     <x>4</x>
     <y>27</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>13</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>a0ef54b0-782d-4ab0-a636-5f8c8d018fc3</objectId>
     <country>Britain</country>
@@ -483,14 +505,15 @@
     <deployState>Deployed</deployState>
     <x>7</x>
     <y>26</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>15</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>82a46950-bc5c-4e33-9326-2f0a287984ec</objectId>
     <country>Britain</country>
@@ -502,14 +525,15 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>27</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>9</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>8cb285a0-e217-4eef-82bc-58079eca0ef7</objectId>
     <country>Britain</country>
@@ -521,14 +545,15 @@
     <deployState>Deployed</deployState>
     <x>4</x>
     <y>28</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>9</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>d04c90e6-a554-42ff-b56b-51c91b3ce878</objectId>
     <country>Britain</country>
@@ -540,14 +565,15 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>28</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>c80bdf90-04fe-4945-8272-823cb16bf782</objectId>
     <country>Britain</country>
@@ -559,14 +585,15 @@
     <deployState>Deployed</deployState>
     <x>3</x>
     <y>28</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6d3d106c-015d-4b11-92bc-6dadf80d9a9d" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>2b557ad8-d76f-4666-ae28-0a08dd3c66f9</objectId>
     <country>Britain</country>
@@ -578,10 +605,10 @@
     <deployState>Deployed</deployState>
     <x>5</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>90</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints>
      <XY x="9" y="34" />
     </waypoints>
@@ -597,6 +624,7 @@
      <ObjRef objectId="1c22fb98-d76d-4575-84c9-c2a3861a74ca" />
      <ObjRef objectId="1e76a425-ec55-40cb-82f8-da6011478306" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>2428a31a-d54b-4901-9cd4-6722326fcca1</objectId>
     <country>Britain</country>
@@ -608,10 +636,10 @@
     <deployState>Deployed</deployState>
     <x>7</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>13</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
@@ -619,6 +647,7 @@
      <ObjRef objectId="909ed706-6b6b-4c4d-a147-744a431d531d" />
      <ObjRef objectId="35f8a89e-c1ec-4c1e-9356-45e00b4571fa" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>e79e031e-77ac-4c16-8c2e-02728daf6af2</objectId>
     <country>Britain</country>
@@ -630,14 +659,15 @@
     <deployState>Deployed</deployState>
     <x>7</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>13</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e79e031e-77ac-4c16-8c2e-02728daf6af2" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>909ed706-6b6b-4c4d-a147-744a431d531d</objectId>
     <country>Britain</country>
@@ -649,14 +679,17 @@
     <deployState>Deployed</deployState>
     <x>7</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
-    <waypoints />
+    <strength>13</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
+    <waypoints>
+     <XY x="7" y="32" />
+    </waypoints>
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e79e031e-77ac-4c16-8c2e-02728daf6af2" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>35f8a89e-c1ec-4c1e-9356-45e00b4571fa</objectId>
     <country>Britain</country>
@@ -668,10 +701,10 @@
     <deployState>Deployed</deployState>
     <x>6</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
@@ -681,6 +714,7 @@
      <ObjRef objectId="125e171f-f9f5-4bac-aad8-b59286942970" />
      <ObjRef objectId="58b3b4d5-a3c6-4148-bbac-877fc03102a7" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>092d17fa-38fa-4265-9081-761c0c5c7a56</objectId>
     <country>Britain</country>
@@ -692,14 +726,15 @@
     <deployState>Deployed</deployState>
     <x>6</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="092d17fa-38fa-4265-9081-761c0c5c7a56" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>dc94da6a-a443-46cc-bfe8-0eb76e165d5e</objectId>
     <country>Britain</country>
@@ -711,14 +746,15 @@
     <deployState>Deployed</deployState>
     <x>6</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="092d17fa-38fa-4265-9081-761c0c5c7a56" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>a019fcff-53e3-4df6-ba2d-4ba40af054b1</objectId>
     <country>Britain</country>
@@ -730,14 +766,15 @@
     <deployState>Deployed</deployState>
     <x>6</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="092d17fa-38fa-4265-9081-761c0c5c7a56" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>125e171f-f9f5-4bac-aad8-b59286942970</objectId>
     <country>Britain</country>
@@ -749,14 +786,15 @@
     <deployState>Deployed</deployState>
     <x>6</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="092d17fa-38fa-4265-9081-761c0c5c7a56" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>58b3b4d5-a3c6-4148-bbac-877fc03102a7</objectId>
     <country>Britain</country>
@@ -768,10 +806,10 @@
     <deployState>Deployed</deployState>
     <x>6</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
@@ -781,6 +819,7 @@
      <ObjRef objectId="4f2fa651-1b6c-47a6-a590-73d9b8bb72b5" />
      <ObjRef objectId="34abc314-b4c7-4b14-87ba-4bf12e903cc0" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>57be53c1-37dd-4c19-9217-dc888ab5613f</objectId>
     <country>Britain</country>
@@ -792,14 +831,15 @@
     <deployState>Deployed</deployState>
     <x>6</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="57be53c1-37dd-4c19-9217-dc888ab5613f" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>1611d3b6-438b-4962-a393-c970ead96c7f</objectId>
     <country>Britain</country>
@@ -811,14 +851,15 @@
     <deployState>Deployed</deployState>
     <x>6</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="57be53c1-37dd-4c19-9217-dc888ab5613f" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>b52de742-002c-4676-951e-1638b4d5b751</objectId>
     <country>Britain</country>
@@ -830,14 +871,15 @@
     <deployState>Deployed</deployState>
     <x>6</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="57be53c1-37dd-4c19-9217-dc888ab5613f" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>4f2fa651-1b6c-47a6-a590-73d9b8bb72b5</objectId>
     <country>Britain</country>
@@ -849,14 +891,15 @@
     <deployState>Deployed</deployState>
     <x>6</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="57be53c1-37dd-4c19-9217-dc888ab5613f" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>34abc314-b4c7-4b14-87ba-4bf12e903cc0</objectId>
     <country>Britain</country>
@@ -868,10 +911,10 @@
     <deployState>Deployed</deployState>
     <x>5</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
@@ -881,6 +924,7 @@
      <ObjRef objectId="8d0ad15f-bc62-4d47-b197-ff4930c199f2" />
      <ObjRef objectId="7858d900-06b1-4aa6-bec6-3aa360e3cd41" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>0236e1b9-64d6-42e9-afaa-a81c1febe6c4</objectId>
     <country>Britain</country>
@@ -892,14 +936,15 @@
     <deployState>Deployed</deployState>
     <x>5</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="0236e1b9-64d6-42e9-afaa-a81c1febe6c4" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>d9f0c587-e937-4577-85ea-8dff9aa60773</objectId>
     <country>Britain</country>
@@ -911,14 +956,15 @@
     <deployState>Deployed</deployState>
     <x>5</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="0236e1b9-64d6-42e9-afaa-a81c1febe6c4" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>3bb9d156-8abc-4a6c-a39d-0f8b59fe67b1</objectId>
     <country>Britain</country>
@@ -930,14 +976,15 @@
     <deployState>Deployed</deployState>
     <x>5</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="0236e1b9-64d6-42e9-afaa-a81c1febe6c4" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>8d0ad15f-bc62-4d47-b197-ff4930c199f2</objectId>
     <country>Britain</country>
@@ -949,14 +996,15 @@
     <deployState>Deployed</deployState>
     <x>5</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="0236e1b9-64d6-42e9-afaa-a81c1febe6c4" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>7858d900-06b1-4aa6-bec6-3aa360e3cd41</objectId>
     <country>Britain</country>
@@ -968,14 +1016,15 @@
     <deployState>Deployed</deployState>
     <x>4</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>75492d31-c65c-4fd3-8cdf-00035e92e06f</objectId>
     <country>Britain</country>
@@ -987,14 +1036,15 @@
     <deployState>Deployed</deployState>
     <x>4</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>2fe8c6a5-b4fd-4e90-9d6a-426f3bb40a2c</objectId>
     <country>Britain</country>
@@ -1006,14 +1056,15 @@
     <deployState>Deployed</deployState>
     <x>4</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>9</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>1c22fb98-d76d-4575-84c9-c2a3861a74ca</objectId>
     <country>Britain</country>
@@ -1025,14 +1076,15 @@
     <deployState>Deployed</deployState>
     <x>4</x>
     <y>31</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>9</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2428a31a-d54b-4901-9cd4-6722326fcca1" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>1e76a425-ec55-40cb-82f8-da6011478306</objectId>
     <country>Britain</country>
@@ -1044,10 +1096,10 @@
     <deployState>Deployed</deployState>
     <x>13</x>
     <y>33</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>90</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="f629e753-a334-4bd3-b8bd-7dc3a4ea783a" />
@@ -1057,6 +1109,7 @@
      <ObjRef objectId="f414d171-8202-4b29-8ed8-91580b23b3eb" />
      <ObjRef objectId="7f333b95-e2f8-4969-8bc6-85543208ed95" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>9d779b44-ed11-434c-8dff-01920418280e</objectId>
     <country>Britain</country>
@@ -1068,10 +1121,10 @@
     <deployState>Deployed</deployState>
     <x>14</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="9d779b44-ed11-434c-8dff-01920418280e" />
@@ -1081,6 +1134,7 @@
      <ObjRef objectId="5375382b-1513-41bb-9762-4c39237c0c71" />
      <ObjRef objectId="7c2097fd-e3ab-45e7-90e8-adcdb5349060" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0.2</stackPriority>
     <objectId>ea9c680f-c146-466d-8b5a-d356cb033f3c</objectId>
     <country>Britain</country>
@@ -1092,14 +1146,15 @@
     <deployState>Deployed</deployState>
     <x>14</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="ea9c680f-c146-466d-8b5a-d356cb033f3c" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.4</stackPriority>
     <objectId>8a2a548f-e4e4-4526-a416-7403b1bc0724</objectId>
     <country>Britain</country>
@@ -1111,14 +1166,15 @@
     <deployState>Deployed</deployState>
     <x>14</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="ea9c680f-c146-466d-8b5a-d356cb033f3c" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.6</stackPriority>
     <objectId>ecf34c91-2575-47bc-a0c9-a3c239f63b73</objectId>
     <country>Britain</country>
@@ -1130,24 +1186,17 @@
     <deployState>Deployed</deployState>
     <x>14</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>124</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints>
      <XY x="14" y="32" />
-     <XY x="13" y="33" />
-     <XY x="13" y="34" />
-     <XY x="12" y="34" />
-     <XY x="11" y="34" />
-     <XY x="10" y="34" />
-     <XY x="9" y="34" />
-     <XY x="8" y="33" />
-     <XY x="7" y="33" />
     </waypoints>
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="ea9c680f-c146-466d-8b5a-d356cb033f3c" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.8</stackPriority>
     <objectId>5375382b-1513-41bb-9762-4c39237c0c71</objectId>
     <country>Britain</country>
@@ -1159,14 +1208,15 @@
     <deployState>Deployed</deployState>
     <x>14</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="ea9c680f-c146-466d-8b5a-d356cb033f3c" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>7c2097fd-e3ab-45e7-90e8-adcdb5349060</objectId>
     <country>Britain</country>
@@ -1178,15 +1228,16 @@
     <deployState>Deployed</deployState>
     <x>13</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>9</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="9d779b44-ed11-434c-8dff-01920418280e" />
     <oobChildrenRefs />
-    <stackPriority>0</stackPriority>
+    <retreating>false</retreating>
+    <stackPriority>0.333333343</stackPriority>
     <objectId>c28c9d89-9a47-4ec5-955c-629eae684ff2</objectId>
     <country>Britain</country>
     <unitSize>Company</unitSize>
@@ -1197,15 +1248,16 @@
     <deployState>Deployed</deployState>
     <x>13</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="9d779b44-ed11-434c-8dff-01920418280e" />
     <oobChildrenRefs />
-    <stackPriority>0</stackPriority>
+    <retreating>false</retreating>
+    <stackPriority>0.6666667</stackPriority>
     <objectId>f414d171-8202-4b29-8ed8-91580b23b3eb</objectId>
     <country>Britain</country>
     <unitSize>Company</unitSize>
@@ -1216,14 +1268,15 @@
     <deployState>Deployed</deployState>
     <x>13</x>
     <y>32</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="9d779b44-ed11-434c-8dff-01920418280e" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>7f333b95-e2f8-4969-8bc6-85543208ed95</objectId>
     <country>Britain</country>
@@ -1235,10 +1288,10 @@
     <deployState>Deployed</deployState>
     <x>34</x>
     <y>17</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>90</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="06d15115-ed12-49e1-bc9f-87efe9700b87" />
@@ -1248,6 +1301,7 @@
      <ObjRef objectId="4a70afa4-c90a-447f-b5ee-6a02420b6c01" />
      <ObjRef objectId="0449cebc-12f7-4cc8-a138-7efc2594ebab" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>4257b958-716d-4827-9e31-057c921be8f3</objectId>
     <country>Germany</country>
@@ -1259,10 +1313,10 @@
     <deployState>Deployed</deployState>
     <x>34</x>
     <y>16</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>11</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="4257b958-716d-4827-9e31-057c921be8f3" />
@@ -1271,6 +1325,7 @@
      <ObjRef objectId="36b9ffb4-b485-4db3-8936-1b1f98dc3d1c" />
      <ObjRef objectId="e9fd4d75-9614-4196-ac7b-5bd2176c32cd" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0.25</stackPriority>
     <objectId>2c185134-45f1-477f-af64-4ae7c2113f76</objectId>
     <country>Germany</country>
@@ -1282,10 +1337,10 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>197</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="4257b958-716d-4827-9e31-057c921be8f3" />
@@ -1294,6 +1349,7 @@
      <ObjRef objectId="f3bd69f4-ef55-4129-a2b6-bc4d70519c17" />
      <ObjRef objectId="44612742-52a6-4d83-8f8e-8d0e9d39f266" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>5e022014-fa6c-453a-a8c3-3aa674082c8b</objectId>
     <country>Germany</country>
@@ -1305,10 +1361,10 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="4257b958-716d-4827-9e31-057c921be8f3" />
@@ -1318,6 +1374,7 @@
      <ObjRef objectId="43d162a8-252f-4bd2-8859-6b9d245929ac" />
      <ObjRef objectId="7626a6e9-cd9f-456c-87c6-f55235ffaa49" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>4a70afa4-c90a-447f-b5ee-6a02420b6c01</objectId>
     <country>Britain</country>
@@ -1329,14 +1386,15 @@
     <deployState>Deployed</deployState>
     <x>35</x>
     <y>16</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>6</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="4257b958-716d-4827-9e31-057c921be8f3" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>0449cebc-12f7-4cc8-a138-7efc2594ebab</objectId>
     <country>Germany</country>
@@ -1348,14 +1406,15 @@
     <deployState>Deployed</deployState>
     <x>34</x>
     <y>16</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>11</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2c185134-45f1-477f-af64-4ae7c2113f76" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.5</stackPriority>
     <objectId>3c1777bd-b005-4f4c-a3d2-9307d5880c10</objectId>
     <country>Germany</country>
@@ -1367,14 +1426,15 @@
     <deployState>Deployed</deployState>
     <x>34</x>
     <y>16</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>11</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2c185134-45f1-477f-af64-4ae7c2113f76" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.75</stackPriority>
     <objectId>36b9ffb4-b485-4db3-8936-1b1f98dc3d1c</objectId>
     <country>Germany</country>
@@ -1386,14 +1446,15 @@
     <deployState>Deployed</deployState>
     <x>34</x>
     <y>16</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>11</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="2c185134-45f1-477f-af64-4ae7c2113f76" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>e9fd4d75-9614-4196-ac7b-5bd2176c32cd</objectId>
     <country>Germany</country>
@@ -1405,14 +1466,15 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>11</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="5e022014-fa6c-453a-a8c3-3aa674082c8b" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>887f0154-1cee-4ad3-94a2-58bb7c457888</objectId>
     <country>Germany</country>
@@ -1424,14 +1486,15 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>11</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="5e022014-fa6c-453a-a8c3-3aa674082c8b" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>f3bd69f4-ef55-4129-a2b6-bc4d70519c17</objectId>
     <country>Germany</country>
@@ -1443,14 +1506,15 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>11</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="5e022014-fa6c-453a-a8c3-3aa674082c8b" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>44612742-52a6-4d83-8f8e-8d0e9d39f266</objectId>
     <country>Germany</country>
@@ -1462,14 +1526,15 @@
     <deployState>Deployed</deployState>
     <x>33</x>
     <y>17</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="4a70afa4-c90a-447f-b5ee-6a02420b6c01" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.5</stackPriority>
     <objectId>254abbef-15e4-4456-aa4e-3e80f843fba6</objectId>
     <country>Germany</country>
@@ -1481,14 +1546,15 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="4a70afa4-c90a-447f-b5ee-6a02420b6c01" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>b308ae09-f431-4df9-aaeb-a7f993113a26</objectId>
     <country>Germany</country>
@@ -1500,14 +1566,15 @@
     <deployState>Deployed</deployState>
     <x>33</x>
     <y>17</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="4a70afa4-c90a-447f-b5ee-6a02420b6c01" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>43d162a8-252f-4bd2-8859-6b9d245929ac</objectId>
     <country>Germany</country>
@@ -1519,14 +1586,15 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="4a70afa4-c90a-447f-b5ee-6a02420b6c01" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>7626a6e9-cd9f-456c-87c6-f55235ffaa49</objectId>
     <country>Germany</country>
@@ -1538,10 +1606,10 @@
     <deployState>Deployed</deployState>
     <x>23</x>
     <y>15</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>197</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="06d15115-ed12-49e1-bc9f-87efe9700b87" />
@@ -1552,6 +1620,7 @@
      <ObjRef objectId="3e3cefc9-9054-40f4-be4b-194832ac8b17" />
      <ObjRef objectId="7a5db341-d657-4111-8aa3-e5e05a2281b2" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0.333333343</stackPriority>
     <objectId>e3d3344a-40e6-43ab-86a6-9b8971e5b4b9</objectId>
     <country>Germany</country>
@@ -1563,14 +1632,15 @@
     <deployState>Deployed</deployState>
     <x>15</x>
     <y>15</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>197</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e3d3344a-40e6-43ab-86a6-9b8971e5b4b9" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>e1de8ca3-87fd-44ed-bc6a-f4366da3c049</objectId>
     <country>Germany</country>
@@ -1582,14 +1652,15 @@
     <deployState>Deployed</deployState>
     <x>15</x>
     <y>25</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>197</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e3d3344a-40e6-43ab-86a6-9b8971e5b4b9" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>a6ed6cc7-09fd-4d17-8fee-9d60929576d9</objectId>
     <country>Germany</country>
@@ -1601,14 +1672,15 @@
     <deployState>Deployed</deployState>
     <x>21</x>
     <y>8</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>197</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e3d3344a-40e6-43ab-86a6-9b8971e5b4b9" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>b3ba573a-670c-451b-a044-05af541e870a</objectId>
     <country>Germany</country>
@@ -1620,14 +1692,15 @@
     <deployState>Deployed</deployState>
     <x>23</x>
     <y>15</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>6</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e3d3344a-40e6-43ab-86a6-9b8971e5b4b9" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.6666667</stackPriority>
     <objectId>3e3cefc9-9054-40f4-be4b-194832ac8b17</objectId>
     <country>Germany</country>
@@ -1639,14 +1712,15 @@
     <deployState>Deployed</deployState>
     <x>15</x>
     <y>25</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>9</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e3d3344a-40e6-43ab-86a6-9b8971e5b4b9" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>7a5db341-d657-4111-8aa3-e5e05a2281b2</objectId>
     <country>Germany</country>
@@ -1658,14 +1732,15 @@
     <deployState>Deployed</deployState>
     <x>23</x>
     <y>15</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>4</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="06d15115-ed12-49e1-bc9f-87efe9700b87" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>19dd77b9-c713-4a8e-9d3a-4f4091c49f6e</objectId>
     <country>Italy</country>
@@ -1677,10 +1752,10 @@
     <deployState>Deployed</deployState>
     <x>32</x>
     <y>17</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>24</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="06d15115-ed12-49e1-bc9f-87efe9700b87" />
@@ -1689,6 +1764,7 @@
      <ObjRef objectId="ab3d569e-fcf7-4b1e-91c3-4ca35d5b7b21" />
      <ObjRef objectId="eeee038c-a998-4501-be2e-dd174bebd78f" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0.25</stackPriority>
     <objectId>7a25bd1a-52c1-4ae1-8ff6-cb15d790e536</objectId>
     <country>Germany</country>
@@ -1700,14 +1776,15 @@
     <deployState>Deployed</deployState>
     <x>32</x>
     <y>17</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>24</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="7a25bd1a-52c1-4ae1-8ff6-cb15d790e536" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.5</stackPriority>
     <objectId>ef2e5c2e-40cb-47bc-be52-03ee397e9870</objectId>
     <country>Germany</country>
@@ -1719,14 +1796,15 @@
     <deployState>Deployed</deployState>
     <x>32</x>
     <y>17</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>24</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="7a25bd1a-52c1-4ae1-8ff6-cb15d790e536" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.75</stackPriority>
     <objectId>ab3d569e-fcf7-4b1e-91c3-4ca35d5b7b21</objectId>
     <country>Germany</country>
@@ -1738,14 +1816,15 @@
     <deployState>Deployed</deployState>
     <x>32</x>
     <y>17</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>197</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="7a25bd1a-52c1-4ae1-8ff6-cb15d790e536" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>eeee038c-a998-4501-be2e-dd174bebd78f</objectId>
     <country>Germany</country>
@@ -1757,10 +1836,10 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>24</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="06d15115-ed12-49e1-bc9f-87efe9700b87" />
@@ -1769,6 +1848,7 @@
      <ObjRef objectId="2e01aa86-03f3-4cce-8be9-30e0ee6e7c7b" />
      <ObjRef objectId="482658bd-5776-4ef8-890c-c18251c170c5" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>6afb04b6-d98b-475c-83b6-e2f4426a53ae</objectId>
     <country>Germany</country>
@@ -1780,14 +1860,15 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>24</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6afb04b6-d98b-475c-83b6-e2f4426a53ae" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>93184fd3-6818-4e86-9cca-742a79d2a183</objectId>
     <country>Germany</country>
@@ -1799,14 +1880,15 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>24</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6afb04b6-d98b-475c-83b6-e2f4426a53ae" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>2e01aa86-03f3-4cce-8be9-30e0ee6e7c7b</objectId>
     <country>Germany</country>
@@ -1818,14 +1900,15 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>24</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6afb04b6-d98b-475c-83b6-e2f4426a53ae" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>482658bd-5776-4ef8-890c-c18251c170c5</objectId>
     <country>Germany</country>
@@ -1837,10 +1920,10 @@
     <deployState>Deployed</deployState>
     <x>19</x>
     <y>19</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>90</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="06d15115-ed12-49e1-bc9f-87efe9700b87" />
@@ -1852,6 +1935,7 @@
      <ObjRef objectId="411947c2-2646-455b-a96b-393761800514" />
      <ObjRef objectId="905ac1df-1b2f-42c2-bdbd-4dba3f20abb8" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>94eec584-6f3d-49a8-a2a8-8eb385013074</objectId>
     <country>Italy</country>
@@ -1863,10 +1947,10 @@
     <deployState>Deployed</deployState>
     <x>16</x>
     <y>25</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="94eec584-6f3d-49a8-a2a8-8eb385013074" />
@@ -1875,6 +1959,7 @@
      <ObjRef objectId="60a20d86-5b2c-4c14-a5d4-2953aa7af656" />
      <ObjRef objectId="b54e1e6e-4eb4-4658-bbf0-deb914793e7f" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>e374d329-fb81-4692-a3b2-3e6b09da4caf</objectId>
     <country>Italy</country>
@@ -1886,10 +1971,10 @@
     <deployState>Deployed</deployState>
     <x>19</x>
     <y>19</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="94eec584-6f3d-49a8-a2a8-8eb385013074" />
@@ -1898,6 +1983,7 @@
      <ObjRef objectId="7798b0b2-b799-4452-b9be-5173aac71b79" />
      <ObjRef objectId="b9db9914-9edb-4f01-b813-ea9b618a68a0" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>70ecc830-9710-4c7d-b637-bf8b5873a737</objectId>
     <country>Italy</country>
@@ -1909,14 +1995,15 @@
     <deployState>Deployed</deployState>
     <x>15</x>
     <y>25</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>4</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="94eec584-6f3d-49a8-a2a8-8eb385013074" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>f99c67cf-db07-4b1e-9e98-f0d9869db6bb</objectId>
     <country>Italy</country>
@@ -1928,14 +2015,15 @@
     <deployState>Deployed</deployState>
     <x>20</x>
     <y>20</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>4</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="94eec584-6f3d-49a8-a2a8-8eb385013074" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>5b59c48b-a689-46dd-97e9-a02c35dfd9cc</objectId>
     <country>Italy</country>
@@ -1947,14 +2035,15 @@
     <deployState>Deployed</deployState>
     <x>15</x>
     <y>25</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>8</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="94eec584-6f3d-49a8-a2a8-8eb385013074" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>411947c2-2646-455b-a96b-393761800514</objectId>
     <country>Italy</country>
@@ -1966,14 +2055,15 @@
     <deployState>Deployed</deployState>
     <x>19</x>
     <y>23</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="94eec584-6f3d-49a8-a2a8-8eb385013074" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.5</stackPriority>
     <objectId>905ac1df-1b2f-42c2-bdbd-4dba3f20abb8</objectId>
     <country>Italy</country>
@@ -1985,10 +2075,10 @@
     <deployState>Deployed</deployState>
     <x>32</x>
     <y>16</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>90</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="06d15115-ed12-49e1-bc9f-87efe9700b87" />
@@ -1999,6 +2089,7 @@
      <ObjRef objectId="b2616df1-1d01-406c-aa94-45d9d73ec516" />
      <ObjRef objectId="8ab5d8e0-5e8d-4a17-85d3-268d528445f4" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>6437fbe6-88ca-4f4e-8e31-d512298d2c2f</objectId>
     <country>Italy</country>
@@ -2010,10 +2101,10 @@
     <deployState>Deployed</deployState>
     <x>31</x>
     <y>15</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6437fbe6-88ca-4f4e-8e31-d512298d2c2f" />
@@ -2024,6 +2115,7 @@
      <ObjRef objectId="514cae0f-839a-4157-8687-c1bad5e25bf9" />
      <ObjRef objectId="bc3e8e33-b8d4-4c58-89db-b65517f02a88" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>706f01d6-1ea3-4d08-897b-a2f7bdd5a526</objectId>
     <country>Italy</country>
@@ -2035,10 +2127,10 @@
     <deployState>Deployed</deployState>
     <x>33</x>
     <y>14</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6437fbe6-88ca-4f4e-8e31-d512298d2c2f" />
@@ -2049,6 +2141,7 @@
      <ObjRef objectId="6c3f17be-9e35-4ddb-8b5f-624416bfba2b" />
      <ObjRef objectId="d3fdf1e9-dcb6-42bb-a450-e7ba66e3c2a8" />
     </oobChildrenRefs>
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>11a910bb-447a-4916-bf18-39245a8c3e85</objectId>
     <country>Italy</country>
@@ -2060,14 +2153,15 @@
     <deployState>Deployed</deployState>
     <x>16</x>
     <y>26</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e374d329-fb81-4692-a3b2-3e6b09da4caf" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>133a451a-34a5-4ea8-9895-08c5cd1f1149</objectId>
     <country>Italy</country>
@@ -2079,14 +2173,15 @@
     <deployState>Deployed</deployState>
     <x>19</x>
     <y>23</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e374d329-fb81-4692-a3b2-3e6b09da4caf" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>60a20d86-5b2c-4c14-a5d4-2953aa7af656</objectId>
     <country>Italy</country>
@@ -2098,14 +2193,15 @@
     <deployState>NotDeployed</deployState>
     <x>0</x>
     <y>0</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>8</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="e374d329-fb81-4692-a3b2-3e6b09da4caf" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>b54e1e6e-4eb4-4658-bbf0-deb914793e7f</objectId>
     <country>Italy</country>
@@ -2117,14 +2213,15 @@
     <deployState>Deployed</deployState>
     <x>19</x>
     <y>19</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="70ecc830-9710-4c7d-b637-bf8b5873a737" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>bea34105-d3fc-4735-b44b-d19dc20695ab</objectId>
     <country>Italy</country>
@@ -2136,14 +2233,15 @@
     <deployState>Deployed</deployState>
     <x>20</x>
     <y>21</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="70ecc830-9710-4c7d-b637-bf8b5873a737" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>7798b0b2-b799-4452-b9be-5173aac71b79</objectId>
     <country>Italy</country>
@@ -2155,14 +2253,15 @@
     <deployState>Deployed</deployState>
     <x>19</x>
     <y>19</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>8</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="70ecc830-9710-4c7d-b637-bf8b5873a737" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>b9db9914-9edb-4f01-b813-ea9b618a68a0</objectId>
     <country>Italy</country>
@@ -2174,14 +2273,15 @@
     <deployState>Deployed</deployState>
     <x>34</x>
     <y>18</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>12</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6437fbe6-88ca-4f4e-8e31-d512298d2c2f" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>eb02c6cf-6914-4a8b-ac13-9825029720ae</objectId>
     <country>Italy</country>
@@ -2193,14 +2293,15 @@
     <deployState>Deployed</deployState>
     <x>21</x>
     <y>15</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>8</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6437fbe6-88ca-4f4e-8e31-d512298d2c2f" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>b2616df1-1d01-406c-aa94-45d9d73ec516</objectId>
     <country>Italy</country>
@@ -2212,14 +2313,15 @@
     <deployState>Deployed</deployState>
     <x>31</x>
     <y>15</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="706f01d6-1ea3-4d08-897b-a2f7bdd5a526" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>e6273d83-a5fa-461a-ad68-7875f12d78d7</objectId>
     <country>Italy</country>
@@ -2231,14 +2333,15 @@
     <deployState>Deployed</deployState>
     <x>31</x>
     <y>16</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="706f01d6-1ea3-4d08-897b-a2f7bdd5a526" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.333333343</stackPriority>
     <objectId>56cf4888-c557-4abe-843a-8ca7d834fe24</objectId>
     <country>Italy</country>
@@ -2250,14 +2353,15 @@
     <deployState>Deployed</deployState>
     <x>21</x>
     <y>15</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="706f01d6-1ea3-4d08-897b-a2f7bdd5a526" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.5</stackPriority>
     <objectId>5ea98037-7141-4aad-82f2-020f17c20fdd</objectId>
     <country>Italy</country>
@@ -2269,14 +2373,15 @@
     <deployState>Deployed</deployState>
     <x>31</x>
     <y>16</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="706f01d6-1ea3-4d08-897b-a2f7bdd5a526" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0.6666667</stackPriority>
     <objectId>514cae0f-839a-4157-8687-c1bad5e25bf9</objectId>
     <country>Italy</country>
@@ -2288,14 +2393,15 @@
     <deployState>Deployed</deployState>
     <x>31</x>
     <y>16</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>4</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="706f01d6-1ea3-4d08-897b-a2f7bdd5a526" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>bc3e8e33-b8d4-4c58-89db-b65517f02a88</objectId>
     <country>Italy</country>
@@ -2307,14 +2413,15 @@
     <deployState>Deployed</deployState>
     <x>32</x>
     <y>13</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="11a910bb-447a-4916-bf18-39245a8c3e85" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>67ae6539-bebd-42f0-a5fc-524d5071bf47</objectId>
     <country>Italy</country>
@@ -2326,14 +2433,15 @@
     <deployState>Deployed</deployState>
     <x>32</x>
     <y>14</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="11a910bb-447a-4916-bf18-39245a8c3e85" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>c7398bc8-e93f-4cb4-a38b-21c1fdb4a25e</objectId>
     <country>Italy</country>
@@ -2345,14 +2453,15 @@
     <deployState>Deployed</deployState>
     <x>33</x>
     <y>13</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="11a910bb-447a-4916-bf18-39245a8c3e85" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>b782a85e-a615-476d-9139-746a301bd157</objectId>
     <country>Italy</country>
@@ -2364,14 +2473,15 @@
     <deployState>Deployed</deployState>
     <x>34</x>
     <y>13</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>167</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="11a910bb-447a-4916-bf18-39245a8c3e85" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>6c3f17be-9e35-4ddb-8b5f-624416bfba2b</objectId>
     <country>Italy</country>
@@ -2383,14 +2493,15 @@
     <deployState>Deployed</deployState>
     <x>33</x>
     <y>14</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>4</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="11a910bb-447a-4916-bf18-39245a8c3e85" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>d3fdf1e9-dcb6-42bb-a450-e7ba66e3c2a8</objectId>
     <country>Italy</country>
@@ -2402,20 +2513,22 @@
     <deployState>Deployed</deployState>
     <x>31</x>
     <y>17</y>
-    <hardAttack>0</hardAttack>
-    <softAttack>0</softAttack>
-    <defence>0</defence>
-    <strength>0</strength>
+    <strength>4</strength>
+    <readiness>1</readiness>
+    <initialStrengthPercent>1</initialStrengthPercent>
+    <initialReadiness>1</initialReadiness>
     <waypoints />
     <movementProgressionKm>0</movementProgressionKm>
     <oobParentRef objectId="6437fbe6-88ca-4f4e-8e31-d512298d2c2f" />
     <oobChildrenRefs />
+    <retreating>false</retreating>
     <stackPriority>0</stackPriority>
     <objectId>8ab5d8e0-5e8d-4a17-85d3-268d528445f4</objectId>
     <country>Italy</country>
     <unitSize>Company</unitSize>
    </Unit>
   </units>
+  <serializedTime>1941-05-15T05:00:00Z</serializedTime>
   <serializedCells>
    <width>37</width>
    <height>40</height>
@@ -3256,14 +3369,14 @@
     <Cell x="16" y="28" terrain="Desert" />
     <Cell x="16" y="29" terrain="Desert" />
     <Cell x="16" y="30" terrain="Desert" />
-    <Cell x="16" y="31" terrain="Desert" />
+    <Cell x="16" y="31" terrain="Water" />
     <Cell x="16" y="32" terrain="Desert" />
     <Cell x="16" y="33" terrain="Water" />
-    <Cell x="16" y="34" terrain="Desert" />
+    <Cell x="16" y="34" terrain="Water" />
     <Cell x="16" y="35" terrain="Water" />
-    <Cell x="16" y="36" terrain="Desert" />
+    <Cell x="16" y="36" terrain="Water" />
     <Cell x="16" y="37" terrain="Water" />
-    <Cell x="16" y="38" terrain="Desert" />
+    <Cell x="16" y="38" terrain="Water" />
     <Cell x="16" y="39" terrain="Water" />
     <Cell x="17" y="0" terrain="Desert" />
     <Cell x="17" y="1" terrain="Desert" />
@@ -3293,7 +3406,7 @@
     <Cell x="17" y="25" terrain="Desert" />
     <Cell x="17" y="26" terrain="Desert" />
     <Cell x="17" y="27" terrain="Water" />
-    <Cell x="17" y="28" terrain="Desert" />
+    <Cell x="17" y="28" terrain="Water" />
     <Cell x="17" y="29" terrain="Water" />
     <Cell x="17" y="30" terrain="Water" />
     <Cell x="17" y="31" terrain="Water" />
@@ -4281,9 +4394,11 @@
     <EdgeFeature x1="14" y1="30" x2="14" y2="29" primaryRoad="true" secondaryRoad="false" escarpment="false" />
     <EdgeFeature x1="14" y1="32" x2="13" y2="31" primaryRoad="true" secondaryRoad="false" escarpment="false" />
     <EdgeFeature x1="14" y1="32" x2="13" y2="33" primaryRoad="true" secondaryRoad="false" escarpment="false" />
+    <EdgeFeature x1="15" y1="25" x2="15" y2="26" primaryRoad="false" secondaryRoad="false" escarpment="true" />
     <EdgeFeature x1="15" y1="26" x2="14" y2="25" primaryRoad="false" secondaryRoad="false" escarpment="true" />
     <EdgeFeature x1="15" y1="26" x2="14" y2="26" primaryRoad="false" secondaryRoad="false" escarpment="true" />
     <EdgeFeature x1="15" y1="26" x2="14" y2="27" primaryRoad="false" secondaryRoad="false" escarpment="true" />
+    <EdgeFeature x1="15" y1="26" x2="15" y2="25" primaryRoad="false" secondaryRoad="false" escarpment="true" />
     <EdgeFeature x1="15" y1="26" x2="15" y2="27" primaryRoad="false" secondaryRoad="false" escarpment="true" />
     <EdgeFeature x1="15" y1="26" x2="16" y2="26" primaryRoad="false" secondaryRoad="false" escarpment="true" />
     <EdgeFeature x1="15" y1="27" x2="15" y2="26" primaryRoad="false" secondaryRoad="false" escarpment="true" />
@@ -4512,8 +4627,8 @@
   </seralizedEdgeFeatureMap>
  </gameState>
  <viewState>
-  <xPosition>13.20215</xPosition>
-  <yPosition>-9.585359</yPosition>
-  <orthographicSize>13</orthographicSize>
+  <xPosition>2.70526218</xPosition>
+  <yPosition>-7.24759</yPosition>
+  <orthographicSize>15</orthographicSize>
  </viewState>
 </FullState>

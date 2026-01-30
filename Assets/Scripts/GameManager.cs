@@ -255,6 +255,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         TempFix();
 
+        if(!GameState.Instance.firstLoaded)
+        {
+            GameState.Instance.firstLoaded = true;
+            GameState.Instance.ResetStrength();
+        }
+
         SetAllDirty();
 
         Debug.Log("Fully Initialized");
@@ -423,6 +429,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                 Overlay.Instance.RefreshStackContainer(new());
             }
+
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                playing = !playing;
+            }
         }
     }
 
@@ -432,7 +443,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             Debug.Log($"Plan path: {selectingUnit} to {cell}");
 
-            var graph = new DynamicCellGraphArmy();
+            // var graph = new DynamicCellGraphArmy();
+            var graph = DynamicCellGraphArmy.Instance;
             var srcCell = selectingUnit.GetCell();
             if(srcCell != null)
             {
@@ -706,6 +718,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         stacksDirty = true;
     }
 
+    void OnOrderOfBattleChanged(Unit.OrderOfBattleChanged evt)
+    {
+        foreach(var unit in GameState.Instance.units)
+        {
+            unit.SetAllDirty();
+        }
+    }
+
 
     void RegisterGameState()
     {
@@ -718,6 +738,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         EventBus.Subscribe<GameState.EdgeFeatureChanged>(OnEdgeFeatureChanged);
         EventBus.Subscribe<Unit.MapUnitsChanged>(OnMapUnitsChanged);
         EventBus.Subscribe<Unit.StacksChanged>(OnStacksChanged);
+        EventBus.Subscribe<Unit.OrderOfBattleChanged>(OnOrderOfBattleChanged);
     }
 
     void UnregisterGameState()
@@ -731,6 +752,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         EventBus.Unsubscribe<GameState.EdgeFeatureChanged>(OnEdgeFeatureChanged);
         EventBus.Unsubscribe<Unit.MapUnitsChanged>(OnMapUnitsChanged);
         EventBus.Unsubscribe<Unit.StacksChanged>(OnStacksChanged);
+        EventBus.Unsubscribe<Unit.OrderOfBattleChanged>(OnOrderOfBattleChanged);
     }
 
     // void OnGameStateCellChanged(object sender, Cell cell)

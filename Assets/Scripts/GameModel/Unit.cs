@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using YYZ;
 using System.Xml.Serialization;
+using System;
 
 
 namespace GameModel
@@ -15,13 +16,13 @@ namespace GameModel
 
     public enum UnitType // mainly for unit icon
     {
-        Infantry,
-        Tank,
-        Artillery,
-        AntiTank,
-        AntiAir,
-        Cavalry, // Armored Cavalry
-        HeadQuarters,
+        Infantry, // Men
+        Tank, // Vehicles
+        Artillery, // Guns
+        AntiTank, // Guns
+        AntiAir, // Vehicles
+        Cavalry, // Vehicles, Armored Cavalry
+        HeadQuarters, // Men
     }
 
     public enum UnitSize
@@ -109,10 +110,13 @@ namespace GameModel
         public int x;
         public int y;
 
-        public float hardAttack;
-        public float softAttack;
-        public float defence;
-        public float strength; // men, vehicle or guns, following PZC representation style (so vehicle/guns's "men" is ignored)
+        // public float hardAttack;
+        // public float softAttack;
+        // public float defence;
+        public int strength; // men, vehicle or guns, following PZC representation style (so vehicle/guns's "men" is ignored)
+        public float readiness = 1; // 0~1.0 (0%~100%)
+        public float initialStrengthPercent = 1;
+        public float initialReadiness = 1;
 
         public List<XY> waypoints = new();
         public float movementProgressionKm = 0;
@@ -233,6 +237,56 @@ namespace GameModel
             EventBus.Publish(stacksChanged);
         }
 
+        public void AdvanceTimeMovement(float seconds)
+        {
+            if(waypoints.Count >= 2)
+            {
+                var currentCell = GetCell();
+                var nextCell = waypoints[1].Get();
+                if(currentCell != null && nextCell != null)
+                {
+                    // TODO: Check neighbor relationship is valid
+                    var coef = currentCell.GetMovementCoef(nextCell);
+                    var speedCoef = 1 / coef;
+                    var moveCapKm = parameter.Speed * speedCoef * seconds / 3600;
+
+                    if(retreating)
+                    {
+                        moveCapKm *= 1.25f; // +25% speed for retreating unit
+                    }
+
+                    // var enemyBlocked = nextCell.UnitRefs.Any(r => (r.Get() as Unit).side != side);
+                    var enemyBlocked = nextCell.HasResistTo(side);
+
+                    if(enemyBlocked && retreating)
+                    {
+                        MoveTo(null, true); // surrender
+                        return;
+                    }
+
+                    if(!enemyBlocked && moveCapKm + movementProgressionKm > ModelUtils.hexDistanceKm)
+                    {
+                        movementProgressionKm = 0;
+                        MoveTo(nextCell);
+                        waypoints.RemoveAt(0);
+                        if(waypoints.Count < 2)
+                        {
+                            waypoints.Clear();
+                        }
+
+                        if(retreating)
+                        {
+                            retreating = false;
+                        }
+                    }
+                    else
+                    {
+                        movementProgressionKm = Math.Min(moveCapKm + movementProgressionKm, ModelUtils.hexDistanceKm);
+                    }
+                }
+            }
+        }
+
         public void SetWaypoints(List<Cell> cells)
         {
             // TODO: If first cell is identical to previous path, move progression is not reset.
@@ -240,9 +294,117 @@ namespace GameModel
             waypoints = cells.Select(c => c.ToXY()).ToList();
         }
 
+        Side sideCached;
+        bool sideDirty = true;
+        public Side side
+        {
+            get
+            {
+                if(sideDirty)
+                {
+                    sideDirty = false;
+                    IOrderOfBattleNode pt = this;
+                    while(pt != null)
+                    {
+                        if(pt is Side side)
+                        {
+                            sideCached = side;
+                            break;
+                        }
+                        pt = pt.parent;
+                    }
+                }
+                return sideCached;
+            }
+        }
+
+        List<IOrderOfBattleNode> parentsAndMeCached;
+        bool parentsAndMeDirty = true;
+
+        [XmlIgnore]
+        public List<IOrderOfBattleNode> parentsAndMe
+        {
+            get
+            {
+                if(parentsAndMeDirty)
+                {
+                    parentsAndMeDirty = false;
+
+                    var list = new List<IOrderOfBattleNode>();
+                    IOrderOfBattleNode pt = this;
+                    while(pt != null)
+                    {
+                        list.Add(pt);
+                        pt = pt.parent;
+                    }
+                    list.Reverse();
+                    parentsAndMeCached = list;
+                }
+                return parentsAndMeCached;
+            }
+        }
+
+        public void SetAllDirty()
+        {
+            sideDirty = true;
+            parentsAndMeDirty = true;
+        }
+
         public override string ToString()
         {
             return $"Unit({name})";
+        }
+
+        public float GetPower()
+        {
+            // return parameter.GetPower();
+            return GetAssaultValue();
+        }
+
+        public string GetStrengthWord() => parameter.GetStrengthWord(strength);
+
+        public bool retreating = false;
+
+        public bool IsOperational() => deployState == DeployState.Deployed && !retreating;
+
+        public float GetHitWeight() => strength * parameter.category.strengthCoef;
+        public float GetAssaultValue() => strength * parameter.Assault * parameter.category.strengthCoef * readiness;
+
+        public void ForceRetreat()
+        {
+            var currentCell = GetCell();
+            retreating = true;
+
+            // var retreatToCells = currentCell.GetNeighbors().Where(cell => !cell.HasResistTo(side)).ToList();
+            var retreatToCells = DynamicCellGraphArmy.Instance.Neighbors(currentCell).Where(cell => !cell.HasResistTo(side)).ToList();
+            if(retreatToCells.Count == 0)
+            {
+                MoveTo(null, true); // surrender
+            }
+            else
+            {
+                // TODO: Consider priority
+                var retreatToCellsHostileNeighbors = retreatToCells.Select(c => c.GetNeighbors().Count(nei => nei.HasResistTo(side))).ToList();
+                var minHostileCount = retreatToCellsHostileNeighbors.Min();
+
+                var minSet = new List<Cell>();
+                for(int i=0; i<retreatToCellsHostileNeighbors.Count; i++)
+                {
+                    if(retreatToCellsHostileNeighbors[i] == minHostileCount)
+                    {
+                        minSet.Add(retreatToCells[i]);
+                    }
+                }
+
+                var retreatToCell = RandomUtils.Sample(minSet);
+                SetWaypoints(new(){currentCell, retreatToCell});
+            }
+        }
+
+        public void AdvanceTimeRestore(float seconds)
+        {
+            var readinessRestored = seconds / 3600 / 24;
+            readiness = Math.Min(1, readiness + readinessRestored);
         }
     }
 }
