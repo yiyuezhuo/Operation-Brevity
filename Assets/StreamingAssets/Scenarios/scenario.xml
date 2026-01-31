@@ -3707,7 +3707,7 @@
     <Cell x="24" y="11" terrain="Desert" />
     <Cell x="24" y="12" terrain="Desert" />
     <Cell x="24" y="13" terrain="Desert" />
-    <Cell x="24" y="14" terrain="Water" />
+    <Cell x="24" y="14" terrain="Desert" />
     <Cell x="24" y="15" terrain="Desert" />
     <Cell x="24" y="16" terrain="Desert" />
     <Cell x="24" y="17" terrain="Desert" />
@@ -3985,7 +3985,7 @@
     <Cell x="31" y="9" terrain="Desert" />
     <Cell x="31" y="10" terrain="Desert" />
     <Cell x="31" y="11" terrain="Desert" />
-    <Cell x="31" y="12" terrain="Water" />
+    <Cell x="31" y="12" terrain="Desert" />
     <Cell x="31" y="13" terrain="Desert" />
     <Cell x="31" y="14" terrain="Desert" />
     <Cell x="31" y="15" terrain="Desert">
@@ -4627,8 +4627,8 @@
   </seralizedEdgeFeatureMap>
  </gameState>
  <viewState>
-  <xPosition>2.70526218</xPosition>
-  <yPosition>-7.24759</yPosition>
-  <orthographicSize>15</orthographicSize>
+  <xPosition>1.25970125</xPosition>
+  <yPosition>-7.64287567</yPosition>
+  <orthographicSize>16</orthographicSize>
  </viewState>
 </FullState>

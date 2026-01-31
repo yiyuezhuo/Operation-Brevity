@@ -30,6 +30,5 @@ namespace GameModel
             foreach(var objRef in oobChildrenRefs)
                 yield return objRef;
         }
-
     }
 }

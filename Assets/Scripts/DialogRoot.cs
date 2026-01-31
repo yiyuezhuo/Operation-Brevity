@@ -16,6 +16,20 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset mapEditDialogDocument;
     public VisualTreeAsset orderOfBattleDialogDocument;
     public VisualTreeAsset unitDialogDocument;
+    public VisualTreeAsset victoryStatusDialogDocument;
+
+    public void PopupVictoryStatusDialog(VictoryStatus victoryStatus)
+    {
+        var tempDialog = new TempDialog
+        {
+            root = root,
+            template = victoryStatusDialogDocument,
+            templateDataSource = victoryStatus,
+            // positionMode = TempDialog.PositionMode.Left
+        };
+
+        tempDialog.Popup();
+    }
 
     public void PopupUnitDialog(Unit unit)
     {

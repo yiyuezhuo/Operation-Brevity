@@ -84,6 +84,12 @@ public class Overlay : SingletonDocument<Overlay> // So don't specify binding fo
                 DialogRoot.Instance.PopupUnitDialog(unit);
             }
         };
+
+        var refreshInfluenceMapButton = root.Q<Button>("RefreshInfluenceMapButton");
+        refreshInfluenceMapButton.clicked += () => GameState.Instance.CalculateInfluenceMap();
+
+        var victoryStatusButton = root.Q<Button>("VictoryStatusButton");
+        victoryStatusButton.clicked += () => DialogRoot.Instance.PopupVictoryStatusDialog(VictoryStatus.Capture(GameState.Instance));
     }
 
     void DoSave(bool editSave)

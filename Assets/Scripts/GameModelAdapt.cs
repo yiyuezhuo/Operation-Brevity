@@ -100,5 +100,17 @@ namespace GameModel
         [CreateProperty]
         public string desc => $"({x}, {y}) {terrain}";
     }
+
+    public partial class LossStats
+    {
+        [CreateProperty]
+        public float lossVpProp => lossVp; 
+    }
+
+    public partial class VictoryStatus
+    {
+        [CreateProperty]
+        public string description => Describe();
+    }
 }
 

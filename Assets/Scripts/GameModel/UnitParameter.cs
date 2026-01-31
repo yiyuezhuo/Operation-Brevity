@@ -90,7 +90,7 @@ namespace GameModel
         public static Dictionary<UnitType, UnitTypeCategory> unitTypeCategoryMap = new Dictionary<UnitType, UnitTypeCategory>()
         {
             { UnitType.Infantry, personelCategory },
-            { UnitType.Tank, gunCategory },
+            { UnitType.Tank, vehicleCategory },
             { UnitType.Artillery, gunCategory },
             { UnitType.AntiTank, gunCategory },
             { UnitType.AntiAir, gunCategory },

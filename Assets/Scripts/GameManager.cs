@@ -16,7 +16,10 @@ public enum CellLabelMode
 {
     None,
     XY,
-    Terrain
+    Terrain,
+    Side0StrengthMap,
+    Side1StrengthMap,
+    ControlMap
 }
 
 public enum MapEditMode
@@ -36,6 +39,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public GameObject counterPrefab;
 
     public PathLineController pathLineController;
+
+    public AudioSource infantryFiringAudioSource;
+    public AudioSource gunFiringAudioSource;
+    public AudioSource vehicleFiringAudioSource;
 
     LayerMask unitLayerMask;
     LayerMask mapLayerMask;
@@ -294,6 +301,27 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         RefreshDirty();
         RunSimulation();
         UpdateView();
+        MaintainSounds();
+    }
+
+    void MaintainSounds()
+    {
+        if(playing)
+        {
+            var gameState = GameState.Instance;
+            if(gameState.anyInfantryFiredInAdvancement && !infantryFiringAudioSource.isPlaying)
+            {
+                infantryFiringAudioSource.Play();
+            }
+            if(gameState.anyGunFiredInAdvancement && !gunFiringAudioSource.isPlaying)
+            {
+                gunFiringAudioSource.Play();
+            }
+            if(gameState.anyVehicleFiredInAdvancement && !vehicleFiringAudioSource.isPlaying)
+            {
+                vehicleFiringAudioSource.Play();
+            }
+        }
     }
 
     static Vector3[] emptyVector3Arr = new Vector3[0];
@@ -789,6 +817,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             CellLabelMode.XY => $"({x}, {y})",
             CellLabelMode.Terrain => cell.terrain.ToString(),
+            CellLabelMode.Side0StrengthMap => GameState.Instance.side0StrengthMap?.matrix[cell.x, cell.y].ToString("#"),
+            CellLabelMode.Side1StrengthMap => GameState.Instance.side1StrengthMap?.matrix[cell.x, cell.y].ToString("#"),
+            CellLabelMode.ControlMap => GameState.Instance.controlMap?.matrix[cell.x, cell.y].ToString("#"),
             _ => ""
         };
 
@@ -799,6 +830,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 TerrainType.Desert => Color.yellow,
                 TerrainType.Water => Color.blue,
                 _ => Color.black
+            };
+        }
+        else if(cellLabelMode == CellLabelMode.ControlMap)
+        {
+            label.color = GameState.Instance.controlMap?.matrix[cell.x, cell.y] switch
+            {
+                >= 0 => Color.blue,
+                <0 => Color.red,
+                float.NaN => Color.black
             };
         }
         else

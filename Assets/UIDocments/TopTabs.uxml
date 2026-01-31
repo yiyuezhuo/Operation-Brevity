@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-direction: row; flex-shrink: 0; background-color: rgb(240, 240, 240);">
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-direction: row; flex-shrink: 0; background-color: rgb(240, 240, 240); flex-wrap: wrap;">
         <ui:Button text="Save" name="SaveButton"/>
         <ui:Button text="Save (Edit)" name="SaveEditButton"/>
         <ui:Button text="Load" name="LoadButton"/>
@@ -11,6 +11,8 @@
             </Bindings>
         </ui:EnumField>
         <ui:Button text="Order of Battle" name="OrderOfBattleButton"/>
+        <ui:Button text="Refresh Influence Map" name="RefreshInfluenceMapButton"/>
+        <ui:Button text="Victroy Status" name="VictoryStatusButton"/>
         <ui:Button text="Restart" name="RestartButton"/>
         <ui:Button text="Exit" name="ExitButton"/>
     </ui:VisualElement>

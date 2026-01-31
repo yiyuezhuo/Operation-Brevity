@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO.Hashing;
 using System.Linq;
 using System.Xml.Serialization;
-
+using UnityEditor.Animations;
 using YYZ;
 
 
@@ -30,6 +30,20 @@ namespace GameModel
         // public string name{get;}
         public IEnumerable<IOrderOfBattleNode> children{get;}
         public IOrderOfBattleNode parent{get;}
+
+        public IEnumerable<T> WalkChildren<T>()
+        {
+            foreach(var child in children)
+            {
+                if(child is T t)
+                    yield return t;
+                
+                foreach(var _child in child.WalkChildren<T>())
+                {
+                    yield return _child;
+                }
+            }
+        }
 
     }
 
@@ -360,8 +374,36 @@ namespace GameModel
             public float inflictMenStrength = 0;
         }
 
+        // Aux info for SFX
+        public bool anyInfantryFiredInAdvancement;
+        public bool anyGunFiredInAdvancement;
+        public bool anyVehicleFiredInAdvancement;
+
+        void ResetAnyCategoryFiredInAdvancement()
+        {
+            anyInfantryFiredInAdvancement = anyGunFiredInAdvancement = anyVehicleFiredInAdvancement = false;
+        }
+        void CollectionAnyCategoryFiredInAdvancement(Unit unit)
+        {
+            var firerCategory = unit.parameter.category;
+            if(firerCategory == UnitParameter.personelCategory)
+            {
+                anyInfantryFiredInAdvancement = true;
+            }
+            else if(firerCategory == UnitParameter.gunCategory)
+            {
+                anyGunFiredInAdvancement = true;
+            }
+            else if(firerCategory == UnitParameter.vehicleCategory)
+            {
+                anyVehicleFiredInAdvancement = true;
+            }
+        }
+
         public void AdvanceTimeCombat(float seconds)
         {
+            ResetAnyCategoryFiredInAdvancement();
+
             Dictionary<Unit, CombatUnitBundle> bundleMap = new();
 
             // Stage 1 - Build Bundles
@@ -404,6 +446,8 @@ namespace GameModel
             {
                 if(bundle.engagements.Count >= 1)
                 {
+                    CollectionAnyCategoryFiredInAdvancement(bundle.unit);
+
                     var weightSum = Math.Max(1, bundle.engagements.Sum(e => e.target.hitWeight));
                     foreach(var engagement in bundle.engagements)
                     {
@@ -470,6 +514,43 @@ namespace GameModel
                 unit.strength = (int)Math.Round(unit.initialStrengthPercent * unit.parameter.Strength);
                 unit.readiness = unit.initialReadiness;
             }
+        }
+
+        [XmlIgnore]
+        public InfluenceMap side0StrengthMap;
+        [XmlIgnore]
+        public InfluenceMap side1StrengthMap;
+        [XmlIgnore]
+        public InfluenceMap controlMap;
+
+        public InfluenceMap CalcualteStrengthMap(InfluenceMap strengthMap, Side side)
+        {
+            foreach(var g in units.Where(u => u.deployState == DeployState.Deployed && u.side == side).GroupBy(u => u.GetCell()))
+            {
+                var cell = g.Key;
+                var strength = g.Sum(u => u.GetPower());
+                strengthMap.AddSource(cell, strength);
+            }
+            return strengthMap;
+        }
+
+        public void CalculateInfluenceMap()
+        {
+            side0StrengthMap = new(cells.GetLength(0), cells.GetLength(1));
+            side1StrengthMap = new(cells.GetLength(0), cells.GetLength(1));
+            controlMap = new(cells.GetLength(0), cells.GetLength(1));
+
+            if(sides.Count >= 1)
+            {
+                CalcualteStrengthMap(side0StrengthMap, sides[0]);
+            }
+            if(sides.Count >= 2)
+            {
+                CalcualteStrengthMap(side1StrengthMap, sides[1]);
+            }
+
+            controlMap.Plus(side0StrengthMap);
+            controlMap.Subtract(side1StrengthMap);
         }
 
         static GameState _instance;

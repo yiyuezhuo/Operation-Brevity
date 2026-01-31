@@ -1,0 +1,29 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="GameModel.LossStats, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:Label text="Side Name">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="side.name" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Label>
+        <ui:IntegerField label="Men Loss">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="menLoss" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:IntegerField>
+        <ui:IntegerField label="Gun Loss">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="gunLoss" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:IntegerField>
+        <ui:IntegerField label="Vehicle Loss">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="vehicleLoss" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:IntegerField>
+        <ui:FloatField label="Victory Point">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="lossVpProp" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:FloatField>
+    </ui:VisualElement>
+</ui:UXML>
