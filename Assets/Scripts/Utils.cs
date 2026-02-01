@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using Unity.Properties;
+using UnityEngine.UIElements.Experimental;
+using System;
+
 
 public static class Utils
 {
@@ -73,5 +76,34 @@ public static class Utils
     {
         lineRenderer.positionCount = points.Length;
         lineRenderer.SetPositions(points);
+    }
+
+    public static void RegisterLinkTag(Label label, Dictionary<string, Action> handlerMap)
+    {
+        // label.RegisterCallback<PointerOverLinkTagEvent>(
+        //     _ => label.AddToClassList(linkCursorClassName)
+        // );
+
+        // label.RegisterCallback<PointerOutLinkTagEvent>(
+        //     _ => label.RemoveFromClassList(linkCursorClassName)
+        // );
+
+        label.RegisterCallback<PointerUpLinkTagEvent>(evt =>
+        {
+            var handler = handlerMap.GetValueOrDefault(evt.linkID);
+            if (handler != null)
+            {
+                handler();
+            }
+            else
+            {
+                Debug.LogWarning($"No handler found for linkID {evt.linkID}");
+            }
+        });
+    }
+
+    public static void RegisterLinkTag(Label label, string key, Action handler)
+    {
+        RegisterLinkTag(label, new Dictionary<string, Action> { { key, handler } });
     }
 }

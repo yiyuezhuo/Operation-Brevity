@@ -51,6 +51,15 @@ namespace GameModel
         }
 
         [CreateProperty]
+        public string oobDescLink
+        {
+            get
+            {
+                return $"<link=\"nameLink\"><color=#40a0ff>{oobDesc}</color></link>";
+            }
+        }
+
+        [CreateProperty]
         public string topText => CounterController.sizeStrMap[unitSize];
 
         [CreateProperty]
@@ -79,12 +88,32 @@ namespace GameModel
         public string strengthProgressDesc => $"{strength}/{parameter.Strength} {GetStrengthWord()}";
 
         [CreateProperty]
-        public string readinessProgressDesc => $"{readiness:P}";
+        public string readinessProgressDesc => $"Readiness: {readiness:P}";
 
         [XmlIgnore]
         [CreateProperty]
         public List<IOrderOfBattleNode> parentsAndMeProp => parentsAndMe;
-     }
+
+        [CreateProperty]
+        public bool hasMissionTarget => missionTargetXY != null;
+
+        [CreateProperty]
+        public string missionTargetDesc => missionTargetXY == null ? "" : $"Target: ({missionTargetXY.x}, {missionTargetXY.y})";
+     
+        [CreateProperty]
+        public UnitSize unitSizeProp
+        {
+            get => unitSize;
+            set => unitSize = value;
+        }
+
+        [CreateProperty]
+        public Country countryProp
+        {
+            get => country;
+            set => country = value;
+        }
+    }
 
     public partial class Side
     {
@@ -93,7 +122,17 @@ namespace GameModel
         {
             get => name;
         }
+
+        [CreateProperty]
+        public string oobDescLink
+        {
+            get
+            {
+                return $"<link=\"nameLink\"><color=#40a0ff>{oobDesc}</color></link>";
+            }
+        }
     }
+
 
     public partial class Cell
     {

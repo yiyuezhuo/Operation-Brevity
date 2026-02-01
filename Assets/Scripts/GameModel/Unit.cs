@@ -3,6 +3,7 @@ using System.Linq;
 using YYZ;
 using System.Xml.Serialization;
 using System;
+using YYZ.PathFinding;
 
 
 namespace GameModel
@@ -138,6 +139,9 @@ namespace GameModel
         {
             yield break;
         }
+
+        public XY missionTargetXY;
+        public float missionDepth = 2000; // "Soft" stack limit for strength asset allocation
 
         public class OrderOfBattleChanged : IEvent{}
         public static OrderOfBattleChanged orderOfBattleChanged = new OrderOfBattleChanged();
@@ -291,6 +295,7 @@ namespace GameModel
         {
             // TODO: If first cell is identical to previous path, move progression is not reset.
             // TODO: Reset movement progression
+
             waypoints = cells.Select(c => c.ToXY()).ToList();
         }
 
@@ -341,6 +346,96 @@ namespace GameModel
                     parentsAndMeCached = list;
                 }
                 return parentsAndMeCached;
+            }
+        }
+
+        public void PlanFormationMovement()
+        {
+            var missionTarget = missionTargetXY?.Get();
+            if(missionTarget == null)
+                return;
+            
+            var commandedUnits = CollectSubordinateNotIncludeDetached(this).ToList();
+            var mapSet = side.influenceMapSet;
+
+            // mapSet.frontline.distanceToCells.GetValueOrDefault(-1);
+            var kv = mapSet.frontline.distanceToCells.FirstOrDefault(kv => kv.Value.Contains(missionTarget));
+            var frontlineDist = kv.Key;
+            var frolineCells = kv.Value;
+            if(frolineCells == null) // default(KeyValuePair<TKey, TValue>) = KeyValuePair(default(TKey), default(TValue))
+                return;
+
+            var unitsUnderControl = commandedUnits.ToList();
+
+            var grouping = unitsUnderControl.GroupBy(u => u.parameter.IsLineUnit()).ToDictionary(g => g.Key, g=>g.ToList());
+            if(grouping.TryGetValue(true, out var lineUnits))
+            {
+                PlanFormationMovement(missionTarget, frolineCells, lineUnits);
+            }
+            if(grouping.TryGetValue(false, out var supportUnits))
+            {
+                var frolineCells2 = mapSet.frontline.distanceToCells.GetValueOrDefault(frontlineDist + 1, frolineCells);
+                var missionTarget2 = DynamicCellGraphArmy.Instance.Neighbors(missionTarget).FirstOrDefault(nei => frolineCells2.Contains(nei)) ?? missionTarget;
+                PlanFormationMovement(missionTarget2, frolineCells2, supportUnits);
+            }
+        }
+
+        void PlanFormationMovement(Cell missionTarget, HashSet<Cell> frolineCells, List<Unit> notAllocatedUnits)
+        {
+            HashSet<Cell> closeSet = new(){missionTarget};
+            Dictionary<Cell, float> allocatedPowerMap = new()
+            {
+                [missionTarget] = 0
+            };
+            List<Cell> activeSet = new(){missionTarget};
+
+            while(activeSet.Count > 0 && notAllocatedUnits.Count > 0)
+            {
+                var currentUnit = notAllocatedUnits[0];
+                var currentCell = activeSet.First();
+                currentUnit.TryPlanPathTo(currentCell);
+                allocatedPowerMap[currentCell] += currentUnit.GetPower();
+                
+                if(allocatedPowerMap[currentCell] >= missionDepth)
+                {
+                    activeSet.Remove(currentCell);
+
+                    // Try to expand across frontline
+                    foreach(var nei in DynamicCellGraphArmy.Instance.Neighbors(currentCell))
+                    {
+                        if(!closeSet.Contains(nei) && frolineCells.Contains(nei))
+                        {
+                            activeSet.Add(nei);
+                            allocatedPowerMap[nei] = 0;
+                        }
+                    }
+
+                }
+                notAllocatedUnits.RemoveAt(0);
+            }
+
+            // Placeholder/Fallback all-movement behaviour 
+            foreach(var unit in notAllocatedUnits)
+            {
+                // unit.SetWaypoints()
+                unit.TryPlanPathTo(missionTarget);
+            }
+        }
+
+        public static IEnumerable<Unit> CollectSubordinateNotIncludeDetached(Unit unit)
+        {
+            yield return unit;
+
+            foreach(var obj in unit.children)
+            {
+                var subUnit = obj as Unit;
+                if(subUnit != null && subUnit.deployState == DeployState.Deployed && subUnit.missionTargetXY == null)
+                {
+                    foreach(var _subUnit in CollectSubordinateNotIncludeDetached(subUnit))
+                    {
+                        yield return _subUnit;
+                    }
+                }
             }
         }
 
@@ -401,10 +496,56 @@ namespace GameModel
             }
         }
 
+        public void TryPlanPathTo(Cell dstCell)
+        {
+            // var graph = new DynamicCellGraphArmy();
+            var graph = DynamicCellGraphArmy.Instance;
+            var srcCell = GetCell();
+            if(srcCell != null)
+            {
+                var cost = PathFinding<Cell>.AStar(graph, srcCell, dstCell, out var path);
+                SetWaypoints(path);
+            }
+        }
+
         public void AdvanceTimeRestore(float seconds)
         {
             var readinessRestored = seconds / 3600 / 24;
             readiness = Math.Min(1, readiness + readinessRestored);
+        }
+
+        public void ReattachToSuperior()
+        {
+            missionTargetXY = null;
+        }
+
+        public bool IsDetached() => missionTargetXY != null;
+
+        public void ReattachAllSubordinates()
+        {
+            foreach(var obj in children)
+            {
+                var unit = obj as Unit;
+                if(unit != null && unit.IsDetached())
+                {
+                    unit.ReattachToSuperior();
+                }
+                unit.ReattachAllSubordinates();
+            }
+        }
+
+        public void AllSuboridnateStop()
+        {
+            SetWaypoints(new());
+            foreach(var obj in children)
+            {
+                var unit = obj as Unit;
+                if(unit != null && !unit.IsDetached())
+                {
+                    // unit.ReattachToSuperior();
+                    unit.AllSuboridnateStop();
+                }
+            }
         }
     }
 }

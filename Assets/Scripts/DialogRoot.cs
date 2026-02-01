@@ -9,6 +9,43 @@ using System.Linq;
 public class OrderOfBattleNodePlaceholder // : IOrderOfBattleNode // UITK Helper
 {
     public string oobDesc;
+    public string oobDescLink;
+}
+
+public class AISelectionDialog
+{
+    public enum AISelectionOption
+    {
+        Axis,
+        Allied,
+        Both,
+        Neither
+    }
+
+    public AISelectionOption selectionOption;
+
+    public void Execute()
+    {
+        var enableAlliedAI = selectionOption == AISelectionOption.Allied || selectionOption == AISelectionOption.Both;
+        var enableAxisAI = selectionOption == AISelectionOption.Axis || selectionOption == AISelectionOption.Both;
+        if(!enableAlliedAI)
+        {
+            ClearAIFor(GameState.Instance.sides[0]); // TODO: relax Hardcoded or use another method to set AI options
+        }
+        if(!enableAxisAI)
+        {
+            ClearAIFor(GameState.Instance.sides[1]);
+        }
+    }
+
+    public void ClearAIFor(Side side)
+    {
+        foreach(var unit in (side as IOrderOfBattleNode).WalkChildren<Unit>())
+        {
+            unit.SetWaypoints(new());
+            unit.missionTargetXY = null;
+        }
+    }
 }
 
 public class DialogRoot : SingletonDocument<DialogRoot>
@@ -17,6 +54,26 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset orderOfBattleDialogDocument;
     public VisualTreeAsset unitDialogDocument;
     public VisualTreeAsset victoryStatusDialogDocument;
+    public VisualTreeAsset aiSelectionDialogDocument;
+
+    public void PopupAISelectionDialog()
+    {
+        var aiSelectionDialog = new AISelectionDialog();
+
+        var tempDialog = new TempDialog
+        {
+            root = root,
+            template = aiSelectionDialogDocument,
+            templateDataSource = aiSelectionDialog,
+        };
+
+        tempDialog.onConfirmed += (e, a) =>
+        {
+            aiSelectionDialog.Execute();
+        };
+
+        tempDialog.Popup();
+    }
 
     public void PopupVictoryStatusDialog(VictoryStatus victoryStatus)
     {
@@ -30,6 +87,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         tempDialog.Popup();
     }
+    public void PopupVictoryStatusDialog() => PopupVictoryStatusDialog(VictoryStatus.Capture(GameState.Instance));
 
     public void PopupUnitDialog(Unit unit)
     {
@@ -91,6 +149,25 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 // label.dataSource = item;
             };
 
+            Unit attachingUnit = null;
+
+            treeView.selectionChanged += selectedItems =>
+            {
+                var selectedUnit = selectedItems.FirstOrDefault() as Unit;
+                if(selectedUnit != null)
+                {
+                    if(attachingUnit == null)
+                    {
+                        GameManager.Instance.selectingUnit = selectedUnit;
+                    }
+                    else
+                    {
+                        attachingUnit.AttachTo(selectedUnit);
+                        attachingUnit = null;
+                    }
+                }
+            };
+
             var tree = new OrderOfBattleTree();
 
             var editButton = el.Q<Button>("EditButton");
@@ -136,6 +213,14 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
                     // refresh(); // Otherwise state
                 }
+            };
+
+            
+
+            var attachButton = el.Q<Button>("AttachButton");
+            attachButton.clicked += () =>
+            {
+                attachingUnit = treeView.selectedItem as Unit;
             };
 
             Action refresh = () =>

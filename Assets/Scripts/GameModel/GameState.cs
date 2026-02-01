@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
-using Unity.VisualScripting.Dependencies.NCalc;
 using YYZ;
 
 
@@ -47,8 +46,11 @@ namespace GameModel
 
     public class GameState
     {
+        public static DateTimeOffset beginTime = new DateTimeOffset(1941, 5, 15, 6, 0, 0, TimeSpan.FromHours(1));
+        public static DateTimeOffset endTime = new DateTimeOffset(1941, 5, 15, 20, 0, 0, TimeSpan.FromHours(1));
+
         [XmlIgnore]
-        public DateTimeOffset time = new DateTimeOffset(1941, 5, 15, 6, 0, 0, TimeSpan.FromHours(1));
+        public DateTimeOffset time = beginTime; // DateTimeOffset is a struct, so it's a copy.
 
         public DateTime serializedTime
         {
@@ -324,11 +326,30 @@ namespace GameModel
             EventBus.Publish(cellsChanged);
         }
 
+        public int GetAITurn()
+        {
+            var dt = time - beginTime;
+            var turn = (int)Math.Floor(dt / TimeSpan.FromMinutes(15)); // 15min "turn"
+            return turn;
+        }
+
+        IEnumerable<Unit> deployedUnits => units.Where(unit => unit.deployState == DeployState.Deployed);
+
         public void AdvanceTime(float seconds)
         {
+            var prevTurn = GetAITurn();
+
             time = time.AddSeconds(seconds);
 
-            var deployedUnits = units.Where(unit => unit.deployState == DeployState.Deployed).ToList();
+            var currentTurn = GetAITurn(); // every 15min now
+            if(currentTurn > prevTurn)
+            {
+                CalculateInfluenceMaps();
+                foreach(var unit in deployedUnits)
+                {
+                    unit.PlanFormationMovement();
+                }
+            }
 
             foreach(var unit in deployedUnits)
             {
@@ -342,6 +363,7 @@ namespace GameModel
 
             AdvanceTimeCombat(seconds);
         }
+
 
         // void AdvanceTimeRestore()
         // {
@@ -535,7 +557,7 @@ namespace GameModel
         public class InfluenceMapChanged : IEvent{}
         public static InfluenceMapChanged influenceMapChanged = new(); // may invoked by UI or time advancement clock
 
-        public void CalculateInfluenceMap()
+        public void CalculateInfluenceMaps()
         {
             // side0StrengthMap = new(cells.GetLength(0), cells.GetLength(1));
             // side1StrengthMap = new(cells.GetLength(0), cells.GetLength(1));
@@ -558,7 +580,16 @@ namespace GameModel
             foreach(var side in sides)
                 side.CalcualteControlMap();
 
+            foreach(var side in sides)
+                side.CalculateFrontlineMap();
+
             EventBus.Publish(influenceMapChanged);
+        }
+
+        public float GetTimeProgression()
+        {
+            var p = (time - beginTime) / (endTime - beginTime);
+            return (float)p;
         }
 
         static GameState _instance;

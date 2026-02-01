@@ -16,12 +16,12 @@
         </ui:EnumField>
         <ui:EnumField label="Country" value="Center" type="GameModel.Country, Assembly-CSharp">
             <Bindings>
-                <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay"/>
+                <ui:DataBinding property="value" data-source-path="countryProp" binding-mode="TwoWay"/>
             </Bindings>
         </ui:EnumField>
         <ui:EnumField label="Size" value="Center" type="GameModel.UnitSize, Assembly-CSharp">
             <Bindings>
-                <ui:DataBinding property="value" data-source-path="unitSize" binding-mode="TwoWay"/>
+                <ui:DataBinding property="value" data-source-path="unitSizeProp" binding-mode="TwoWay"/>
             </Bindings>
         </ui:EnumField>
         <ui:EnumField label="Deploy State" value="Center" type="GameModel.DeployState, Assembly-CSharp">

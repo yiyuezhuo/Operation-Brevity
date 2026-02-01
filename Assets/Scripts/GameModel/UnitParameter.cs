@@ -26,6 +26,8 @@ namespace GameModel
 
         public string Remark { get; set; }
 
+        public bool IsLineUnit() => UnitType != UnitType.HeadQuarters && UnitType != UnitType.Artillery;
+
         public override string ToString()
         {
             return $"UnitParameter({UnitType}/{Country}/{Hard}/{Soft}/{Assault}/{Defense}/{Speed}/{Strength}/{Quality})";
@@ -68,7 +70,7 @@ namespace GameModel
             name = "Personel",
             strengthCoef = 1.0f,
             strengthWordSingular = "man",
-            strengthWordPlural = "men"
+            strengthWordPlural = "men",
         };
 
         public static UnitTypeCategory gunCategory = new UnitTypeCategory()

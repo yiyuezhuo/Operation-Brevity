@@ -48,6 +48,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public GameObject counterPrefab;
 
     public PathLineController pathLineController;
+    public LineRenderer missionLine;
 
     public AudioSource infantryFiringAudioSource;
     public AudioSource gunFiringAudioSource;
@@ -275,6 +276,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             GameState.Instance.firstLoaded = true;
             GameState.Instance.ResetStrength();
+            GameState.Instance.CalculateInfluenceMaps();
+            
+            DialogRoot.Instance.PopupAISelectionDialog();
         }
 
         SetAllDirty();
@@ -335,8 +339,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     static Vector3[] emptyVector3Arr = new Vector3[0];
 
+    static float selfCircleDist = 0.8f;
+    static Vector3 selfCircleOffset1 = new Vector3(0, selfCircleDist, 0);
+    static Vector3 selfCircleOffset2 = new Vector3(selfCircleDist, selfCircleDist, 0);
+    static Vector3 selfCircleOffset3 = new Vector3(selfCircleDist, 0, 0);
+
     void UpdateView()
     {
+        // Sync PathLineController
         if(selectingUnit != null)
         {
             var positions = selectingUnit.waypoints.Select(xy => GetCellCenterWorld(xy.x, xy.y)).ToArray();
@@ -347,6 +357,34 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             pathLineController.Sync(emptyVector3Arr, 0);
         }
+
+        // Sync MissionLine
+        var missionTarget = selectingUnit?.missionTargetXY?.Get();
+        var missionSource = selectingUnit?.GetCell();
+        if(missionSource != null && missionTarget != null) // missionSource != missionTarget show a circle instead?
+        {
+            missionLine.gameObject.SetActive(true);
+            if(missionSource != missionTarget)
+            {
+                missionLine.positionCount = 2;
+                missionLine.SetPosition(0, GetCellCenterWorld(missionSource));
+                missionLine.SetPosition(1, GetCellCenterWorld(missionTarget));
+            }
+            else // "self-circle"
+            {
+                missionLine.positionCount = 5;
+                var baseVec = GetCellCenterWorld(missionSource);
+                missionLine.SetPosition(0, baseVec);
+                missionLine.SetPosition(1, baseVec + selfCircleOffset1);
+                missionLine.SetPosition(2, baseVec + selfCircleOffset2);
+                missionLine.SetPosition(3, baseVec + selfCircleOffset3);
+                missionLine.SetPosition(4, baseVec);
+            }
+        }
+        else
+        {
+            missionLine.gameObject.SetActive(false);
+        }
     }
 
     float unresolvedSeconds = 0;
@@ -356,6 +394,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         if(playing)
         {
+            if(GameState.Instance.time > GameState.endTime)
+            {
+                playing = false;
+                DialogRoot.Instance.PopupVictoryStatusDialog();
+                return;
+            }
+
             unresolvedSeconds += Time.deltaTime * GetTimeRatio();
             while(unresolvedSeconds > pulseLengthSeconds)
             {
@@ -471,6 +516,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             {
                 playing = !playing;
             }
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                // if(selectingUnit != null)
+                // {
+                //     selectingUnit.missionTargetXY = null;
+                // }
+                selectingUnit?.ReattachToSuperior();
+            }
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                selectingUnit?.ReattachAllSubordinates();
+            }
         }
     }
 
@@ -478,20 +535,44 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         if(selectingUnit != null)
         {
-            Debug.Log($"Plan path: {selectingUnit} to {cell}");
+            var ctrlPressing = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 
-            // var graph = new DynamicCellGraphArmy();
-            var graph = DynamicCellGraphArmy.Instance;
-            var srcCell = selectingUnit.GetCell();
-            if(srcCell != null)
+            if(ctrlPressing)
             {
-                var cost = PathFinding<Cell>.AStar(graph, srcCell, cell, out var path);
-                // var path = PathFinding<Cell>.AStar3(graph, srcCell, cell);
-                // if(path.Path.Count >= 2)
+                Debug.Log($"Plan path: {selectingUnit} to {cell}");
+
+                // var graph = new DynamicCellGraphArmy();
+                // var graph = DynamicCellGraphArmy.Instance;
+                // var srcCell = selectingUnit.GetCell();
+                // if(srcCell != null)
                 // {
-                //     selectingUnit.SetWaypoints(path.Path);
+                //     var cost = PathFinding<Cell>.AStar(graph, srcCell, cell, out var path);
+                //     // var path = PathFinding<Cell>.AStar3(graph, srcCell, cell);
+                //     // if(path.Path.Count >= 2)
+                //     // {
+                //     //     selectingUnit.SetWaypoints(path.Path);
+                //     // }
+                //     selectingUnit.SetWaypoints(path);
                 // }
-                selectingUnit.SetWaypoints(path);
+
+                selectingUnit.TryPlanPathTo(cell);
+            }
+            else
+            {
+                Debug.Log($"Plan path: {selectingUnit} to {cell} (mission)");
+
+                // var currentCell = selectingUnit.GetCell();
+                // if(currentCell == cell)
+                // {
+                //     selectingUnit.missionTargetXY = null;
+                // }
+                // else
+                // {
+                //     selectingUnit.missionTargetXY = cell.ToXY();
+                // }
+
+                selectingUnit.missionTargetXY = cell.ToXY();
+                selectingUnit.PlanFormationMovement();
             }
         }
     }
@@ -876,8 +957,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             var side = sideType == SideType.Side0 ? GameState.Instance.sides[0] : GameState.Instance.sides[1];
             var map = side.influenceMapSet.Get(influenceMapType);
             var value = map?.matrix[cell.x, cell.y];
-            label.text = value?.ToString("#");
-            if(influenceMapType == InfluenceMapType.Control)
+            // label.text = value?.ToString("#");
+            label.text = value?.ToString("0");
+
+            // Coloring
+            if(influenceMapType == InfluenceMapType.Control || influenceMapType == InfluenceMapType.Frontline)
             {
                 label.color = value switch
                 {
@@ -1037,7 +1121,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         x60, // 1s real time=> 1min game time
         x300, // 1s real time => 5min game time.
-        x1500
+        x1500,
+        x7500
     }
 
     [HideInInspector]
@@ -1050,7 +1135,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             TimeRatioLevel.x60 => 60f,
             TimeRatioLevel.x300 => 300f,
             TimeRatioLevel.x1500 => 1500f,
+            TimeRatioLevel.x7500 => 7500f,
             _ => 0
         };
     }
+
+    [CreateProperty]
+    public float timeProgression => GameState.Instance.GetTimeProgression();
+
+    [CreateProperty]
+    public string timeProgressionText => $"Elapsed: {GameState.Instance.GetTimeProgression():P}";
 }

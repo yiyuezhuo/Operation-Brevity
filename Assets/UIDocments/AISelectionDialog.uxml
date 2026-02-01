@@ -1,0 +1,14 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement class="panel-dialog" style="flex-shrink: 0; height: auto;">
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+            <ui:Label text="AI Selection" class="title" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:Label text="Which side is controlled by AI?" style="white-space: normal;"/>
+        <ui:EnumField value="Center" type="AISelectionDialog+AISelectionOption, Assembly-CSharp" data-source-type="AISelectionDialog, Assembly-CSharp">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="selectionOption" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:EnumField>
+        <ui:Button text="Confirm" name="ConfirmButton"/>
+    </ui:VisualElement>
+</ui:UXML>

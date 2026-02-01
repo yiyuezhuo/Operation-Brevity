@@ -8,6 +8,7 @@
             <ui:Button text="Edit" name="EditButton"/>
             <ui:Button text="New Subordinate" name="NewSubordinateButton"/>
             <ui:Button text="Delete" name="DeleteButton"/>
+            <ui:Button text="Attach" name="AttachButton"/>
         </ui:VisualElement>
         <ui:TreeView item-template="project://database/Assets/UIDocments/OOBLabel.uxml?fileID=9197481963319205126&amp;guid=22ea2c6148b5aca4d99aa10fe192a567&amp;type=3#OOBLabel"/>
     </ui:VisualElement>

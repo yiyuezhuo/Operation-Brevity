@@ -20,7 +20,7 @@
                 <ui:DataBinding property="value" data-source-path="vehicleLoss" binding-mode="ToTarget"/>
             </Bindings>
         </ui:IntegerField>
-        <ui:FloatField label="Victory Point">
+        <ui:FloatField label="Loss Victory Point">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="lossVpProp" binding-mode="ToTarget"/>
             </Bindings>

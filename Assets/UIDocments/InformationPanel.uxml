@@ -1,4 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="UnitIcon" src="project://database/Assets/UIDocments/UnitIcon.uxml?fileID=9197481963319205126&amp;guid=cfbf459c7ba913e4cb0c0522fb013e77&amp;type=3#UnitIcon"/>
     <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-grow: 1; width: 200px; background-color: rgb(240, 240, 240);">
         <ui:VisualElement style="border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0);">
             <ui:Label text="Time Label">
@@ -19,6 +20,12 @@
                     <ui:DataBinding property="value" data-source-path="timeRatioLevel" binding-mode="TwoWay"/>
                 </Bindings>
             </ui:EnumField>
+            <ui:ProgressBar title="time-progress" high-value="1">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="timeProgression" binding-mode="ToTarget"/>
+                    <ui:DataBinding property="title" data-source-path="timeProgressionText" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:ProgressBar>
         </ui:VisualElement>
         <ui:VisualElement>
             <ui:VisualElement data-source-path="cellSelecting">
@@ -35,22 +42,48 @@
         <ui:VisualElement name="StackContainer" style="flex-direction: row; flex-wrap: wrap; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0);"/>
         <ui:VisualElement>
             <ui:VisualElement data-source-path="selectingUnit" style="flex-grow: 1;">
-                <ui:ListView binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocments/OOBLabel.uxml?fileID=9197481963319205126&amp;guid=22ea2c6148b5aca4d99aa10fe192a567&amp;type=3#OOBLabel" data-source-path="parentsAndMeProp" virtualization-method="DynamicHeight"/>
-                <ui:Label text="Strength:"/>
-                <ui:ProgressBar value="0.5" title="Strength" high-value="1">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="strengthProgress" binding-mode="ToTarget"/>
-                        <ui:DataBinding property="title" data-source-path="strengthProgressDesc" binding-mode="ToTarget"/>
-                    </Bindings>
-                </ui:ProgressBar>
-                <ui:Label text="Readiness:"/>
-                <ui:ProgressBar value="0.5" title="Readiness" high-value="1">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="readiness" binding-mode="ToTarget"/>
-                        <ui:DataBinding property="title" data-source-path="readinessProgressDesc" binding-mode="ToTarget"/>
-                    </Bindings>
-                </ui:ProgressBar>
+                <ui:ListView binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocments/InformationPanelOOBLabel.uxml?fileID=9197481963319205126&amp;guid=97307bac712ae1342ac521849ea1cffa&amp;type=3#InformationPanelOOBLabel" data-source-path="parentsAndMeProp" virtualization-method="DynamicHeight" name="InformationPanelOOBListView"/>
+                <ui:VisualElement style="border-bottom-width: 1px; border-top-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-direction: row;">
+                    <ui:VisualElement>
+                        <ui:Instance template="UnitIcon"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:ProgressBar value="0.5" title="Strength" high-value="1" style="margin-bottom: 1px; margin-top: 1px;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="strengthProgress" binding-mode="ToTarget"/>
+                                <ui:DataBinding property="title" data-source-path="strengthProgressDesc" binding-mode="ToTarget"/>
+                            </Bindings>
+                        </ui:ProgressBar>
+                        <ui:ProgressBar value="0.5" title="Readiness" high-value="1" style="margin-top: 1px; margin-bottom: 1px;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="readiness" binding-mode="ToTarget"/>
+                                <ui:DataBinding property="title" data-source-path="readinessProgressDesc" binding-mode="ToTarget"/>
+                            </Bindings>
+                        </ui:ProgressBar>
+                    </ui:VisualElement>
+                </ui:VisualElement>
                 <ui:Button text="Detail" name="DetailButton"/>
+                <ui:Button text="Reattach All Subordinate (F)" name="ReattachAllSubordinatesButton"/>
+                <ui:Button text="All Subordinate Stop" name="AllSubordinateStopButton"/>
+                <ui:VisualElement style="border-top-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="hasMissionTarget" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                    </Bindings>
+                    <ui:Label text="Mission Target Desc">
+                        <Bindings>
+                            <ui:DataBinding property="text" data-source-path="missionTargetDesc" binding-mode="ToTarget"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Label text="Depth"/>
+                        <ui:FloatField style="flex-grow: 1;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="missionDepth" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:FloatField>
+                    </ui:VisualElement>
+                    <ui:Button text="Reattach to Superior (R)" name="ReattachButton"/>
+                </ui:VisualElement>
             </ui:VisualElement>
             <Bindings>
                 <ui:DataBinding property="style.display" data-source-path="selectingUnitValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>

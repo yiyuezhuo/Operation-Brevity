@@ -6,12 +6,18 @@ namespace GameModel
     public class InfluenceMap
     {
         public float[,] matrix;
-        public static float decayCoef = 0.2f;
+        public static float decayCoef = 0.3f;
         public float threshold = 1;
 
-        public InfluenceMap(int width, int height)
+        // public InfluenceMap(int width, int height)
+        // {
+        //     matrix = new float[width, height];
+        // }
+
+        public InfluenceMap()
         {
-            matrix = new float[width, height];
+            var cells = GameState.Instance.cells;
+            matrix = new float[cells.GetLength(0), cells.GetLength(1)];
         }
 
         public void AddSource(Cell srcCell, float influence)
@@ -83,5 +89,10 @@ namespace GameModel
                 }
             }
         }
+    }
+
+    public class FrontlineMap : InfluenceMap
+    {
+        public Dictionary<int, HashSet<Cell>> distanceToCells = new();
     }
 }

@@ -88,11 +88,56 @@ public class Overlay : SingletonDocument<Overlay> // So don't specify binding fo
         var refreshInfluenceMapButton = root.Q<Button>("RefreshInfluenceMapButton");
         refreshInfluenceMapButton.clicked += () =>
         {
-            GameState.Instance.CalculateInfluenceMap();
+            GameState.Instance.CalculateInfluenceMaps();
         };
 
         var victoryStatusButton = root.Q<Button>("VictoryStatusButton");
-        victoryStatusButton.clicked += () => DialogRoot.Instance.PopupVictoryStatusDialog(VictoryStatus.Capture(GameState.Instance));
+        victoryStatusButton.clicked += () => DialogRoot.Instance.PopupVictoryStatusDialog();
+
+        var reattachButton = root.Q<Button>("ReattachButton");
+        reattachButton.clicked += () =>
+        {
+            if(Utils.TryResolveCurrentValueForBinding<Unit>(reattachButton, out var unit))
+            {
+                // unit.missionTargetXY = null;
+                unit.ReattachToSuperior();
+            }
+        };
+
+        var reattachAllSubordinatesButton = root.Q<Button>("ReattachAllSubordinatesButton");
+        reattachAllSubordinatesButton.clicked += () =>
+        {
+            if(Utils.TryResolveCurrentValueForBinding<Unit>(reattachAllSubordinatesButton, out var unit))
+            {
+                unit.ReattachAllSubordinates();
+            }
+        };
+
+        var allSubordinateStopButton = root.Q<Button>("AllSubordinateStopButton");
+        allSubordinateStopButton.clicked += () =>
+        {
+            if(Utils.TryResolveCurrentValueForBinding<Unit>(reattachAllSubordinatesButton, out var unit))
+            {
+                unit.AllSuboridnateStop();
+            }
+        };
+
+        var informationPanelOOBListView = root.Q<ListView>("InformationPanelOOBListView");
+        informationPanelOOBListView.makeItem = () =>
+        {
+            var el = informationPanelOOBListView.itemTemplate.CloneTree();
+
+            var label = el.Q<Label>();
+            Utils.RegisterLinkTag(label, "nameLink", () =>
+            {
+                if(Utils.TryResolveCurrentValueForBinding<Unit>(label, out var unit))
+                {
+                    GameManager.Instance.selectingUnit = unit;
+                } 
+            });
+
+            return el;
+        };
     }
 
     void DoSave(bool editSave)
@@ -119,8 +164,8 @@ public class Overlay : SingletonDocument<Overlay> // So don't specify binding fo
             el.RegisterCallback<ClickEvent>(evt =>
             {
                 Debug.Log($"Stack unit {unit} clicked");
+                GameManager.Instance.selectingUnit = unit;
             });
         }
     }
-
 }

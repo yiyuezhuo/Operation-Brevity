@@ -101,11 +101,13 @@ namespace GameModel
             {
                 if(edgeFeature.primaryRoad)
                 {
-                    edgeFeatureCoef = 0.5f;
+                    // edgeFeatureCoef = 0.5f;
+                    edgeFeatureCoef = 0.8f; // AI PathFinding workaround, but also consider it as Track Movement
                 }
                 else if(edgeFeature.secondaryRoad)
                 {
-                    edgeFeatureCoef = 0.75f;
+                    // edgeFeatureCoef = 0.75f;
+                    edgeFeatureCoef = 0.9f;
                 }
                 else if(edgeFeature.escarpment)
                 {
