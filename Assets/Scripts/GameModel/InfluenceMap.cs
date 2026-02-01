@@ -6,8 +6,8 @@ namespace GameModel
     public class InfluenceMap
     {
         public float[,] matrix;
-        public static float decayCoef = 0.1f;
-        public float threshold = 0.01f;
+        public static float decayCoef = 0.2f;
+        public float threshold = 1;
 
         public InfluenceMap(int width, int height)
         {

@@ -5,9 +5,19 @@
         <ui:Button text="Load" name="LoadButton"/>
         <ui:Button text="Map Edit" name="MapEditButton"/>
         <ui:Label text="Cell Label"/>
-        <ui:EnumField value="Center" type="CellLabelMode, Assembly-CSharp" style="width: 100px;">
+        <ui:EnumField value="Center" type="CellLabelMode, Assembly-CSharp" style="width: 120px;">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="cellLabelMode" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:EnumField>
+        <ui:EnumField value="Center" type="GameModel.InfluenceMapType, Assembly-CSharp" style="width: 90px;">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="influenceMapType" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:EnumField>
+        <ui:EnumField value="Center" type="SideType, Assembly-CSharp" style="width: 70px;">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="sideType" binding-mode="TwoWay"/>
             </Bindings>
         </ui:EnumField>
         <ui:Button text="Order of Battle" name="OrderOfBattleButton"/>

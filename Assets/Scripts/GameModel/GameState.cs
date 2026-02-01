@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO.Hashing;
 using System.Linq;
 using System.Xml.Serialization;
-using UnityEditor.Animations;
+using Unity.VisualScripting.Dependencies.NCalc;
 using YYZ;
 
 
@@ -516,41 +514,51 @@ namespace GameModel
             }
         }
 
-        [XmlIgnore]
-        public InfluenceMap side0StrengthMap;
-        [XmlIgnore]
-        public InfluenceMap side1StrengthMap;
-        [XmlIgnore]
-        public InfluenceMap controlMap;
+        // [XmlIgnore]
+        // public InfluenceMap side0StrengthMap;
+        // [XmlIgnore]
+        // public InfluenceMap side1StrengthMap;
+        // [XmlIgnore]
+        // public InfluenceMap controlMap;
 
-        public InfluenceMap CalcualteStrengthMap(InfluenceMap strengthMap, Side side)
-        {
-            foreach(var g in units.Where(u => u.deployState == DeployState.Deployed && u.side == side).GroupBy(u => u.GetCell()))
-            {
-                var cell = g.Key;
-                var strength = g.Sum(u => u.GetPower());
-                strengthMap.AddSource(cell, strength);
-            }
-            return strengthMap;
-        }
+        // public InfluenceMap CalcualteStrengthMap(InfluenceMap strengthMap, Side side)
+        // {
+        //     foreach(var g in units.Where(u => u.deployState == DeployState.Deployed && u.side == side).GroupBy(u => u.GetCell()))
+        //     {
+        //         var cell = g.Key;
+        //         var strength = g.Sum(u => u.GetPower());
+        //         strengthMap.AddSource(cell, strength);
+        //     }
+        //     return strengthMap;
+        // }
+
+        public class InfluenceMapChanged : IEvent{}
+        public static InfluenceMapChanged influenceMapChanged = new(); // may invoked by UI or time advancement clock
 
         public void CalculateInfluenceMap()
         {
-            side0StrengthMap = new(cells.GetLength(0), cells.GetLength(1));
-            side1StrengthMap = new(cells.GetLength(0), cells.GetLength(1));
-            controlMap = new(cells.GetLength(0), cells.GetLength(1));
+            // side0StrengthMap = new(cells.GetLength(0), cells.GetLength(1));
+            // side1StrengthMap = new(cells.GetLength(0), cells.GetLength(1));
+            // controlMap = new(cells.GetLength(0), cells.GetLength(1));
 
-            if(sides.Count >= 1)
-            {
-                CalcualteStrengthMap(side0StrengthMap, sides[0]);
-            }
-            if(sides.Count >= 2)
-            {
-                CalcualteStrengthMap(side1StrengthMap, sides[1]);
-            }
+            // if(sides.Count >= 1)
+            // {
+            //     CalcualteStrengthMap(side0StrengthMap, sides[0]);
+            // }
+            // if(sides.Count >= 2)
+            // {
+            //     CalcualteStrengthMap(side1StrengthMap, sides[1]);
+            // }
 
-            controlMap.Plus(side0StrengthMap);
-            controlMap.Subtract(side1StrengthMap);
+            // controlMap.Plus(side0StrengthMap);
+            // controlMap.Subtract(side1StrengthMap);
+            foreach(var side in sides)
+                side.CalcualteStrengthMap();
+
+            foreach(var side in sides)
+                side.CalcualteControlMap();
+
+            EventBus.Publish(influenceMapChanged);
         }
 
         static GameState _instance;

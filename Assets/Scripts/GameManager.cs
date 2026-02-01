@@ -11,16 +11,25 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using YYZ.Unity;
 using YYZ.PathFinding;
+using System.Security.Cryptography;
 
 public enum CellLabelMode
 {
     None,
     XY,
     Terrain,
-    Side0StrengthMap,
-    Side1StrengthMap,
-    ControlMap
+    // Side0StrengthMap,
+    // Side1StrengthMap,
+    // ControlMap
+    InfluenceMap
 }
+
+public enum SideType
+{
+    Side0,
+    Side1
+}
+
 
 public enum MapEditMode
 {
@@ -506,6 +515,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             stacksDirty = false;
             RefreshStacks();
         }
+
+        if(influenceMapDirty)
+        {
+            influenceMapDirty = false;
+            if(cellLabelMode == CellLabelMode.InfluenceMap)
+            {
+                RefreshCellLabels();
+            }
+        }
     }
 
     void RefreshMapUnits()
@@ -716,6 +734,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     bool edgeFeatureDirty = false;
     bool mapUnitsDirty = false;
     bool stacksDirty = false;
+    bool influenceMapDirty = false;
     // bool stackSelectingDirty = false;
 
     public void SetAllDirty() // Invoke a full refresh
@@ -723,6 +742,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         edgeFeatureDirty = true;
         mapUnitsDirty = true;
         stacksDirty = true;
+        influenceMapDirty = true;
         // stackSelectingDirty = true;
     }
 
@@ -754,6 +774,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
+    void OnInfluenceMapChanged(GameState.InfluenceMapChanged evt)
+    {
+        influenceMapDirty = true;
+    }
 
     void RegisterGameState()
     {
@@ -767,6 +791,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         EventBus.Subscribe<Unit.MapUnitsChanged>(OnMapUnitsChanged);
         EventBus.Subscribe<Unit.StacksChanged>(OnStacksChanged);
         EventBus.Subscribe<Unit.OrderOfBattleChanged>(OnOrderOfBattleChanged);
+        EventBus.Subscribe<GameState.InfluenceMapChanged>(OnInfluenceMapChanged);
     }
 
     void UnregisterGameState()
@@ -781,7 +806,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         EventBus.Unsubscribe<Unit.MapUnitsChanged>(OnMapUnitsChanged);
         EventBus.Unsubscribe<Unit.StacksChanged>(OnStacksChanged);
         EventBus.Unsubscribe<Unit.OrderOfBattleChanged>(OnOrderOfBattleChanged);
+        EventBus.Subscribe<GameState.InfluenceMapChanged>(OnInfluenceMapChanged);
     }
+
 
     // void OnGameStateCellChanged(object sender, Cell cell)
     // {
@@ -804,7 +831,38 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         RebuildCellLabels();
     }
+    
+    SideType _sideType; // Used by InfluenceMap only currently
+    [CreateProperty]
+    public SideType sideType
+    {
+        get => _sideType;
+        set
+        {
+            if(_sideType != value)
+            {
+                _sideType = value;
+            }
+            influenceMapDirty = true;
+        }
+    }
 
+    InfluenceMapType _influenceMapType;
+    [CreateProperty]
+    public InfluenceMapType influenceMapType
+    {
+        get => _influenceMapType;
+        set
+        {
+            if(value != _influenceMapType)
+            {
+                _influenceMapType = value;
+                influenceMapDirty = true;
+            }
+        }
+    }
+
+    // influenceMapDirty
 
     public void RefreshCellLabel(Cell cell)
     {
@@ -813,37 +871,49 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         var label = cellLabels[x, y];
 
-        label.text = cellLabelMode switch
+        if(cellLabelMode == CellLabelMode.InfluenceMap)
         {
-            CellLabelMode.XY => $"({x}, {y})",
-            CellLabelMode.Terrain => cell.terrain.ToString(),
-            CellLabelMode.Side0StrengthMap => GameState.Instance.side0StrengthMap?.matrix[cell.x, cell.y].ToString("#"),
-            CellLabelMode.Side1StrengthMap => GameState.Instance.side1StrengthMap?.matrix[cell.x, cell.y].ToString("#"),
-            CellLabelMode.ControlMap => GameState.Instance.controlMap?.matrix[cell.x, cell.y].ToString("#"),
-            _ => ""
-        };
-
-        if(cellLabelMode == CellLabelMode.Terrain)
-        {
-            label.color = cell.terrain switch
+            var side = sideType == SideType.Side0 ? GameState.Instance.sides[0] : GameState.Instance.sides[1];
+            var map = side.influenceMapSet.Get(influenceMapType);
+            var value = map?.matrix[cell.x, cell.y];
+            label.text = value?.ToString("#");
+            if(influenceMapType == InfluenceMapType.Control)
             {
-                TerrainType.Desert => Color.yellow,
-                TerrainType.Water => Color.blue,
-                _ => Color.black
-            };
-        }
-        else if(cellLabelMode == CellLabelMode.ControlMap)
-        {
-            label.color = GameState.Instance.controlMap?.matrix[cell.x, cell.y] switch
+                label.color = value switch
+                {
+                    >= 0 => Color.blue,
+                    <0 => Color.red,
+                    float.NaN => Color.black,
+                    null => Color.black
+                };
+            }
+            else
             {
-                >= 0 => Color.blue,
-                <0 => Color.red,
-                float.NaN => Color.black
-            };
+                label.color = Color.black;
+            }
         }
         else
         {
-            label.color = Color.black;
+            label.text = cellLabelMode switch
+            {
+                CellLabelMode.XY => $"({x}, {y})",
+                CellLabelMode.Terrain => cell.terrain.ToString(),
+                _ => ""
+            };
+
+            if(cellLabelMode == CellLabelMode.Terrain)
+            {
+                label.color = cell.terrain switch
+                {
+                    TerrainType.Desert => Color.yellow,
+                    TerrainType.Water => Color.blue,
+                    _ => Color.black
+                };
+            }
+            else
+            {
+                label.color = Color.black;
+            }
         }
     }
 

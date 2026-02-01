@@ -45,5 +45,8 @@ TagManager:
   - name: Pieces
     uniqueID: 829615007
     locked: 0
+  - name: CellLabel
+    uniqueID: 1495082709
+    locked: 0
   m_RenderingLayers:
   - Default
