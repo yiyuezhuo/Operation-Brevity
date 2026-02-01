@@ -8,6 +8,9 @@ Game submission to Historical Accurate Game Jam 12.
 
 ## Screenshots
 
+<img src="https://img.itch.zone/aW1hZ2UvNDI1MDI2NC8yNTMyMzk2MC5wbmc=/original/YaZmy5.png">
+<img src="https://img.itch.zone/aW1hZ2UvNDI1MDI2NC8yNTMyNDM4My5wbmc=/original/OL5Ygi.png">
+
 ## Controls
 
 Game Controls:
