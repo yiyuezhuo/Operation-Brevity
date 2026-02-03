@@ -5,6 +5,7 @@
         <ui:Label text="Operation Brevity" class="main-menu-title" />
         <ui:VisualElement class="main-menu-buttons">
             <ui:Button text="Play" name="PlayButton" class="top-bar-button top-bar-button-primary main-menu-button" />
+            <ui:Button text="Load Game" name="LoadGameButton" class="top-bar-button main-menu-button" />
             <ui:Button text="Quit" name="QuitButton" class="top-bar-button top-bar-button-danger main-menu-button" />
         </ui:VisualElement>
     </ui:VisualElement>
