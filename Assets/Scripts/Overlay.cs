@@ -65,7 +65,7 @@ public class Overlay : SingletonDocument<Overlay> // So don't specify binding fo
         var exitButton = root.Q<Button>("ExitButton");
         exitButton.clicked += () =>
         {
-            Application.Quit();
+            SceneManager.LoadScene(SceneNames.MainMenu, LoadSceneMode.Single);
         };
 
         var restartButton = root.Q<Button>("RestartButton");

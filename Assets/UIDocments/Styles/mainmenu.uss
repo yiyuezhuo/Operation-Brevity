@@ -1,0 +1,38 @@
+.main-menu-root {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(20, 26, 16, 0.95);
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.main-menu-title {
+    font-size: 48px;
+    -unity-font-style: bold;
+    color: rgb(214, 224, 173);
+    margin-bottom: 32px;
+}
+
+.main-menu-buttons {
+    width: 280px;
+    background-color: rgba(30, 37, 25, 0.96);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(188, 199, 138, 0.55);
+    border-right-color: rgba(188, 199, 138, 0.55);
+    border-top-color: rgba(188, 199, 138, 0.55);
+    border-bottom-color: rgba(188, 199, 138, 0.55);
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 4px;
+}
+
+.main-menu-button {
+    height: 44px;
+    margin-bottom: 12px;
+    font-size: 18px;
+}

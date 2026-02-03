@@ -98,9 +98,9 @@ Shader "Custom/WargameCounter_Fixed"
                 
                 float borderMask = alpha - innerMask;
                 
-                float distanceFromCenter = length(centeredUV * 2.0); // 0到√2之间
+                float distanceFromCenter = length(centeredUV * 2.0);
                 
-                distanceFromCenter = saturate(distanceFromCenter / 0.707); // 除以√2 ≈ 0.707
+                distanceFromCenter = saturate(distanceFromCenter / 0.707);
                 
                 float gradientFactor = pow(distanceFromCenter, 2.0);
                 float adjustedGradient = lerp(distanceFromCenter, gradientFactor, _GradientIntensity);

@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project://database/Assets/UIDocments/Styles/style.uss?fileID=7433441132597879392&amp;guid=784362914cea64447ab85d0431008349&amp;type=3#style" />
+    <ui:Style src="project://database/Assets/UIDocments/Styles/mainmenu.uss?fileID=7433441132597879392&amp;guid=c84bb76f4d8e47d8b4e736b863530662&amp;type=3#mainmenu" />
+    <ui:VisualElement name="MainMenuRoot" class="main-menu-root">
+        <ui:Label text="Operation Brevity" class="main-menu-title" />
+        <ui:VisualElement class="main-menu-buttons">
+            <ui:Button text="Play" name="PlayButton" class="top-bar-button top-bar-button-primary main-menu-button" />
+            <ui:Button text="Quit" name="QuitButton" class="top-bar-button top-bar-button-danger main-menu-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
