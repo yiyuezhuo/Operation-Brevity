@@ -1,13 +1,13 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="UnitIcon" src="project://database/Assets/UIDocments/UnitIcon.uxml?fileID=9197481963319205126&amp;guid=cfbf459c7ba913e4cb0c0522fb013e77&amp;type=3#UnitIcon"/>
-    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-grow: 1; width: 200px; background-color: rgb(240, 240, 240);">
-        <ui:VisualElement style="border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0);">
-            <ui:Label text="Time Label">
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="info-panel" style="flex-grow: 1;">
+        <ui:VisualElement class="info-panel-section info-panel-time-section">
+            <ui:Label text="Time Label" class="info-panel-time-label">
                 <Bindings>
                     <ui:DataBinding property="text" data-source-path="currentGameState.time" binding-mode="ToTarget"/>
                 </Bindings>
             </ui:Label>
-            <ui:VisualElement style="flex-direction: row;">
+            <ui:VisualElement class="info-panel-inline-row">
                 <ui:Label text="Play (Spacebar)"/>
                 <ui:Toggle>
                     <Bindings>
@@ -20,16 +20,16 @@
                     <ui:DataBinding property="value" data-source-path="timeRatioLevel" binding-mode="TwoWay"/>
                 </Bindings>
             </ui:EnumField>
-            <ui:ProgressBar title="time-progress" high-value="1">
+            <ui:ProgressBar title="time-progress" high-value="1" class="info-panel-progress">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="timeProgression" binding-mode="ToTarget"/>
                     <ui:DataBinding property="title" data-source-path="timeProgressionText" binding-mode="ToTarget"/>
                 </Bindings>
             </ui:ProgressBar>
         </ui:VisualElement>
-        <ui:VisualElement>
+        <ui:VisualElement class="info-panel-section info-panel-cell-section">
             <ui:VisualElement data-source-path="cellSelecting">
-                <ui:Label text="Cell desc">
+                <ui:Label text="Cell desc" class="info-panel-cell-label">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="desc" binding-mode="ToTarget"/>
                     </Bindings>
@@ -39,22 +39,22 @@
                 <ui:DataBinding property="style.display" data-source-path="selectingCellValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
             </Bindings>
         </ui:VisualElement>
-        <ui:VisualElement name="StackContainer" style="flex-direction: row; flex-wrap: wrap; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0);"/>
-        <ui:VisualElement>
-            <ui:VisualElement data-source-path="selectingUnit" style="flex-grow: 1;">
-                <ui:ListView binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocments/InformationPanelOOBLabel.uxml?fileID=9197481963319205126&amp;guid=97307bac712ae1342ac521849ea1cffa&amp;type=3#InformationPanelOOBLabel" data-source-path="parentsAndMeProp" virtualization-method="DynamicHeight" name="InformationPanelOOBListView"/>
-                <ui:VisualElement style="border-bottom-width: 1px; border-top-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-direction: row;">
-                    <ui:VisualElement>
+        <ui:VisualElement name="StackContainer" class="info-panel-stack"/>
+        <ui:VisualElement class="info-panel-section">
+            <ui:VisualElement data-source-path="selectingUnit" class="info-panel-unit-section" style="flex-grow: 1;">
+                <ui:ListView binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocments/InformationPanelOOBLabel.uxml?fileID=9197481963319205126&amp;guid=97307bac712ae1342ac521849ea1cffa&amp;type=3#InformationPanelOOBLabel" data-source-path="parentsAndMeProp" virtualization-method="DynamicHeight" name="InformationPanelOOBListView" class="info-panel-oob-list"/>
+                <ui:VisualElement class="info-panel-unit-summary">
+                    <ui:VisualElement class="info-panel-unit-icon-slot">
                         <ui:Instance template="UnitIcon"/>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1;">
-                        <ui:ProgressBar value="0.5" title="Strength" high-value="1" style="margin-bottom: 1px; margin-top: 1px;">
+                        <ui:ProgressBar value="0.5" title="Strength" high-value="1" class="info-panel-progress">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="strengthProgress" binding-mode="ToTarget"/>
                                 <ui:DataBinding property="title" data-source-path="strengthProgressDesc" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:ProgressBar>
-                        <ui:ProgressBar value="0.5" title="Readiness" high-value="1" style="margin-top: 1px; margin-bottom: 1px;">
+                        <ui:ProgressBar value="0.5" title="Readiness" high-value="1" class="info-panel-progress">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="readiness" binding-mode="ToTarget"/>
                                 <ui:DataBinding property="title" data-source-path="readinessProgressDesc" binding-mode="ToTarget"/>
@@ -62,27 +62,27 @@
                         </ui:ProgressBar>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:Button text="Detail" name="DetailButton"/>
-                <ui:Button text="Reattach All Subordinate (F)" name="ReattachAllSubordinatesButton"/>
-                <ui:Button text="All Subordinate Stop" name="AllSubordinateStopButton"/>
-                <ui:VisualElement style="border-top-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:Button text="Detail" name="DetailButton" class="info-panel-action-button info-panel-primary-button"/>
+                <ui:Button text="Reattach All Subordinate (F)" name="ReattachAllSubordinatesButton" class="info-panel-action-button"/>
+                <ui:Button text="All Subordinate Stop" name="AllSubordinateStopButton" class="info-panel-action-button"/>
+                <ui:VisualElement class="info-panel-mission-box">
                     <Bindings>
                         <ui:DataBinding property="style.display" data-source-path="hasMissionTarget" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                     </Bindings>
-                    <ui:Label text="Mission Target Desc">
+                    <ui:Label text="Mission Target Desc" class="info-panel-mission-label">
                         <Bindings>
                             <ui:DataBinding property="text" data-source-path="missionTargetDesc" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Label>
-                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement class="info-panel-inline-row" style="flex-grow: 1;">
                         <ui:Label text="Depth"/>
-                        <ui:FloatField style="flex-grow: 1;">
+                        <ui:FloatField class="info-panel-depth-field" style="flex-grow: 1;">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="missionDepth" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:FloatField>
                     </ui:VisualElement>
-                    <ui:Button text="Reattach to Superior (R)" name="ReattachButton"/>
+                    <ui:Button text="Reattach to Superior (R)" name="ReattachButton" class="info-panel-action-button"/>
                 </ui:VisualElement>
             </ui:VisualElement>
             <Bindings>
