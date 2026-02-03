@@ -1,29 +1,37 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-direction: row; flex-shrink: 0; background-color: rgb(240, 240, 240); flex-wrap: wrap;">
-        <ui:Button text="Save" name="SaveButton"/>
-        <ui:Button text="Save (Edit)" name="SaveEditButton"/>
-        <ui:Button text="Load" name="LoadButton"/>
-        <ui:Button text="Map Edit" name="MapEditButton"/>
-        <ui:Label text="Cell Label"/>
-        <ui:EnumField value="Center" type="CellLabelMode, Assembly-CSharp" style="width: 120px;">
-            <Bindings>
-                <ui:DataBinding property="value" data-source-path="cellLabelMode" binding-mode="TwoWay"/>
-            </Bindings>
-        </ui:EnumField>
-        <ui:EnumField value="Center" type="GameModel.InfluenceMapType, Assembly-CSharp" style="width: 90px;">
-            <Bindings>
-                <ui:DataBinding property="value" data-source-path="influenceMapType" binding-mode="TwoWay"/>
-            </Bindings>
-        </ui:EnumField>
-        <ui:EnumField value="Center" type="SideType, Assembly-CSharp" style="width: 70px;">
-            <Bindings>
-                <ui:DataBinding property="value" data-source-path="sideType" binding-mode="TwoWay"/>
-            </Bindings>
-        </ui:EnumField>
-        <ui:Button text="Order of Battle" name="OrderOfBattleButton"/>
-        <ui:Button text="Refresh Influence Map" name="RefreshInfluenceMapButton"/>
-        <ui:Button text="Victroy Status" name="VictoryStatusButton"/>
-        <ui:Button text="Restart" name="RestartButton"/>
-        <ui:Button text="Exit" name="ExitButton"/>
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="top-bar">
+        <ui:VisualElement class="top-bar-group">
+            <ui:Button text="Save" name="SaveButton" class="top-bar-button top-bar-button-primary"/>
+            <ui:Button text="Save (Edit)" name="SaveEditButton" class="top-bar-button"/>
+            <ui:Button text="Load" name="LoadButton" class="top-bar-button"/>
+            <ui:Button text="Map Edit" name="MapEditButton" class="top-bar-button"/>
+        </ui:VisualElement>
+        <ui:VisualElement class="top-bar-separator"/>
+        <ui:VisualElement class="top-bar-group top-bar-controls-group">
+            <ui:Label text="Cell" class="top-bar-field-label"/>
+            <ui:EnumField value="Center" type="CellLabelMode, Assembly-CSharp" class="top-bar-select top-bar-select-cell">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="cellLabelMode" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:EnumField>
+            <ui:EnumField value="Center" type="GameModel.InfluenceMapType, Assembly-CSharp" class="top-bar-select top-bar-select-map">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="influenceMapType" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:EnumField>
+            <ui:EnumField value="Center" type="SideType, Assembly-CSharp" class="top-bar-select top-bar-select-side">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="sideType" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:EnumField>
+        </ui:VisualElement>
+        <ui:VisualElement class="top-bar-separator"/>
+        <ui:VisualElement class="top-bar-group">
+            <ui:Button text="Order of Battle" name="OrderOfBattleButton" class="top-bar-button"/>
+            <ui:Button text="Refresh Influence Map" name="RefreshInfluenceMapButton" class="top-bar-button"/>
+            <ui:Button text="Victory Status" name="VictoryStatusButton" class="top-bar-button"/>
+            <ui:Button text="Restart" name="RestartButton" class="top-bar-button top-bar-button-warn"/>
+            <ui:Button text="Exit" name="ExitButton" class="top-bar-button top-bar-button-danger"/>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

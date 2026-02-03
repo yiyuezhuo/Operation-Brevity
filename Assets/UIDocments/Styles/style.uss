@@ -270,25 +270,25 @@
     padding-right: 6px;
     padding-top: 6px;
     padding-bottom: 8px;
-    background-color: rgb(235, 236, 230);
+    background-color: rgba(42, 50, 34, 0.94);
     border-left-width: 1px;
-    border-left-color: rgb(50, 56, 40);
+    border-left-color: rgba(178, 190, 126, 0.65);
 }
 
 .info-panel-section {
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(24, 30, 21, 0.88);
     border-left-width: 1px;
     border-right-width: 1px;
     border-top-width: 1px;
     border-bottom-width: 1px;
-    border-left-color: rgba(55, 63, 43, 0.45);
-    border-right-color: rgba(55, 63, 43, 0.45);
-    border-top-color: rgba(55, 63, 43, 0.45);
-    border-bottom-color: rgba(55, 63, 43, 0.45);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-left-color: rgba(162, 176, 112, 0.45);
+    border-right-color: rgba(162, 176, 112, 0.45);
+    border-top-color: rgba(162, 176, 112, 0.45);
+    border-bottom-color: rgba(162, 176, 112, 0.45);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     margin-top: 3px;
     margin-bottom: 3px;
     padding-left: 4px;
@@ -310,30 +310,30 @@
 
 .info-panel-time-label {
     -unity-font-style: bold;
-    color: rgb(39, 47, 33);
+    color: rgb(208, 219, 154);
 }
 
 .info-panel-cell-label {
     white-space: normal;
-    color: rgb(45, 49, 38);
+    color: rgba(201, 210, 168, 0.92);
 }
 
 .info-panel-stack {
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: rgba(213, 216, 203, 0.7);
+    background-color: rgba(53, 63, 41, 0.7);
     border-bottom-width: 1px;
     border-top-width: 1px;
     border-left-width: 1px;
     border-right-width: 1px;
-    border-left-color: rgba(50, 56, 40, 0.55);
-    border-right-color: rgba(50, 56, 40, 0.55);
-    border-top-color: rgba(50, 56, 40, 0.55);
-    border-bottom-color: rgba(50, 56, 40, 0.55);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-left-color: rgba(175, 188, 127, 0.52);
+    border-right-color: rgba(175, 188, 127, 0.52);
+    border-top-color: rgba(175, 188, 127, 0.52);
+    border-bottom-color: rgba(175, 188, 127, 0.52);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     min-height: 54px;
     padding-left: 2px;
     padding-right: 2px;
@@ -362,15 +362,15 @@
     border-right-width: 1px;
     border-top-width: 1px;
     border-bottom-width: 1px;
-    border-left-color: rgba(45, 52, 35, 0.6);
-    border-right-color: rgba(45, 52, 35, 0.6);
-    border-top-color: rgba(45, 52, 35, 0.6);
-    border-bottom-color: rgba(45, 52, 35, 0.6);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.8);
+    border-left-color: rgba(184, 197, 136, 0.58);
+    border-right-color: rgba(184, 197, 136, 0.58);
+    border-top-color: rgba(184, 197, 136, 0.58);
+    border-bottom-color: rgba(184, 197, 136, 0.58);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: rgba(38, 46, 30, 0.86);
     padding-left: 2px;
     padding-right: 2px;
     padding-top: 2px;
@@ -388,6 +388,16 @@
 }
 
 .info-panel-action-button {
+    color: rgb(214, 224, 173);
+    background-color: rgba(39, 47, 31, 0.96);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(168, 181, 120, 0.5);
+    border-right-color: rgba(168, 181, 120, 0.5);
+    border-top-color: rgba(168, 181, 120, 0.5);
+    border-bottom-color: rgba(168, 181, 120, 0.5);
     margin-top: 2px;
     margin-bottom: 2px;
 }
@@ -401,15 +411,15 @@
     border-right-width: 1px;
     border-top-width: 1px;
     border-bottom-width: 1px;
-    border-left-color: rgba(45, 52, 35, 0.6);
-    border-right-color: rgba(45, 52, 35, 0.6);
-    border-top-color: rgba(45, 52, 35, 0.6);
-    border-bottom-color: rgba(45, 52, 35, 0.6);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    background-color: rgba(229, 233, 220, 0.7);
+    border-left-color: rgba(180, 194, 132, 0.56);
+    border-right-color: rgba(180, 194, 132, 0.56);
+    border-top-color: rgba(180, 194, 132, 0.56);
+    border-bottom-color: rgba(180, 194, 132, 0.56);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: rgba(44, 54, 33, 0.82);
     padding-left: 4px;
     padding-right: 4px;
     padding-top: 3px;
@@ -419,9 +429,109 @@
 
 .info-panel-mission-label {
     -unity-font-style: bold;
+    color: rgb(215, 225, 174);
     white-space: normal;
 }
 
 .info-panel-depth-field {
     min-width: 60px;
+}
+.top-bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+    row-gap: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: rgba(30, 37, 25, 0.96);
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(188, 199, 138, 0.55);
+}
+
+.top-bar-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 3px;
+    row-gap: 2px;
+}
+
+.top-bar-controls-group {
+    background-color: rgba(46, 55, 34, 0.66);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(177, 191, 126, 0.44);
+    border-right-color: rgba(177, 191, 126, 0.44);
+    border-top-color: rgba(177, 191, 126, 0.44);
+    border-bottom-color: rgba(177, 191, 126, 0.44);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.top-bar-separator {
+    width: 1px;
+    min-height: 20px;
+    background-color: rgba(186, 196, 137, 0.48);
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.top-bar-field-label {
+    -unity-font-style: bold;
+    color: rgb(203, 215, 150);
+    margin-right: 1px;
+}
+
+.top-bar-select {
+    min-width: 72px;
+}
+
+.top-bar-select-cell {
+    width: 122px;
+}
+
+.top-bar-select-map {
+    width: 108px;
+}
+
+.top-bar-select-side {
+    width: 74px;
+}
+
+.top-bar-button {
+    color: rgb(212, 222, 171);
+    background-color: rgba(45, 54, 34, 0.95);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(177, 191, 126, 0.46);
+    border-right-color: rgba(177, 191, 126, 0.46);
+    border-top-color: rgba(177, 191, 126, 0.46);
+    border-bottom-color: rgba(177, 191, 126, 0.46);
+}
+
+.top-bar-button-primary {
+    -unity-font-style: bold;
+}
+
+.top-bar-button-warn {
+    color: rgb(255, 230, 157);
+    background-color: rgba(102, 82, 40, 0.92);
+}
+
+.top-bar-button-danger {
+    color: rgb(255, 208, 190);
+    background-color: rgba(98, 52, 46, 0.92);
 }
