@@ -43,6 +43,24 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
         scrollWheelAction = InputSystem.actions.FindAction("ScrollWheel");
         rightClickAction = InputSystem.actions.FindAction("RightClick");
 
+        if (scrollWheelAction == null)
+        {
+            Debug.LogWarning("PlaneCameraController: Input action 'ScrollWheel' was not found. Using device/legacy fallback for zoom.");
+        }
+        else if (!scrollWheelAction.enabled)
+        {
+            scrollWheelAction.Enable();
+        }
+
+        if (rightClickAction == null)
+        {
+            Debug.LogWarning("PlaneCameraController: Input action 'RightClick' was not found. Using device/legacy fallback for dragging.");
+        }
+        else if (!rightClickAction.enabled)
+        {
+            rightClickAction.Enable();
+        }
+
         // var touchSupported = Touchscreen.current != null;
         // var touchSupported = Application.isMobilePlatform; // HACK: temp hack since the above check doesn't work for Unity Remote
         // var touchSupported = Touchscreen.current != null || SystemInfo.deviceModel.Contains("Unity Remote");
@@ -92,6 +110,36 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
         UpdateHitPoint();
     }
 
+    float GetScrollDeltaY()
+    {
+        if (scrollWheelAction != null && scrollWheelAction.enabled)
+        {
+            var actionScrollY = scrollWheelAction.ReadValue<Vector2>().y;
+            if (Mathf.Abs(actionScrollY) > Mathf.Epsilon)
+                return actionScrollY;
+        }
+
+        if (Mouse.current != null)
+        {
+            var deviceScrollY = Mouse.current.scroll.ReadValue().y;
+            if (Mathf.Abs(deviceScrollY) > Mathf.Epsilon)
+                return deviceScrollY;
+        }
+
+        return Input.mouseScrollDelta.y;
+    }
+
+    bool IsRightClickPressed()
+    {
+        if (rightClickAction != null && rightClickAction.enabled && rightClickAction.IsPressed())
+            return true;
+
+        if (Mouse.current != null && Mouse.current.rightButton.isPressed)
+            return true;
+
+        return Input.GetMouseButton(1);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -101,16 +149,16 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
             return;
 
         // Zoom
-        var mouseScrollDelta = scrollWheelAction.ReadValue<Vector2>();
+        var scrollY = GetScrollDeltaY();
 
         // if (Input.mouseScrollDelta.y != 0)
-        if (mouseScrollDelta.y != 0)
+        if (Mathf.Abs(scrollY) > Mathf.Epsilon)
         {
             switch (mode)
             {
                 case ScrollMode.Orthographic:
                     // var newSize = cam.orthographicSize - Input.mouseScrollDelta.y * zoomSpeed;
-                    var newSize = cam.orthographicSize - mouseScrollDelta.y * zoomSpeed;
+                    var newSize = cam.orthographicSize - scrollY * zoomSpeed;
                     if (newSize > 0)
                     {
                         cam.orthographicSize = newSize;
@@ -119,7 +167,7 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
                     break;
                 case ScrollMode.Perspective:
                     // var newZ = cam.transform.position.z + Input.mouseScrollDelta.y * zSpeed;
-                    var newZ = cam.transform.position.z + mouseScrollDelta.y * zSpeed;
+                    var newZ = cam.transform.position.z + scrollY * zSpeed;
                     if (cam.transform.position.z * newZ < 0)
                         break;
                     cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, newZ);
@@ -149,7 +197,7 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
             }
         }
         
-        if (rightClickAction.IsPressed() ||
+        if (IsRightClickPressed() ||
             (EnhancedTouchSupport.enabled && UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count == 1))
         {
             // var mousePosition = (Vector2)Input.mousePosition * mouseAdjustedCoef;
