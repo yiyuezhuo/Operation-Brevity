@@ -2,7 +2,9 @@
     flex-grow: 1;
     align-items: center;
     justify-content: center;
-    background-color: rgba(20, 26, 16, 0.95);
+    background-color: rgb(20, 26, 16);
+    background-image: url("project://database/Assets/Textures/OperationBrevity_Historical.jpg?fileID=2800000&guid=cd4e769a65a24cca982dd9a0400f898d&type=3#OperationBrevity_Historical");
+    -unity-background-scale-mode: scale-and-crop;
     padding-left: 24px;
     padding-right: 24px;
 }
@@ -10,7 +12,20 @@
 .main-menu-title {
     font-size: 48px;
     -unity-font-style: bold;
-    color: rgb(214, 224, 173);
+    color: rgb(233, 239, 206);
+    background-color: rgba(18, 24, 14, 0.82);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(188, 199, 138, 0.68);
+    border-right-color: rgba(188, 199, 138, 0.68);
+    border-top-color: rgba(188, 199, 138, 0.68);
+    border-bottom-color: rgba(188, 199, 138, 0.68);
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     margin-bottom: 32px;
 }
 
