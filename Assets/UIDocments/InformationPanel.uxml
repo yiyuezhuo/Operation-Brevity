@@ -8,7 +8,7 @@
                 </Bindings>
             </ui:Label>
             <ui:VisualElement class="info-panel-inline-row">
-                <ui:Label text="Play (Spacebar)"/>
+                <ui:Label text="Play (Spacebar)" class="info-panel-contrast-label"/>
                 <ui:Toggle>
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="playing" binding-mode="TwoWay"/>
