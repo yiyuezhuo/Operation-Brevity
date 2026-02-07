@@ -131,6 +131,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     Transform cellLabelsTransform;
     Transform edgeFeaturesTransform;
     Transform countersTransform;
+    Transform hierarchyLinesTransform;
+
+    static readonly Color superiorLineColor = new Color(0.72f, 0.6f, 0.85f, 0.7f);
+    static readonly Color subordinateLineColor = new Color(0.55f, 0.85f, 0.6f, 0.7f);
+    readonly List<LineRenderer> hierarchyLineRenderers = new();
 
     // Label[,] cellLabels;
     TMP_Text[,] cellLabels;
@@ -161,6 +166,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         cellLabelsTransform = Utils.CreateDynamicTransform(transform, "CellLabels");
         edgeFeaturesTransform = Utils.CreateDynamicTransform(transform, "EdgeFeatures");
         countersTransform = Utils.CreateDynamicTransform(transform, "Counters");
+        hierarchyLinesTransform = Utils.CreateDynamicTransform(transform, "HierarchyLines");
 
         // if(startupConfig.mode == StartupConfig.Mode.ScenPath)
         // {
@@ -367,23 +373,134 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             if(missionSource != missionTarget)
             {
                 missionLine.positionCount = 2;
-                missionLine.SetPosition(0, GetCellCenterWorld(missionSource));
-                missionLine.SetPosition(1, GetCellCenterWorld(missionTarget));
+                if(TryGetUnitWorldPosition(selectingUnit, out var unitPos))
+                {
+                    missionLine.SetPosition(0, unitPos);
+                    missionLine.SetPosition(1, GetCellCenterWorld(missionTarget));
+                }
+                else
+                {
+                    missionLine.gameObject.SetActive(false);
+                }
             }
             else // "self-circle"
             {
                 missionLine.positionCount = 5;
-                var baseVec = GetCellCenterWorld(missionSource);
-                missionLine.SetPosition(0, baseVec);
-                missionLine.SetPosition(1, baseVec + selfCircleOffset1);
-                missionLine.SetPosition(2, baseVec + selfCircleOffset2);
-                missionLine.SetPosition(3, baseVec + selfCircleOffset3);
-                missionLine.SetPosition(4, baseVec);
+                if(TryGetUnitWorldPosition(selectingUnit, out var baseVec))
+                {
+                    missionLine.SetPosition(0, baseVec);
+                    missionLine.SetPosition(1, baseVec + selfCircleOffset1);
+                    missionLine.SetPosition(2, baseVec + selfCircleOffset2);
+                    missionLine.SetPosition(3, baseVec + selfCircleOffset3);
+                    missionLine.SetPosition(4, baseVec);
+                }
+                else
+                {
+                    missionLine.gameObject.SetActive(false);
+                }
             }
         }
         else
         {
             missionLine.gameObject.SetActive(false);
+        }
+
+        SyncHierarchyLines();
+    }
+
+    bool TryGetUnitWorldPosition(Unit unit, out Vector3 position)
+    {
+        position = Vector3.zero;
+        if(unit?.view != null && unit.view.gameObject.activeInHierarchy)
+        {
+            position = unit.view.transform.position;
+            return true;
+        }
+
+        var cell = unit?.GetCell();
+        if(cell != null)
+        {
+            position = GetCellCenterWorld(cell);
+            return true;
+        }
+
+        return false;
+    }
+
+    void SyncHierarchyLines()
+    {
+        if(missionLine == null)
+        {
+            return;
+        }
+
+        if(selectingUnit == null)
+        {
+            SyncHierarchyLineRendererCount(0);
+            return;
+        }
+
+        if(!TryGetUnitWorldPosition(selectingUnit, out var selectedPos))
+        {
+            SyncHierarchyLineRendererCount(0);
+            return;
+        }
+        var lineSegments = new List<(Vector3 start, Vector3 end, Color color)>();
+
+        if(selectingUnit.parent is Unit parentUnit)
+        {
+            if(TryGetUnitWorldPosition(parentUnit, out var parentPos))
+            {
+                lineSegments.Add((selectedPos, parentPos, superiorLineColor));
+            }
+        }
+
+        foreach(var child in selectingUnit.children)
+        {
+            if(child is not Unit childUnit)
+            {
+                continue;
+            }
+
+            if(!TryGetUnitWorldPosition(childUnit, out var childPos))
+            {
+                continue;
+            }
+
+            lineSegments.Add((selectedPos, childPos, subordinateLineColor));
+        }
+
+        SyncHierarchyLineRendererCount(lineSegments.Count);
+        for(int i = 0; i < lineSegments.Count; i++)
+        {
+            var lineRenderer = hierarchyLineRenderers[i];
+            var segment = lineSegments[i];
+            lineRenderer.gameObject.SetActive(true);
+            lineRenderer.positionCount = 2;
+            lineRenderer.SetPosition(0, segment.start);
+            lineRenderer.SetPosition(1, segment.end);
+            lineRenderer.startColor = segment.color;
+            lineRenderer.endColor = segment.color;
+        }
+    }
+
+    void SyncHierarchyLineRendererCount(int count)
+    {
+        if(count < 0)
+        {
+            count = 0;
+        }
+
+        while(hierarchyLineRenderers.Count < count)
+        {
+            var lineRenderer = Instantiate(missionLine, hierarchyLinesTransform);
+            lineRenderer.gameObject.name = "HierarchyLine";
+            hierarchyLineRenderers.Add(lineRenderer);
+        }
+
+        for(int i = 0; i < hierarchyLineRenderers.Count; i++)
+        {
+            hierarchyLineRenderers[i].gameObject.SetActive(i < count);
         }
     }
 
