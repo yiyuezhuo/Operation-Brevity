@@ -356,12 +356,39 @@ namespace GameModel
                 unit.AdvanceTimeMovement(seconds);
             }
 
+            EnforceRetreatCoexistenceRule();
+
             foreach(var unit in deployedUnits)
             {
                 unit.AdvanceTimeRestore(seconds);
             }
 
             AdvanceTimeCombat(seconds);
+        }
+
+        void EnforceRetreatCoexistenceRule()
+        {
+            foreach(var cell in cells)
+            {
+                if(cell == null || cell.UnitRefs.Count < 2)
+                    continue;
+
+                var units = cell.IterateUnits().ToList();
+                if(units.Count < 2)
+                    continue;
+
+                var hostilePresent = units.Select(u => u.side).Where(s => s != null).Distinct().Count() > 1;
+                if(!hostilePresent)
+                    continue;
+
+                foreach(var unit in units)
+                {
+                    if(unit.retreating && !unit.IsMovingRetreating())
+                    {
+                        unit.EnsureRetreatPathOrEliminate();
+                    }
+                }
+            }
         }
 
 

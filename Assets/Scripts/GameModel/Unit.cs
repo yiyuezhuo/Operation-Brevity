@@ -470,6 +470,7 @@ namespace GameModel
         public bool retreating = false;
 
         public bool IsOperational() => deployState == DeployState.Deployed && !retreating;
+        public bool IsMovingRetreating() => retreating && waypoints.Count >= 2;
 
         public float GetHitWeight() => strength * parameter.category.strengthCoef;
         public float GetAssaultValue() => strength * parameter.Assault * parameter.category.strengthCoef * readiness;
@@ -484,6 +485,23 @@ namespace GameModel
             if(retreatToCell == null)
             {
                 MoveTo(null, true); // surrender
+            }
+            else
+            {
+                SetWaypoints(new(){currentCell, retreatToCell});
+            }
+        }
+
+        public void EnsureRetreatPathOrEliminate()
+        {
+            if(!retreating || waypoints.Count >= 2)
+                return;
+
+            var currentCell = GetCell();
+            var retreatToCell = SelectRetreatCell(currentCell);
+            if(retreatToCell == null)
+            {
+                MoveTo(null, true); // no valid retreat path
             }
             else
             {
