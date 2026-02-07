@@ -610,16 +610,93 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     void RefreshMapUnits()
     {
         var unitsOnMap = GameState.Instance.units.Where(u => u.deployState == DeployState.Deployed).ToList();
+        var existingControllers = countersTransform.GetComponentsInChildren<CounterController>().ToList();
+        var controllerByUnitId = new Dictionary<string, CounterController>();
+        var freeControllers = new List<CounterController>();
 
-        Utils.SyncTransformViewerLength(countersTransform, unitsOnMap.Count, counterPrefab);
-        var controllers = countersTransform.GetComponentsInChildren<CounterController>();
-        for(int i=0; i<unitsOnMap.Count; i++)
+        foreach(var controller in existingControllers)
         {
-            var unit = unitsOnMap[i];
-            var controller = controllers[i];
-            // binding
+            if(controller == null)
+                continue;
+
+            if(controller.unit != null && !string.IsNullOrEmpty(controller.unit.objectId))
+            {
+                if(!controllerByUnitId.ContainsKey(controller.unit.objectId))
+                {
+                    controllerByUnitId.Add(controller.unit.objectId, controller);
+                }
+                else
+                {
+                    freeControllers.Add(controller);
+                }
+            }
+            else
+            {
+                freeControllers.Add(controller);
+            }
+        }
+
+        foreach(var unit in unitsOnMap)
+        {
+            CounterController controller = null;
+            if(unit.view != null && unit.view.unit == unit)
+            {
+                controller = unit.view;
+            }
+            else if(!string.IsNullOrEmpty(unit.objectId) && controllerByUnitId.TryGetValue(unit.objectId, out var matched))
+            {
+                controller = matched;
+            }
+            else if(freeControllers.Count > 0)
+            {
+                controller = freeControllers[0];
+                freeControllers.RemoveAt(0);
+            }
+            else
+            {
+                var obj = GameObject.Instantiate(counterPrefab, countersTransform);
+                controller = obj.GetComponent<CounterController>();
+            }
+
+            if(controller == null)
+                continue;
+
+            if(controller.unit != unit)
+            {
+                if(controller.unit != null && controller.unit.view == controller)
+                {
+                    controller.unit.view = null;
+                }
+
+                var cell = unit.GetCell();
+                if(cell != null)
+                {
+                    controller.SetImmediatePosition(GetCellCenterWorld(cell));
+                }
+            }
+
             controller.unit = unit;
             unit.view = controller;
+        }
+
+        foreach(var controller in existingControllers)
+        {
+            if(controller == null)
+                continue;
+
+            var controllerUnit = controller.unit;
+            if(controllerUnit == null)
+                continue;
+
+            if(controllerUnit.deployState != DeployState.Deployed)
+            {
+                if(controllerUnit.view == controller)
+                {
+                    controllerUnit.view = null;
+                }
+                controller.unit = null;
+                controller.BeginFadeOutAndDestroy(0.2f);
+            }
         }
 
         // RefreshStacks();
@@ -674,14 +751,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var count = controllers.Count;
         if (count == 1)
         {
-            controllers[0].transform.position = basePos;
+            controllers[0].SetTargetPosition(basePos);
             return;
         }
         var step = stackSpace / (count - 1);
         for (int i = 0; i < count; i++)
         {
             var delta = -stackSpace / 2 + i * step;
-            controllers[i].transform.position = basePos + new Vector3(delta, delta, 0);
+            controllers[i].SetTargetPosition(basePos + new Vector3(delta, delta, 0));
             controllers[i].sortingGroup.sortingOrder = i;
         }
     }

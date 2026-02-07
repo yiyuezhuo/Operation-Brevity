@@ -15,6 +15,25 @@ public class CounterController : MonoBehaviour
     public SortingGroup sortingGroup;
 
     public Unit unit; // model
+    
+    [SerializeField]
+    float moveDurationSeconds = 0.2f;
+
+    Vector3 moveFrom;
+    Vector3 moveTo;
+    float moveElapsed;
+    bool moveActive;
+    bool hasInitializedPosition;
+
+    Color topTextBaseColor;
+    Color bottomTextBaseColor;
+    Color outerColorBaseColor;
+    Color innerColorBaseColor;
+    Color iconBaseColor;
+
+    float fadeElapsed;
+    float fadeDuration;
+    bool fadeActive;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +44,14 @@ public class CounterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(fadeActive)
+        {
+            UpdateFadeOut();
+            return;
+        }
+
         Sync();
+        UpdateMoveAnimation();
     }
 
     public class ColorSchema // TOAW-like Color Schema
@@ -104,6 +130,104 @@ public class CounterController : MonoBehaviour
             unitIcon.color = colorSchema.icon;
 
             unitIcon.sprite = StreamingAssetManagerEnumHelper<UnitType>.Instance.GetSprite(unit.unitType);
+
+            topTextBaseColor = topText.color;
+            bottomTextBaseColor = botttomText.color;
+            outerColorBaseColor = outerColorRect.color;
+            innerColorBaseColor = innerColorRect.color;
+            iconBaseColor = unitIcon.color;
         }
+    }
+
+    public void SetTargetPosition(Vector3 position)
+    {
+        if(!hasInitializedPosition)
+        {
+            transform.position = position;
+            hasInitializedPosition = true;
+            moveActive = false;
+            moveElapsed = 0f;
+            moveFrom = position;
+            moveTo = position;
+            return;
+        }
+
+        if(Vector3.Distance(transform.position, position) <= 0.001f)
+        {
+            moveActive = false;
+            moveElapsed = 0f;
+            moveFrom = position;
+            moveTo = position;
+            transform.position = position;
+            return;
+        }
+
+        moveFrom = transform.position;
+        moveTo = position;
+        moveElapsed = 0f;
+        moveActive = true;
+    }
+
+    public void SetImmediatePosition(Vector3 position)
+    {
+        transform.position = position;
+        hasInitializedPosition = true;
+        moveActive = false;
+        moveElapsed = 0f;
+        moveFrom = position;
+        moveTo = position;
+    }
+
+    public void BeginFadeOutAndDestroy(float durationSeconds)
+    {
+        if(fadeActive)
+            return;
+
+        fadeActive = true;
+        fadeDuration = Mathf.Max(0.01f, durationSeconds);
+        fadeElapsed = 0f;
+        unit = null;
+    }
+
+    void UpdateMoveAnimation()
+    {
+        if(!moveActive)
+            return;
+
+        var duration = Mathf.Max(0.01f, moveDurationSeconds);
+        moveElapsed += Time.deltaTime;
+        var t = Mathf.Clamp01(moveElapsed / duration);
+        var eased = Mathf.SmoothStep(0f, 1f, t);
+        transform.position = Vector3.Lerp(moveFrom, moveTo, eased);
+
+        if(t >= 1f)
+        {
+            moveActive = false;
+            transform.position = moveTo;
+        }
+    }
+
+    void UpdateFadeOut()
+    {
+        fadeElapsed += Time.deltaTime;
+        var t = Mathf.Clamp01(fadeElapsed / fadeDuration);
+        var alpha = 1f - t;
+
+        topText.color = WithAlpha(topTextBaseColor, alpha);
+        botttomText.color = WithAlpha(bottomTextBaseColor, alpha);
+        outerColorRect.color = WithAlpha(outerColorBaseColor, alpha);
+        innerColorRect.color = WithAlpha(innerColorBaseColor, alpha);
+        unitIcon.color = WithAlpha(iconBaseColor, alpha);
+
+        if(t >= 1f)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    static Color WithAlpha(Color color, float alpha)
+    {
+        color.a = alpha;
+        return color;
     }
 }
