@@ -264,7 +264,16 @@ namespace GameModel
 
                     if(enemyBlocked && retreating)
                     {
-                        MoveTo(null, true); // surrender
+                        var fallbackCell = SelectRetreatCell(currentCell);
+                        if(fallbackCell == null)
+                        {
+                            MoveTo(null, true); // surrender
+                        }
+                        else
+                        {
+                            SetWaypoints(new(){currentCell, fallbackCell});
+                            movementProgressionKm = 0;
+                        }
                         return;
                     }
 
@@ -471,29 +480,44 @@ namespace GameModel
             retreating = true;
 
             // var retreatToCells = currentCell.GetNeighbors().Where(cell => !cell.HasResistTo(side)).ToList();
-            var retreatToCells = DynamicCellGraphArmy.Instance.Neighbors(currentCell).Where(cell => !cell.HasResistTo(side)).ToList();
-            if(retreatToCells.Count == 0)
+            var retreatToCell = SelectRetreatCell(currentCell);
+            if(retreatToCell == null)
             {
                 MoveTo(null, true); // surrender
             }
             else
             {
-                // TODO: Consider priority
-                var retreatToCellsHostileNeighbors = retreatToCells.Select(c => c.GetNeighbors().Count(nei => nei.HasResistTo(side))).ToList();
-                var minHostileCount = retreatToCellsHostileNeighbors.Min();
-
-                var minSet = new List<Cell>();
-                for(int i=0; i<retreatToCellsHostileNeighbors.Count; i++)
-                {
-                    if(retreatToCellsHostileNeighbors[i] == minHostileCount)
-                    {
-                        minSet.Add(retreatToCells[i]);
-                    }
-                }
-
-                var retreatToCell = RandomUtils.Sample(minSet);
                 SetWaypoints(new(){currentCell, retreatToCell});
             }
+        }
+
+        Cell SelectRetreatCell(Cell currentCell)
+        {
+            if(currentCell == null)
+                return null;
+
+            var retreatToCells = DynamicCellGraphArmy.Instance.Neighbors(currentCell)
+                .Where(cell => !cell.HasResistTo(side))
+                .ToList();
+            if(retreatToCells.Count == 0)
+                return null;
+
+            // TODO: Consider priority
+            var retreatToCellsHostileNeighbors = retreatToCells
+                .Select(c => c.GetNeighbors().Count(nei => nei.HasResistTo(side)))
+                .ToList();
+            var minHostileCount = retreatToCellsHostileNeighbors.Min();
+
+            var minSet = new List<Cell>();
+            for(int i=0; i<retreatToCellsHostileNeighbors.Count; i++)
+            {
+                if(retreatToCellsHostileNeighbors[i] == minHostileCount)
+                {
+                    minSet.Add(retreatToCells[i]);
+                }
+            }
+
+            return RandomUtils.Sample(minSet);
         }
 
         public void TryPlanPathTo(Cell dstCell)
