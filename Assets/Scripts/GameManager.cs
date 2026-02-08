@@ -132,10 +132,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     Transform edgeFeaturesTransform;
     Transform countersTransform;
     Transform hierarchyLinesTransform;
+    Transform allWaypointLinesTransform;
 
     static readonly Color superiorLineColor = new Color(0.72f, 0.6f, 0.85f, 0.7f);
     static readonly Color subordinateLineColor = new Color(0.55f, 0.85f, 0.6f, 0.7f);
     readonly List<LineRenderer> hierarchyLineRenderers = new();
+    readonly List<WaypointLineSet> allWaypointLineSets = new();
 
     // Label[,] cellLabels;
     TMP_Text[,] cellLabels;
@@ -167,6 +169,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         edgeFeaturesTransform = Utils.CreateDynamicTransform(transform, "EdgeFeatures");
         countersTransform = Utils.CreateDynamicTransform(transform, "Counters");
         hierarchyLinesTransform = Utils.CreateDynamicTransform(transform, "HierarchyLines");
+        allWaypointLinesTransform = Utils.CreateDynamicTransform(transform, "AllWaypointLines");
 
         // if(startupConfig.mode == StartupConfig.Mode.ScenPath)
         // {
@@ -352,8 +355,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     void UpdateView()
     {
+        var showAllWaypoints = ShouldShowAllWaypoints();
+
         // Sync PathLineController
-        if(selectingUnit != null)
+        if(!showAllWaypoints && selectingUnit != null)
         {
             var positions = selectingUnit.waypoints.Select(xy => GetCellCenterWorld(xy.x, xy.y)).ToArray();
             var p = selectingUnit.movementProgressionKm / ModelUtils.hexDistanceKm;
@@ -363,6 +368,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             pathLineController.Sync(emptyVector3Arr, 0);
         }
+
+        SyncAllWaypointLines(showAllWaypoints);
 
         // Sync MissionLine
         var missionTarget = selectingUnit?.missionTargetXY?.Get();
@@ -406,6 +413,117 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
 
         SyncHierarchyLines();
+    }
+
+    bool ShouldShowAllWaypoints()
+    {
+        return IsHotKeyEnabled() && Input.GetKey(KeyCode.A);
+    }
+
+    void SyncAllWaypointLines(bool show)
+    {
+        if(!show)
+        {
+            SyncAllWaypointLineRendererCount(0);
+            return;
+        }
+
+        if(pathLineController == null || pathLineController.boundingSegmentLineRenderer == null)
+        {
+            SyncAllWaypointLineRendererCount(0);
+            return;
+        }
+
+        var units = GameState.Instance.units
+            .Where(u => u.deployState == DeployState.Deployed && u.waypoints != null && u.waypoints.Count >= 2)
+            .ToList();
+
+        SyncAllWaypointLineRendererCount(units.Count);
+        for(int i = 0; i < units.Count; i++)
+        {
+            var unit = units[i];
+            var positions = unit.waypoints.Select(xy => GetCellCenterWorld(xy.x, xy.y)).ToArray();
+            var lineSet = allWaypointLineSets[i];
+            lineSet.bounding.gameObject.SetActive(true);
+            lineSet.other.gameObject.SetActive(true);
+
+            lineSet.bounding.positionCount = positions.Length;
+            lineSet.bounding.SetPositions(positions);
+
+            lineSet.other.positionCount = positions.Length;
+            lineSet.other.SetPositions(positions);
+        }
+    }
+
+    void SyncAllWaypointLineRendererCount(int count)
+    {
+        if(count < 0)
+        {
+            count = 0;
+        }
+
+        while(allWaypointLineSets.Count < count)
+        {
+            var boundingSource = pathLineController.boundingSegmentLineRenderer;
+            var otherSource = pathLineController.otherSegmentLineRenderer;
+
+            var bounding = Instantiate(boundingSource, allWaypointLinesTransform);
+            bounding.gameObject.name = "AllWaypointLine_Bounding";
+            CopyLineRendererStyle(boundingSource, bounding);
+
+            var other = Instantiate(otherSource, allWaypointLinesTransform);
+            other.gameObject.name = "AllWaypointLine_Other";
+            CopyLineRendererStyle(otherSource, other);
+
+            allWaypointLineSets.Add(new WaypointLineSet
+            {
+                bounding = bounding,
+                other = other
+            });
+        }
+
+        for(int i = 0; i < allWaypointLineSets.Count; i++)
+        {
+            var lineSet = allWaypointLineSets[i];
+            var active = i < count;
+            lineSet.bounding.gameObject.SetActive(active);
+            lineSet.other.gameObject.SetActive(active);
+        }
+    }
+
+    class WaypointLineSet
+    {
+        public LineRenderer bounding;
+        public LineRenderer other;
+    }
+
+    void CopyLineRendererStyle(LineRenderer source, LineRenderer target)
+    {
+        if(source == null || target == null)
+        {
+            return;
+        }
+
+        target.useWorldSpace = source.useWorldSpace;
+        target.loop = source.loop;
+        target.sharedMaterial = source.sharedMaterial;
+        target.material = source.material;
+        target.startColor = source.startColor;
+        target.endColor = source.endColor;
+        target.colorGradient = source.colorGradient;
+        target.widthCurve = source.widthCurve;
+        target.widthMultiplier = source.widthMultiplier;
+        target.textureMode = source.textureMode;
+        target.alignment = source.alignment;
+        target.numCapVertices = source.numCapVertices;
+        target.numCornerVertices = source.numCornerVertices;
+        target.generateLightingData = source.generateLightingData;
+        target.shadowCastingMode = source.shadowCastingMode;
+        target.receiveShadows = source.receiveShadows;
+        target.lightProbeUsage = source.lightProbeUsage;
+        target.reflectionProbeUsage = source.reflectionProbeUsage;
+        target.sortingLayerID = source.sortingLayerID;
+        target.sortingOrder = source.sortingOrder;
     }
 
     bool TryGetUnitWorldPosition(Unit unit, out Vector3 position)
